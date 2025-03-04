@@ -1,13 +1,13 @@
 import Foundation
 
-public class GetBankByIdUseCase {
+internal class GetBankByIdUseCase {
     private let repository: BankRepositoryProtocol
 
     init(repository: BankRepositoryProtocol) {
         self.repository = repository
     }
 
-    public func execute(code: String) async throws -> BankModel {
+    func execute(code: String) async throws -> BankModel {
         return try await repository.getBankByCode(code: code)
     }
 }

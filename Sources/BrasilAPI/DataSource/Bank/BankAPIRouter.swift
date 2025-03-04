@@ -1,6 +1,6 @@
 import Foundation
 
-enum BankAPIRouter: APIRouterProtocol {
+internal enum BankAPIRouter: APIRouterProtocol {
     case getBanks
     case getBanksByCode(code: String)
     

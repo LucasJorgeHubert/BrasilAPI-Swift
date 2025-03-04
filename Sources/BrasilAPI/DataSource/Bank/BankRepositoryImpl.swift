@@ -1,6 +1,6 @@
 import Foundation
 
-class BankRepositoryImpl: BankRepositoryProtocol {
+internal class BankRepositoryImpl: BankRepositoryProtocol {
     
     private let apiDispatcher: APIRequestDispatcherProtocol
 

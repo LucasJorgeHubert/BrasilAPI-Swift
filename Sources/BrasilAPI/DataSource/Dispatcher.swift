@@ -1,10 +1,10 @@
 import Foundation
 
-protocol APIRequestDispatcherProtocol {
+internal protocol APIRequestDispatcherProtocol {
     func request<T: Codable>(apiRouter: APIRouterProtocol) async throws -> T
 }
 
-class APIRequestDispatcher: APIRequestDispatcherProtocol {
+internal class APIRequestDispatcher: APIRequestDispatcherProtocol {
     
     private let session: URLSession
     private let maxRetries: Int
