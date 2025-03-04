@@ -2,11 +2,16 @@ import XCTest
 @testable import BrasilAPI
 
 final class BrasilAPITests: XCTestCase {
-    func testExample() throws {
-        // XCTest Documentation
-        // https://developer.apple.com/documentation/xctest
+    var useCase: GetBankListUseCase!
 
-        // Defining Test Cases and Test Methods
-        // https://developer.apple.com/documentation/xctest/defining_test_cases_and_test_methods
+    override func setUp() {
+        let repository = BankRepositoryImpl()
+        APIConfig.environment = .local
+        useCase = GetBankListUseCase(repository: repository)
+    }
+
+    func test_integration_fetchBanks() async throws {
+        let banks = try await useCase.execute()
+        XCTAssertFalse(banks.isEmpty)
     }
 }
