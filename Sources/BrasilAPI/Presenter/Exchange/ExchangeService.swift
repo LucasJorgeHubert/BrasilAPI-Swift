@@ -1,0 +1,26 @@
+//
+//  File.swift
+//  
+//
+//  Created by Lucas Hubert on 05/03/25.
+//
+
+import Foundation
+
+public class ExchangeService {
+    private let coinListUseCase: GetCoinListUseCase
+    private let quotationUseCase: GetQuotationUseCase
+    
+    public init(repository: ExchangeRepositoryProtocol = ExchangeRepositoryImpl()) {
+        self.coinListUseCase = GetCoinListUseCase(repository: repository)
+        self.quotationUseCase = GetQuotationUseCase(repository: repository)
+    }
+    
+    public func listCoins() async throws -> [BrasilAPIExchangeCoinModel] {
+        return try await coinListUseCase.execute()
+    }
+    
+    public func getQuotation(coin: String, date: String) async throws -> BrasilAPIExchangeQuotationModel {
+        return try await quotationUseCase.execute(coin: coin, date: date)
+    }
+}
