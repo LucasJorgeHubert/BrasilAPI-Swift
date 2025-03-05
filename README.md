@@ -19,7 +19,7 @@ Uma SDK Swift para acessar os serviços da [BrasilAPI](https://brasilapi.com.br)
 A SDK está disponível via [Swift Package Manager (SPM)](https://swift.org/package-manager/). Para adicioná-la ao seu projeto:
 
 1. No Xcode, vá para `File > Add Packages`
-2. Insira a URL do repositório: `https://github.com/seu-usuario/BrasilAPI-Swift`
+2. Insira a URL do repositório: `https://github.com/LucasJorgeHubert/BrasilAPI.git`
 3. Escolha a versão desejada e adicione o pacote ao seu projeto
 
 Ou, se preferir, adicione manualmente ao `Package.swift`:
