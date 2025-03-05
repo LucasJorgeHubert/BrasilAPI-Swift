@@ -26,7 +26,7 @@ Ou, se preferir, adicione manualmente ao `Package.swift`:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/seu-usuario/BrasilAPI-Swift", from: "1.0.0")
+    .package(url: "https://github.com/LucasJorgeHubert/BrasilAPI.git", from: "1.0.0")
 ]
 ```
 
