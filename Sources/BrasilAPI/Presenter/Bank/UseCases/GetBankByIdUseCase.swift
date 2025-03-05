@@ -7,7 +7,7 @@ class GetBankByIdUseCase {
         self.repository = repository
     }
 
-    func execute(code: String) async throws -> BankModel {
+    func execute(code: String) async throws -> BrasilAPIBankModel {
         return try await repository.getBankByCode(code: code)
     }
 }
