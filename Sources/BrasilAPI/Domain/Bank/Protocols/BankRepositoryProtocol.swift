@@ -1,6 +1,6 @@
 import Foundation
 
 public protocol BankRepositoryProtocol {
-    func listBanks() async throws -> [BankModel]
-    func getBankByCode(code: String) async throws -> BankModel
+    func listBanks() async throws -> [BrasilAPIBankModel]
+    func getBankByCode(code: String) async throws -> BrasilAPIBankModel
 }
