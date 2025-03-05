@@ -1,10 +1,10 @@
 import Foundation
 
-enum BankAPIRouter: APIRouterProtocol {
+public enum BankAPIRouter: APIRouterProtocol {
     case getBanks
     case getBanksByCode(code: String)
     
-    var path: String {
+    public var path: String {
         switch self {
         case .getBanks:
             return "/api/banks/v1"
@@ -13,7 +13,7 @@ enum BankAPIRouter: APIRouterProtocol {
         }
     }
     
-    var method: String {
+    public var method: String {
         switch self {
         case .getBanks, .getBanksByCode:
             return "GET"

@@ -1,19 +1,20 @@
 import Foundation
 
-class BankRepositoryImpl: BankRepositoryProtocol {
+public class BankRepositoryImpl: BankRepositoryProtocol {
     
     private let apiDispatcher: APIRequestDispatcherProtocol
 
-   init(apiDispatcher: APIRequestDispatcherProtocol = APIRequestDispatcher()) {
-       self.apiDispatcher = apiDispatcher
-   }
-    
-    func listBanks() async throws -> [BankModel] {
-        let result: [BankModel] = try await apiDispatcher.request(apiRouter: BankAPIRouter.getBanks)
-        return result
+    public init(
+        apiDispatcher: APIRequestDispatcherProtocol = APIRequestDispatcher()
+    ) {
+        self.apiDispatcher = apiDispatcher
     }
     
-    func getBankByCode(code: String) async throws -> BankModel {
+    public func listBanks() async throws -> [BankModel] {
+        return try await apiDispatcher.request(apiRouter: BankAPIRouter.getBanks)
+    }
+    
+    public func getBankByCode(code: String) async throws -> BankModel {
         return try await apiDispatcher.request(apiRouter: BankAPIRouter.getBanksByCode(code: code))
     }
 }

@@ -1,6 +1,6 @@
 import Foundation
 
-protocol APIRouterProtocol {
+public protocol APIRouterProtocol {
     var path: String { get }
     var method: String { get }
 }

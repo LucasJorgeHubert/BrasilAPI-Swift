@@ -19,6 +19,7 @@ let package = Package(
             name: "BrasilAPI"),
         .testTarget(
             name: "BrasilAPITests",
-            dependencies: ["BrasilAPI"]),
+            dependencies: ["BrasilAPI"],
+            resources: [.process("Resources")]),
     ]
 )
