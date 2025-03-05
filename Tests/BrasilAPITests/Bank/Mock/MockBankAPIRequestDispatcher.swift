@@ -23,19 +23,12 @@ class MockBankAPIRequestDispatcher: APIRequestDispatcherProtocol {
     private func resolveMockFileName(for apiRouter: APIRouterProtocol) -> String {
         switch apiRouter {
         case is BankAPIRouter:
-            if let bankRouter = apiRouter as? BankAPIRouter {
-                switch bankRouter {
-                case .getBanks:
-                    return "banks_v1"
-                case .getBanksByCode(let code):
-                    return "banks_v1_\(code)"
-                }
-            }
+            return resolveBankAPIRouter(for: apiRouter)
+        case is ExchangeAPIRouter:
+            return resolveExchangeAPIRouter(for: apiRouter)
         default:
             return "default_mock"
         }
-        
-        return "default_mock"
     }
     
     private func loadMockJSON(named fileName: String) -> Data? {
@@ -45,6 +38,32 @@ class MockBankAPIRequestDispatcher: APIRequestDispatcherProtocol {
         }
         
         return try? Data(contentsOf: url)
+    }
+    
+    private func resolveBankAPIRouter(for apiRouter: APIRouterProtocol) -> String {
+        if let bankRouter = apiRouter as? BankAPIRouter {
+            switch bankRouter {
+            case .getBanks:
+                return "banks_v1"
+            case .getBanksByCode(let code):
+                return "banks_v1_\(code)"
+            }
+        }
+        
+        return "default_mock"
+    }
+    
+    private func resolveExchangeAPIRouter(for apiRouter: APIRouterProtocol) -> String {
+        if let bankRouter = apiRouter as? ExchangeAPIRouter {
+            switch bankRouter {
+            case .getCoins:
+                return "cambio_v1_moedas"
+            case .getQuotation:
+                return "cambio_v1_cotacao"
+            }
+        }
+        
+        return "default_mock"
     }
 }
 

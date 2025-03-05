@@ -1,0 +1,53 @@
+
+[
+    {
+        "simbolo": "AUD",
+        "nome": "Dólar australiano",
+        "tipo_moeda": "B"
+    },
+    {
+        "simbolo": "CAD",
+        "nome": "Dólar canadense",
+        "tipo_moeda": "A"
+    },
+    {
+        "simbolo": "CHF",
+        "nome": "Franco suíço",
+        "tipo_moeda": "A"
+    },
+    {
+        "simbolo": "DKK",
+        "nome": "Coroa dinamarquesa",
+        "tipo_moeda": "A"
+    },
+    {
+        "simbolo": "EUR",
+        "nome": "Euro",
+        "tipo_moeda": "B"
+    },
+    {
+        "simbolo": "GBP",
+        "nome": "Libra Esterlina",
+        "tipo_moeda": "B"
+    },
+    {
+        "simbolo": "JPY",
+        "nome": "Iene",
+        "tipo_moeda": "A"
+    },
+    {
+        "simbolo": "NOK",
+        "nome": "Coroa norueguesa",
+        "tipo_moeda": "A"
+    },
+    {
+        "simbolo": "SEK",
+        "nome": "Coroa sueca",
+        "tipo_moeda": "A"
+    },
+    {
+        "simbolo": "USD",
+        "nome": "Dólar dos Estados Unidos",
+        "tipo_moeda": "A"
+    }
+]

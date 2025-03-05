@@ -9,8 +9,13 @@ import Foundation
 
 public class BrasilAPI {
     public var banking: BankingService
+    public var exchange: ExchangeService
 
-    public init(bankingRepository: BankRepositoryProtocol = BankRepositoryImpl()) {
+    public init(
+        bankingRepository: BankRepositoryProtocol = BankRepositoryImpl(),
+        exchangeRepository: ExchangeRepositoryProtocol = ExchangeRepositoryImpl()
+    ) {
         self.banking = BankingService(repository: bankingRepository)
+        self.exchange = ExchangeService(repository: exchangeRepository)
     }
 }
