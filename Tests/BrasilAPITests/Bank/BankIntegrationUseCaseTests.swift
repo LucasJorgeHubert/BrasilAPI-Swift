@@ -1,13 +1,13 @@
 import XCTest
 @testable import BrasilAPI
 
-final class BankBrasilAPITests: XCTestCase {
+final class BankIntegrationUseCaseTests: XCTestCase {
     var listBanksUseCase: GetBankListUseCase!
     var getBankByIdUseCase: GetBankByIdUseCase!
 
     override func setUp() {
         let repository = BankRepositoryImpl()
-        APIConfig.environment = .local
+        APIConfig.environment = .production
         listBanksUseCase = GetBankListUseCase(repository: repository)
         getBankByIdUseCase = GetBankByIdUseCase(repository: repository)
     }

@@ -1,20 +1,20 @@
 import Foundation
 
-internal protocol APIRequestDispatcherProtocol {
+public protocol APIRequestDispatcherProtocol {
     func request<T: Codable>(apiRouter: APIRouterProtocol) async throws -> T
 }
 
-internal class APIRequestDispatcher: APIRequestDispatcherProtocol {
+public class APIRequestDispatcher: APIRequestDispatcherProtocol {
     
     private let session: URLSession
     private let maxRetries: Int
     
-    init(session: URLSession = .shared, maxRetries: Int = 3) {
+    public init(session: URLSession = .shared, maxRetries: Int = 3) {
         self.session = session
         self.maxRetries = maxRetries
     }
     
-    func request<T: Codable>(apiRouter: APIRouterProtocol) async throws -> T {
+    public func request<T: Codable>(apiRouter: APIRouterProtocol) async throws -> T {
         var components = URLComponents()
         components.scheme = APIConfig.environment == .local ? "http" : "https"
         components.host = APIConfig.baseURL
@@ -71,7 +71,8 @@ internal class APIRequestDispatcher: APIRequestDispatcherProtocol {
         throw BrasilAPIRequestError.unknown
     }
 }
-enum BrasilAPIRequestError: Error, Equatable {
+
+public enum BrasilAPIRequestError: Error, Equatable {
     case badUrl
     case invalidResponse
     case badRequest

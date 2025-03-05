@@ -8,9 +8,9 @@
 import Foundation
 
 public class BrasilAPI {
-    public let banking: BankingService
+    public var banking: BankingService
 
-    private init(bankingRepository: BankRepositoryProtocol = BankRepositoryImpl()) {
+    public init(bankingRepository: BankRepositoryProtocol = BankRepositoryImpl()) {
         self.banking = BankingService(repository: bankingRepository)
     }
 }

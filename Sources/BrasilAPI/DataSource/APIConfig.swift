@@ -1,11 +1,11 @@
 import Foundation
 
-internal enum APIEnvironment {
+enum APIEnvironment {
     case local
     case production
 }
 
-internal struct APIConfig {
+struct APIConfig {
     public static var environment: APIEnvironment = .production
 
     public static var baseURL: String {

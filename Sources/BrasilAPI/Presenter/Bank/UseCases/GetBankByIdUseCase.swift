@@ -1,6 +1,6 @@
 import Foundation
 
-internal class GetBankByIdUseCase {
+class GetBankByIdUseCase {
     private let repository: BankRepositoryProtocol
 
     init(repository: BankRepositoryProtocol) {

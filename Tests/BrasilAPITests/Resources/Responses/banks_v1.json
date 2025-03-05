@@ -1,0 +1,142 @@
+[
+    {
+        "ispb": "00000000",
+        "name": "BCO DO BRASIL S.A.",
+        "code": 1,
+        "fullName": "Banco do Brasil S.A."
+    },
+    {
+        "ispb": "00000208",
+        "name": "BRB - BCO DE BRASILIA S.A.",
+        "code": 70,
+        "fullName": "BRB - BANCO DE BRASILIA S.A."
+    },
+    {
+        "ispb": "00556603",
+        "name": "BANCO BARI S.A.",
+        "code": 330,
+        "fullName": "BANCO BARI DE INVESTIMENTOS E FINANCIAMENTOS S.A."
+    },
+    {
+        "ispb": "00558456",
+        "name": "BCO CETELEM S.A.",
+        "code": 739,
+        "fullName": "Banco Cetelem S.A."
+    },
+    {
+        "ispb": "00714671",
+        "name": "EWALLY IP S.A.",
+        "code": 534,
+        "fullName": "EWALLY INSTITUIÇÃO DE PAGAMENTO S.A."
+    },
+    {
+        "ispb": "00795423",
+        "name": "BANCO SEMEAR",
+        "code": 743,
+        "fullName": "Banco Semear S.A."
+    },
+    {
+        "ispb": "00806535",
+        "name": "PLANNER CV S.A.",
+        "code": 100,
+        "fullName": "Planner Corretora de Valores S.A."
+    },
+    {
+        "ispb": "00954288",
+        "name": "FDO GARANTIDOR CRÉDITOS",
+        "code": 541,
+        "fullName": "FUNDO GARANTIDOR DE CREDITOS - FGC"
+    },
+    {
+        "ispb": "00997185",
+        "name": "BCO B3 S.A.",
+        "code": 96,
+        "fullName": "Banco B3 S.A."
+    },
+    {
+        "ispb": "01023570",
+        "name": "BCO RABOBANK INTL BRASIL S.A.",
+        "code": 747,
+        "fullName": "Banco Rabobank International Brasil S.A."
+    },
+    {
+        "ispb": "01027058",
+        "name": "CIELO IP S.A.",
+        "code": 362,
+        "fullName": "CIELO S.A. - INSTITUIÇÃO DE PAGAMENTO"
+    },
+    {
+        "ispb": "01073966",
+        "name": "CCR DE ABELARDO LUZ",
+        "code": 322,
+        "fullName": "Cooperativa de Crédito Rural de Abelardo Luz - Sulcredi/Crediluz"
+    },
+    {
+        "ispb": "01181521",
+        "name": "BCO COOPERATIVO SICREDI S.A.",
+        "code": 748,
+        "fullName": "BANCO COOPERATIVO SICREDI S.A."
+    },
+    {
+        "ispb": "01330387",
+        "name": "CREHNOR LARANJEIRAS",
+        "code": 350,
+        "fullName": "COOPERATIVA DE CRÉDITO RURAL DE PEQUENOS AGRICULTORES E DA REFORMA AGRÁRIA DO CE"
+    },
+    {
+        "ispb": "01522368",
+        "name": "BCO BNP PARIBAS BRASIL S A",
+        "code": 752,
+        "fullName": "Banco BNP Paribas Brasil S.A."
+    },
+    {
+        "ispb": "01658426",
+        "name": "CECM COOPERFORTE",
+        "code": 379,
+        "fullName": "COOPERFORTE - COOPERATIVA DE ECONOMIA E CRÉDITO MÚTUO DE FUNCIONÁRIOS DE INSTITU"
+    },
+    {
+        "ispb": "01701201",
+        "name": "KIRTON BANK",
+        "code": 399,
+        "fullName": "Kirton Bank S.A. - Banco Múltiplo"
+    },
+    {
+        "ispb": "01852137",
+        "name": "BCO BRASILEIRO DE CRÉDITO S.A.",
+        "code": 378,
+        "fullName": "BANCO BRASILEIRO DE CRÉDITO SOCIEDADE ANÔNIMA"
+    },
+    {
+        "ispb": "01858774",
+        "name": "BCO BV S.A.",
+        "code": 413,
+        "fullName": "BANCO BV S.A."
+    },
+    {
+        "ispb": "02038232",
+        "name": "BANCO SICOOB S.A.",
+        "code": 756,
+        "fullName": "BANCO COOPERATIVO SICOOB S.A. - BANCO SICOOB"
+    },
+    {
+        "ispb": "02276653",
+        "name": "TRINUS CAPITAL DTVM",
+        "code": 360,
+        "fullName": "TRINUS CAPITAL DISTRIBUIDORA DE TÍTULOS E VALORES MOBILIÁRIOS S.A."
+    },
+    {
+        "ispb": "04546162",
+        "name": "CCM SERV. PÚBLICOS SP",
+        "code": 459,
+        "fullName": "COOPERATIVA DE CRÉDITO MÚTUO DE SERVIDORES PÚBLICOS DO ESTADO DE SÃO PAULO - CRE"
+    },
+    {
+        "ispb": "",
+        "code": null
+    },
+    {
+        "ispb": "",
+        "code": null
+    }
+]
