@@ -9,7 +9,6 @@ Uma SDK Swift para acessar os serviços da [BrasilAPI](https://brasilapi.com.br)
 
 - [Instalação](#-instalação)
 - [Como Usar](#-como-usar)
-  - [Listar Bancos](#listar-bancos)
 - [Funcionalidades Implementadas](#-funcionalidades-implementadas)
 - [Licença](#-licença)
 - [Contribuindo](#-contribuindo)
@@ -33,22 +32,7 @@ dependencies: [
 
 ## 🚀 Como Usar
 
-### Listar Bancos
-
-Para listar os bancos disponíveis via BrasilAPI:
-
-```swift
-import BrasilAPI
-
-BrasilAPI.banking.listBanks { result in
-    switch result {
-    case .success(let banks):
-        print("Lista de bancos: \(banks)")
-    case .failure(let error):
-        print("Erro ao buscar bancos: \(error)")
-    }
-}
-```
+Verifique a [WIKI](https://github.com/LucasJorgeHubert/BrasilAPI/wiki/BrasilAPI-Swift-SDK-WIKI) do repositório, lá encontrará toda a documentação
 
 ## 🔧 Funcionalidades Implementadas
 
@@ -111,22 +95,7 @@ dependencies: [
 
 ## 🚀 Usage
 
-### List Banks
-
-To list the available banks using BrasilAPI:
-
-```swift
-import BrasilAPI
-
-BrasilAPI.banking.listBanks { result in
-    switch result {
-    case .success(let banks):
-        print("Bank list: \(banks)")
-    case .failure(let error):
-        print("Error fetching banks: \(error)")
-    }
-}
-```
+Check the [Wiki](https://github.com/LucasJorgeHubert/BrasilAPI/wiki/BrasilAPI-Swift-SDK-WIKI)
 
 ## 🔧 Implemented Features
 
