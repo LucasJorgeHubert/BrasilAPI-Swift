@@ -4,7 +4,7 @@ public class ZipCodeService {
     private let searchZipCodeUseCase: SearchZipCodeUseCaseV1
     private let searchZipCodeUseCaseV2: SearchZipCodeUseCaseV2
     
-    public init(repository: ExchangeRepositoryProtocol = ExchangeRepositoryImpl()) {
+    public init(repository: ZipCodeRepositoryProtocol = ZipCodeRepositoryImpl()) {
         self.searchZipCodeUseCase = SearchZipCodeUseCaseV1(repository: repository)
         self.searchZipCodeUseCaseV2 = SearchZipCodeUseCaseV2(repository: repository)
     }

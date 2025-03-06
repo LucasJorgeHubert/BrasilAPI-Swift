@@ -26,6 +26,8 @@ class MockBankAPIRequestDispatcher: APIRequestDispatcherProtocol {
             return resolveBankAPIRouter(for: apiRouter)
         case is ExchangeAPIRouter:
             return resolveExchangeAPIRouter(for: apiRouter)
+        case is ZipCodeAPIRouter:
+            return resolveZipCodeAPIRouter(for: apiRouter)
         default:
             return "default_mock"
         }
@@ -60,6 +62,19 @@ class MockBankAPIRequestDispatcher: APIRequestDispatcherProtocol {
                 return "cambio_v1_moedas"
             case .getQuotation:
                 return "cambio_v1_cotacao"
+            }
+        }
+        
+        return "default_mock"
+    }
+    
+    private func resolveZipCodeAPIRouter(for apiRouter: APIRouterProtocol) -> String {
+        if let bankRouter = apiRouter as? ZipCodeAPIRouter {
+            switch bankRouter {
+            case .getZipCodeV1:
+                return "cep_v1"
+            case .getZipCodeV2:
+                return "cep_v2"
             }
         }
         
