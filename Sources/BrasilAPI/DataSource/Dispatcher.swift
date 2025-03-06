@@ -43,19 +43,20 @@ public class APIRequestDispatcher: APIRequestDispatcherProtocol {
                 switch httpResponse.statusCode {
                 case 200...299:
                     return try JSONDecoder().decode(T.self, from: data)
-                case 400:
-                    throw BrasilAPIRequestError.badRequest
-                case 401:
-                    throw BrasilAPIRequestError.unauthorized
-                case 403:
-                    throw BrasilAPIRequestError.forbidden
-                case 404:
-                    throw BrasilAPIRequestError.notFound
-                case 500...599:
-                    throw BrasilAPIRequestError.serverError
+                    
+                case 400...599:
+                    let apiError = try? JSONDecoder().decode(APIErrorResponse.self, from: data)
+                    
+                    if let apiError = apiError {
+                        throw BrasilAPIRequestError.apiError(apiError)
+                    } else {
+                        throw BrasilAPIRequestError.unknownStatusCode(httpResponse.statusCode, nil)
+                    }
+                    
                 default:
-                    throw BrasilAPIRequestError.unknownStatusCode(httpResponse.statusCode)
+                    throw BrasilAPIRequestError.unknown
                 }
+                
             } catch {
                 lastError = error
                 currentAttempt += 1
@@ -70,16 +71,41 @@ public class APIRequestDispatcher: APIRequestDispatcherProtocol {
         
         throw BrasilAPIRequestError.unknown
     }
+
 }
 
-public enum BrasilAPIRequestError: Error, Equatable {
+public enum BrasilAPIRequestError: Error {
     case badUrl
     case invalidResponse
-    case badRequest
-    case unauthorized
-    case forbidden
-    case notFound
-    case serverError
-    case unknownStatusCode(Int)
+    case apiError(APIErrorResponse)
+    case unknownStatusCode(Int, APIErrorResponse?)
     case unknown
+    
+    var localizedDescription: String {
+        switch self {
+        case .badUrl:
+            return "URL inválida."
+        case .invalidResponse:
+            return "Resposta inválida do servidor."
+        case .apiError(let errorResponse):
+            return "Erro: \(errorResponse.message) (\(errorResponse.type))"
+        case .unknownStatusCode(let code, let errorResponse):
+            return "Erro \(code): \(errorResponse?.message ?? "Resposta desconhecida")"
+        case .unknown:
+            return "Ocorreu um erro desconhecido."
+        }
+    }
+}
+
+public struct APIErrorResponse: Codable {
+    let name: String?
+    let message: String
+    let type: String
+    let errors: [APIServiceError]?
+}
+
+public struct APIServiceError: Codable {
+    let name: String?
+    let message: String
+    let service: String?
 }

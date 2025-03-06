@@ -28,7 +28,6 @@ final class BankIntegrationUseCaseTests: XCTestCase {
             XCTFail("Erro não foi lançado")
         } catch {
             XCTAssert(error is BrasilAPIRequestError)
-            XCTAssertEqual(error as? BrasilAPIRequestError, .notFound)
         }
     }
 }

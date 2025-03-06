@@ -12,12 +12,12 @@ final class ExchangeIntegrationUseCaseTests: XCTestCase {
         getQuotationUseCase = GetQuotationUseCase(repository: repository)
     }
 
-    func test_integration_fetchBanks() async throws {
+    func test_integration_fetchCoins() async throws {
         let coins = try await getCoinListUseCase.execute()
         XCTAssertFalse(coins.isEmpty)
     }
     
-    func test_integration_fetchBankById() async throws {
+    func test_integration_fetchQuote() async throws {
         let quote = try await getQuotationUseCase.execute(coin: "USD", date: "2025-02-28")
         XCTAssertNotNil(quote)
     }

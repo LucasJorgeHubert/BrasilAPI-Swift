@@ -14,7 +14,7 @@ class MockBankAPIRequestDispatcher: APIRequestDispatcherProtocol {
         let jsonFileName = resolveMockFileName(for: apiRouter)
         
         guard let jsonData = loadMockJSON(named: jsonFileName) else {
-            throw BrasilAPIRequestError.notFound
+            throw BrasilAPIRequestError.badUrl
         }
         
         return try JSONDecoder().decode(T.self, from: jsonData)
