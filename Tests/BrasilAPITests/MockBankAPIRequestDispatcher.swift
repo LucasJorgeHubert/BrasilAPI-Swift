@@ -28,6 +28,8 @@ class MockBankAPIRequestDispatcher: APIRequestDispatcherProtocol {
             return resolveExchangeAPIRouter(for: apiRouter)
         case is ZipCodeAPIRouter:
             return resolveZipCodeAPIRouter(for: apiRouter)
+        case is CNPJAPIRouter:
+            return resolveCNPJAPIRouter(for: apiRouter)
         default:
             return "default_mock"
         }
@@ -43,8 +45,8 @@ class MockBankAPIRequestDispatcher: APIRequestDispatcherProtocol {
     }
     
     private func resolveBankAPIRouter(for apiRouter: APIRouterProtocol) -> String {
-        if let bankRouter = apiRouter as? BankAPIRouter {
-            switch bankRouter {
+        if let router = apiRouter as? BankAPIRouter {
+            switch router {
             case .getBanks:
                 return "banks_v1"
             case .getBanksByCode(let code):
@@ -56,8 +58,8 @@ class MockBankAPIRequestDispatcher: APIRequestDispatcherProtocol {
     }
     
     private func resolveExchangeAPIRouter(for apiRouter: APIRouterProtocol) -> String {
-        if let bankRouter = apiRouter as? ExchangeAPIRouter {
-            switch bankRouter {
+        if let router = apiRouter as? ExchangeAPIRouter {
+            switch router {
             case .getCoins:
                 return "cambio_v1_moedas"
             case .getQuotation:
@@ -69,12 +71,23 @@ class MockBankAPIRequestDispatcher: APIRequestDispatcherProtocol {
     }
     
     private func resolveZipCodeAPIRouter(for apiRouter: APIRouterProtocol) -> String {
-        if let bankRouter = apiRouter as? ZipCodeAPIRouter {
-            switch bankRouter {
+        if let router = apiRouter as? ZipCodeAPIRouter {
+            switch router {
             case .getZipCodeV1:
                 return "cep_v1"
             case .getZipCodeV2:
                 return "cep_v2"
+            }
+        }
+        
+        return "default_mock"
+    }
+    
+    private func resolveCNPJAPIRouter(for apiRouter: APIRouterProtocol) -> String {
+        if let router = apiRouter as? CNPJAPIRouter {
+            switch router {
+            case .getCNPJ:
+                return "cnpj_v1"
             }
         }
         
