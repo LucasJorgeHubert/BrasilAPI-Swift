@@ -19,8 +19,11 @@ Uma SDK Swift para acessar os serviços da [BrasilAPI](https://brasilapi.com.br)
     - [Buscar CEP](#buscar-cep-cepv1code)
   - [📍 CEP v2](#-cep-v2)
     - [Buscar CEP](#buscar-cep-cepv2code)
-  - [🏢 CNPJ (WIP)](#-cnpj-wip)
+  - [🏢 CNPJ](#-cnpj)
+    - [Buscar CNPJ](#buscar-cnpj-cnpjv1cnpj)
   - [🏦 Corretoras](#-corretoras)
+    - [Buscar corretoras](#buscar-corretoras-cvmcorretorasv1)
+    - [Buscar corretora por CNPJ](#buscar-corretora-por-cnpj-cvmcorretorasv1cnpj)
   - [🌡️ CPTEC](#-cptec)
   - [📱 DDD](#-ddd)
   - [🎉 Feriados Nacionais](#-feriados-nacionais)
@@ -303,7 +306,7 @@ Model BrasilAPICNPJModel
 var brokers: [BrasilAPIBrokerModel] = try await BrasilAPI().broker.getBrokers()
 ```
 
-#### Buscar Corretora por CNPJ [`/cvm/corretoras/v1/{cnpj}`](https://brasilapi.com.br/docs#tag/Corretoras/paths/~1cvm~1corretoras~1v1~1%7Bcnpj%7D/get)
+#### Buscar corretora por CNPJ [`/cvm/corretoras/v1/{cnpj}`](https://brasilapi.com.br/docs#tag/Corretoras/paths/~1cvm~1corretoras~1v1~1%7Bcnpj%7D/get)
 
 ```swift
 var broker: BrasilAPIBrokerModel = try await BrasilAPI().broker.getBrokerByCnpj(cnpj: String)
