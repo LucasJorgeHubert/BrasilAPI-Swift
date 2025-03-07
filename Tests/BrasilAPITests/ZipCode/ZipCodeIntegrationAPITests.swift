@@ -12,14 +12,14 @@ final class ZipCodeIntegrationUseCaseTests: XCTestCase {
         searchZipCodeUseCaseV2 = SearchZipCodeUseCaseV2(repository: repository)
     }
 
-    func test_integration_fetchBanks() async throws {
+    func test_integration_fetchZipCodeV1() async throws {
         let cepV1 = try await searchZipCodeUseCase.execute(zipCode: "88220000")
         XCTAssertEqual(cepV1.cep, "88220000")
         XCTAssertEqual(cepV1.state, "SC")
         XCTAssertNotNil(cepV1)
     }
     
-    func test_integration_fetchBankById() async throws {
+    func test_integration_fetchZipCodeV2() async throws {
         let cepV2 = try await searchZipCodeUseCaseV2.execute(zipCode: "89010025")
         XCTAssertNotNil(cepV2)
         XCTAssertEqual(cepV2.city, "Blumenau")

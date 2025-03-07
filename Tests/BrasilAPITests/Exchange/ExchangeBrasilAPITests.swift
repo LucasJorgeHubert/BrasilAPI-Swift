@@ -8,7 +8,7 @@ final class ExchangeBrasilAPITests: XCTestCase {
         super.setUp()
     }
 
-    func test_listBanks() async throws {
+    func test_getExchangeCoins() async throws {
         let brasilAPI = BrasilAPI(exchangeRepository: repository)
         let coins = try await brasilAPI.exchange.listCoins()
         
@@ -19,7 +19,7 @@ final class ExchangeBrasilAPITests: XCTestCase {
         XCTAssertFalse(coins.isEmpty)
     }
     
-    func test_getBankById() async throws {
+    func test_getExchangeQuotation() async throws {
         let brasilAPI = BrasilAPI(exchangeRepository: repository)
         let quote = try await brasilAPI.exchange.getQuotation(coin: "USD", date: "2025-02-28")
         
