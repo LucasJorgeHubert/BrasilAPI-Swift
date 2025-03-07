@@ -1,10 +1,3 @@
-//
-//  File.swift
-//  
-//
-//  Created by Lucas Hubert on 05/03/25.
-//
-
 import Foundation
 import BrasilAPI
 
@@ -30,6 +23,8 @@ class MockBankAPIRequestDispatcher: APIRequestDispatcherProtocol {
             return resolveZipCodeAPIRouter(for: apiRouter)
         case is CNPJAPIRouter:
             return resolveCNPJAPIRouter(for: apiRouter)
+        case is BrokerAPIRouter:
+            return resolveBrokerAPIRouter(for: apiRouter)
         default:
             return "default_mock"
         }
@@ -88,6 +83,19 @@ class MockBankAPIRequestDispatcher: APIRequestDispatcherProtocol {
             switch router {
             case .getCNPJ:
                 return "cnpj_v1"
+            }
+        }
+        
+        return "default_mock"
+    }
+    
+    private func resolveBrokerAPIRouter(for apiRouter: APIRouterProtocol) -> String {
+        if let router = apiRouter as? BrokerAPIRouter {
+            switch router {
+            case .getBrokers:
+                return "cvm_corretoras_v1"
+            case .getBrokersByCnpj:
+                return "cvm_corretoras_v1_cnpj"
             }
         }
         
