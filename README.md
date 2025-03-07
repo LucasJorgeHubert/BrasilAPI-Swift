@@ -75,16 +75,19 @@ Busca as informações de um banco a partir do código do banco:
 ```swift
 var bank: BrasilAPIBankModel = try await BrasilAPI().banking.getBankByCode(code: String)
 ```
+<details>
+<summary>
+Model BrasilAPIBankModel
+</summary>
 
-Model **BrasilAPIBankModel**
 ```swift
-public struct BrasilAPIBankModel: Codable {
-    let ispb: String
-    let name: String?
-    let code: Int?
-    let fullName: String?
+  ispb: String
+  name: String?
+  code: Int?
+  fullName: String?
 }
 ```
+</details>
 
 ---
 ### 💱 Câmbio
@@ -95,12 +98,17 @@ Retorna informações de todas as moedas disponíveis para conversão:
 ```swift
 var coins: [BrasilAPIExchangeCoinModel] = try await BrasilAPI().exchange.listCoins()
 ```
-Model **BrasilAPIExchangeCoinModel**
+<details>
+<summary>
+Model BrasilAPIExchangeCoinModel
+</summary>
+
 ```swift
-public let symbol: String
-public let name: String
-public let type: String
+  symbol: String
+  name: String
+  type: String
 ```
+</details>
 
 #### Buscar Cotação [`cambio/v1/cotacao/{moeda}/{data}`](https://brasilapi.com.br/docs#tag/CAMBIO/paths/~1cambio~1v1~1cotacao~1%7Bmoeda%7D~1%7Bdata%7D/get)
 
@@ -111,42 +119,53 @@ var quote: BrasilAPIExchangeQuotationModel = try await BrasilAPI().exchange.getQ
 /// coin: "USD"
 /// date: YYYY-MM-DD
 ```
-Model **BrasilAPIExchangeQuotationModel**
-```swift
-public struct BrasilAPIExchangeQuotationModel: Codable, Hashable, Equatable {
-	let cotacoes: [BrasilAPIExchangeQuotationCoinModel]
-	let moeda: String
-	let data: String
-}
+<details>
+<summary>
+Model BrasilAPIExchangeQuotationModel
+</summary>
 
-public struct BrasilAPIExchangeQuotationCoinModel: Codable, Hashable, Equatable {
-	let paridadeCompra: Double
-	let paridadeVenda: Double
-	let cotacaoCompra: Double
-	let cotacaoVenda: Double
-	let dataHoraCotacao: String
-	let tipoBoletim: String
-}
+```swift
+
+/// BrasilAPIExchangeQuotationModel
+	cotacoes: [BrasilAPIExchangeQuotationCoinModel]
+	moeda: String
+	data: String
+
+
+/// BrasilAPIExchangeQuotationCoinModel
+	paridadeCompra: Double
+	paridadeVenda: Double
+	cotacaoCompra: Double
+	cotacaoVenda: Double
+	dataHoraCotacao: String
+	tipoBoletim: String
 ```
+</details>
 
 ---
 ### 📍 CEP
-#### Buscar CEP [`cep/v1/{code}`](https://brasilapi.com.br/docs#tag/CEP/paths/~1cep~1v1~1%7Bcep%7D/get)\
+#### Buscar CEP [`cep/v1/{code}`](https://brasilapi.com.br/docs#tag/CEP/paths/~1cep~1v1~1%7Bcep%7D/get)
 Busca por CEP com múltiplos providers de fallback
 A busca utiliza como fonte principal o OpenCep, caso não encontre o CEP é buscado em diversos outros providers de CEP.
 
 ```swift
 var zipCode: BrasilAPIZipCodeV1Model = try await BrasilAPI().zipCode.searchZipCodeV1(zipCode: String) // Apenas números
 ```
-Model **BrasilAPIZipCodeV1Model**
+<details>
+<summary>
+Model BrasilAPIZipCodeV1Model
+</summary>
+
 ```swift
-public let cep: String
-public let state: String
-public let city: String
-public let neighborhood: String
-public let street: String
-public let service: String
+  cep: String
+  state: String
+  city: String
+  neighborhood: String
+  street: String
+  service: String
 ```
+</details>
+
 ---
 ### 📍 CEP v2
 #### Buscar CEP [`cep/v2/{code}`](https://brasilapi.com.br/docs#tag/CEP-V2/paths/~1cep~1v2~1%7Bcep%7D/get)
@@ -154,32 +173,176 @@ Versão 2 do serviço de busca por CEP com múltiplos providers de fallback.
 ```swift
 var zipCode: BrasilAPIZipCodeV2Model = try await BrasilAPI().zipCode.searchZipCodeV2(zipCode: String) // Apenas números
 ```
-Model **BrasilAPIZipCodeV2Model**
+<details>
+<summary>
+Model BrasilAPIZipCodeV2Model
+</summary>
+
 ```swift
-public struct BrasilAPIZipCodeV2Model: Codable, Hashable, Equatable {
-	public let cep: String
-	public let state: String
-	public let city: String
-	public let neighborhood: String?
-	public let street: String?
-	public let service: String
-	public let location: Location
-}
+/// BrasilAPIZipCodeV2Model
+	cep: String
+	state: String
+	city: String
+	neighborhood: String?
+	street: String?
+	service: String
+	location: Location
 
-public struct Location: Codable, Hashable, Equatable {
-	public let type: String
-	public let coordinates: Coordinates?
-}
+/// Location
+	type: String
+	coordinates: Coordinates?
 
-public struct Coordinates: Codable, Hashable, Equatable {
-	public let longitude: String?
-	public let latitude: String?
-}
+/// Coordinates
+	longitude: String?
+	latitude: String?
+
 ```
+
+</details>
+
 ---
-### 🏢 CNPJ (WIP)
+### 🏢 CNPJ
+
+#### Buscar CNPJ [`cnpj/v1/{cnpj}`](https://brasilapi.com.br/docs#tag/CNPJ/paths/~1cnpj~1v1~1%7Bcnpj%7D/get)
+Busca por CNPJ na API Minha Receita.
+```swift
+var cnpj: BrasilAPICNPJModel = try await BrasilAPI().cnpj.getCNPJ(cnpj: String) // Apenas números
+```
+<details>
+<summary>
+Model BrasilAPICNPJModel
+</summary>
+
+```swift
+  uf: String
+  cep: String
+  qsa: [Qsa]
+  cnpj: String
+  pais: String?
+  email: String?
+  porte: String
+  bairro: String
+  numero: String
+  dddFax: String
+  municipio: String
+  logradouro: String
+  cnaeFiscal: Int
+  codigoPais: Int?
+  complemento: String
+  codigoPorte: Int
+  razaoSocial: String
+  nomeFantasia: String
+  capitalSocial: Int
+  dddTelefone1: String
+  dddTelefone2: String
+  opcaoPeloMei: Bool?
+  descricaoPorte: String
+  codigoMunicipio: Int
+  cnaesSecundarios: [CnaesSecundario]
+  naturezaJuridica: String
+  regimeTributario: [RegimeTributario]
+  situacaoEspecial: String
+  opcaoPeloSimples: Bool?
+  situacaoCadastral: Int
+  dataOpcaoPeloMei: String?
+  dataExclusaoDoMei: String?
+  cnaeFiscalDescricao: String
+  codigoMunicipioIbge: Int
+  dataInicioAtividade: String
+  dataSituacaoEspecial: String?
+  dataOpcaoPeloSimples: String?
+  dataSituacaoCadastral: String
+  nomeCidadeNoExterior: String
+  codigoNaturezaJuridica: Int
+  dataExclusaoDoSimples: String?
+  motivoSituacaoCadastral: Int
+  enteFederativoResponsavel: String
+  identificadorMatrizFilial: Int
+  qualificacaoDoResponsavel: Int
+  descricaoSituacaoCadastral: String
+  descricaoTipoDeLogradouro: String
+  descricaoMotivoSituacaoCadastral: String
+  descricaoIdentificadorMatrizFilial: String
+
+  /// QSA
+  pais: String?
+  nomeSocio: String
+  codigoPais: Int?
+  faixaEtaria: String
+  cnpjCpfDoSocio: String
+  qualificacaoSocio: String
+  codigoFaixaEtaria: Int
+  dataEntradaSociedade: String
+  identificadorDeSocio: Int
+  cpfRepresentanteLegal: String
+  nomeRepresentanteLegal: String
+  codigoQualificacaoSocio: Int
+  qualificacaoRepresentanteLegal: String
+  codigoQualificacaoRepresentanteLegal: Int
+
+  /// RegimeTributario
+  ano: Int
+  cnpjDaSCP: String?
+  formaDeTributacao: String
+  quantidadeDeEscrituracoes: Int
+
+  /// CnaesSecundario
+  codigo: Int
+  descricao: String
+
+```
+
+</details>
+
 ---
 ### 🏦 Corretoras
+
+#### Buscar corretoras [`/cvm/corretoras/v1`](https://brasilapi.com.br/docs#tag/Corretoras/paths/~1cvm~1corretoras~1v1/get)
+
+```swift
+var brokers: [BrasilAPIBrokerModel] = try await BrasilAPI().broker.getBrokers()
+```
+
+#### Buscar Corretora por CNPJ [`/cvm/corretoras/v1/{cnpj}`](https://brasilapi.com.br/docs#tag/Corretoras/paths/~1cvm~1corretoras~1v1~1%7Bcnpj%7D/get)
+
+```swift
+var broker: BrasilAPIBrokerModel = try await BrasilAPI().broker.getBrokerByCnpj(cnpj: String)
+```
+
+<details>
+<summary>
+Model BrasilAPIBrokerModel
+</summary>
+
+```swift
+  cnpj: String
+  type: String
+  nomeSocial: String
+  nomeComercial: String
+  status: Status
+  email: String
+  telefone: String
+  cep: String
+  pais: String
+  uf: String
+  municipio: String
+  bairro: String
+  complemento: String
+  logradouro: String
+  dataPatrimonioLiquido: String
+  valorPatrimonioLiquido: String
+  codigoCvm: String
+  dataInicioSituacao: String
+  dataRegistro: String
+
+  /// Status
+  cancelada
+  emFuncionamentoNormal
+  incorporação
+  liquidaçãoExtrajudicial
+``` 
+</details>
+
 ---
 ### 🌡️ CPTEC
 ---
