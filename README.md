@@ -381,14 +381,11 @@ Contribuições são bem-vindas! Sinta-se à vontade para abrir issues e pull re
 ---
 Created with ❤️ by [Lucas Hubert](https://github.com/LucasJorgeHubert).
 
-
-# English version
-
 # BrasilAPI-Swift
 
 [![Swift Package Manager](https://img.shields.io/badge/SPM-Compatible-brightgreen.svg)](https://swift.org/package-manager/)
 
-A Swift SDK for accessing [BrasilAPI](https://brasilapi.com.br) services in a simple and integrated way.
+A Swift SDK to access [BrasilAPI](https://brasilapi.com.br) services in a simple and integrated way.
 
 ## 📖 Table of Contents
 
@@ -400,13 +397,16 @@ A Swift SDK for accessing [BrasilAPI](https://brasilapi.com.br) services in a si
     - [Get Bank by Code](#get-bank-by-code-banksv1code)
   - [💱 Exchange](#-exchange)
     - [Get Currencies](#get-currencies-cambiov1moedas)
-    - [Get Quotation](#get-quotation-cambiov1cotaçãomoedadata)
+    - [Get Exchange Rate](#get-exchange-rate-cambiov1cotaçãomoedadata)
   - [📍 ZIP Code](#-zip-code)
     - [Get ZIP Code](#get-zip-code-cepv1code)
   - [📍 ZIP Code v2](#-zip-code-v2)
     - [Get ZIP Code](#get-zip-code-cepv2code)
-  - [🏢 CNPJ (WIP)](#-cnpj-wip)
+  - [🏢 CNPJ](#-cnpj)
+    - [Get CNPJ](#get-cnpj-cnpjv1cnpj)
   - [🏦 Brokers](#-brokers)
+    - [Get Brokers](#get-brokers-cvmcorretorasv1)
+    - [Get Broker by CNPJ](#get-broker-by-cnpj-cvmcorretorasv1cnpj)
   - [🌡️ CPTEC](#-cptec)
   - [📱 DDD](#-ddd)
   - [🎉 National Holidays](#-national-holidays)
@@ -415,10 +415,11 @@ A Swift SDK for accessing [BrasilAPI](https://brasilapi.com.br) services in a si
   - [🔢 ISBN](#-isbn)
   - [🏢 NCM](#-ncm)
   - [💰 PIX](#-pix)
-  - [🌎 Registro BR](#-registro-br)
+  - [🌐 Registro BR](#-registro-br)
   - [💸 Taxes](#-taxes)
 - [📄 License](#-license)
 - [🤝 Contributing](#-contributing)
+- [🌎 Versão em Português](#-versao-em-portugues)
 
 ## 📦 Installation
 
@@ -442,94 +443,68 @@ import BrasilAPI
 ```
 
 ## 🚨 Important
-The SPM was created to facilitate integration with [BrasilAPI](https://brasilapi.com.br), so all returned models are exactly the same as those in the API response. When implementing, you can base your code on the API response to understand what the models will return.
+The SPM was created to facilitate integration with [BrasilAPI](https://brasilapi.com.br), so all returned models are exactly the same as those in the API response. When implementing, you can rely on the API response to know what will be returned in the model.
 
 ## 🔧 Implemented Features
 
 ### 🏦 Banks
 #### List Banks [`banks/v1`](https://brasilapi.com.br/docs#tag/BANKS/paths/~1banks~1v1/get)
 Returns information about all banks in Brazil:
-
 ```swift
 var banks: [BrasilAPIBankModel] = try await BrasilAPI().banking.listBanks()
 ```
 
 #### Get Bank by Code [`banks/v1/{code}`](https://brasilapi.com.br/docs#tag/BANKS/paths/~1banks~1v1~1%7Bcode%7D/get)
-Retrieves bank information based on its code:
+Fetches information about a bank using its code:
 ```swift
 var bank: BrasilAPIBankModel = try await BrasilAPI().banking.getBankByCode(code: String)
 ```
 
-Model **BrasilAPIBankModel**
-```swift
-public struct BrasilAPIBankModel: Codable {
-    let ispb: String
-    let name: String?
-    let code: Int?
-    let fullName: String?
-}
-```
-
----
 ### 💱 Exchange
 #### Get Currencies [`cambio/v1/moedas`](https://brasilapi.com.br/docs#tag/CAMBIO/paths/~1cambio~1v1~1moedas/get)
 Returns information about all available currencies for conversion:
-
 ```swift
 var coins: [BrasilAPIExchangeCoinModel] = try await BrasilAPI().exchange.listCoins()
 ```
-Model **BrasilAPIExchangeCoinModel**
-```swift
-public let symbol: String
-public let name: String
-public let type: String
-```
 
-#### Get Quotation [`cambio/v1/cotacao/{moeda}/{data}`](https://brasilapi.com.br/docs#tag/CAMBIO/paths/~1cambio~1v1~1cotacao~1%7Bmoeda%7D~1%7Bdata%7D/get)
-Fetches the exchange rate of the Real with another currency on a specific date:
-
+#### Get Exchange Rate [`cambio/v1/cotacao/{moeda}/{data}`](https://brasilapi.com.br/docs#tag/CAMBIO/paths/~1cambio~1v1~1cotacao~1%7Bmoeda%7D~1%7Bdata%7D/get)
+Fetches exchange rates for BRL with another currency on a specific date:
 ```swift
 var quote: BrasilAPIExchangeQuotationModel = try await BrasilAPI().exchange.getQuotation(coin: String, date: String)
-/// coin: "USD"
-/// date: YYYY-MM-DD
-```
-Model **BrasilAPIExchangeQuotationModel**
-```swift
-public struct BrasilAPIExchangeQuotationModel: Codable, Hashable, Equatable {
-    let cotacoes: [BrasilAPIExchangeQuotationCoinModel]
-    let moeda: String
-    let data: String
-}
-
-public struct BrasilAPIExchangeQuotationCoinModel: Codable, Hashable, Equatable {
-    let paridadeCompra: Double
-    let paridadeVenda: Double
-    let cotacaoCompra: Double
-    let cotacaoVenda: Double
-    let dataHoraCotacao: String
-    let tipoBoletim: String
-}
 ```
 
----
 ### 📍 ZIP Code
 #### Get ZIP Code [`cep/v1/{code}`](https://brasilapi.com.br/docs#tag/CEP/paths/~1cep~1v1~1%7Bcep%7D/get)
-Fetches ZIP Code information with multiple fallback providers.
-
+Fetches ZIP code information using multiple fallback providers.
 ```swift
-var zipCode: BrasilAPIZipCodeV1Model = try await BrasilAPI().zipCode.searchZipCodeV1(zipCode: String) // Numbers only
-```
-Model **BrasilAPIZipCodeV1Model**
-```swift
-public let cep: String
-public let state: String
-public let city: String
-public let neighborhood: String
-public let street: String
-public let service: String
+var zipCode: BrasilAPIZipCodeV1Model = try await BrasilAPI().zipCode.searchZipCodeV1(zipCode: String)
 ```
 
----
+### 📍 ZIP Code v2
+#### Get ZIP Code [`cep/v2/{code}`](https://brasilapi.com.br/docs#tag/CEP-V2/paths/~1cep~1v2~1%7Bcep%7D/get)
+Version 2 of the ZIP code lookup service with multiple fallback providers.
+```swift
+var zipCode: BrasilAPIZipCodeV2Model = try await BrasilAPI().zipCode.searchZipCodeV2(zipCode: String)
+```
+
+### 🏢 CNPJ
+#### Get CNPJ [`cnpj/v1/{cnpj}`](https://brasilapi.com.br/docs#tag/CNPJ/paths/~1cnpj~1v1~1%7Bcnpj%7D/get)
+Fetches company information using CNPJ from the Minha Receita API.
+```swift
+var cnpj: BrasilAPICNPJModel = try await BrasilAPI().cnpj.getCNPJ(cnpj: String)
+```
+
+### 🏦 Brokers
+#### Get Brokers [`/cvm/corretoras/v1`](https://brasilapi.com.br/docs#tag/Corretoras/paths/~1cvm~1corretoras~1v1/get)
+```swift
+var brokers: [BrasilAPIBrokerModel] = try await BrasilAPI().broker.getBrokers()
+```
+
+#### Get Broker by CNPJ [`/cvm/corretoras/v1/{cnpj}`](https://brasilapi.com.br/docs#tag/Corretoras/paths/~1cvm~1corretoras~1v1~1%7Bcnpj%7D/get)
+```swift
+var broker: BrasilAPIBrokerModel = try await BrasilAPI().broker.getBrokerByCnpj(cnpj: String)
+```
+
 ## 📄 License
 
 This project is licensed under the [MIT License](LICENSE).
