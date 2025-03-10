@@ -6,5 +6,5 @@ protocol CPTECRepositoryProtocol {
     func listCapitalConditions() async throws -> [BrasilAPICPTECConditionModel]
     func getCapitalCondition(codeICAO: String) async throws -> BrasilAPICPTECConditionModel
     func getForecast(cityCode: Int, days: Int?) async throws -> BrasilAPICPTECForecastModel
-    func getOceanicForecast(cityCode: Int) async throws -> BrasilAPICPTECOceanicForecastModel
+    func getOceanicForecast(cityCode: Int, days: Int?) async throws -> BrasilAPICPTECOceanicForecastModel
 }
