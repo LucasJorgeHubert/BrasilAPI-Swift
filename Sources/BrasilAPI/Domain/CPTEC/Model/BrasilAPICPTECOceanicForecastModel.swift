@@ -27,10 +27,10 @@ public struct BrasilAPICPTECWavesModel: Codable {
 public struct BrasilAPICPTECWavesDataModel: Codable {
     let windSpeed: Double
     let windDirection: String
-    let windDirectionDescription: String
+    let windDirectionDescription: String?
     let waveHeight: Double
     let waveDirection: String
-    let waveDirectionDescription: String
+    let waveDirectionDescription: String?
     let agitation: String
     let hour: String
     
@@ -41,7 +41,7 @@ public struct BrasilAPICPTECWavesDataModel: Codable {
         case waveHeight = "altura_onda"
         case waveDirection = "direcao_onda"
         case waveDirectionDescription = "direcao_onda_desc"
-        case agitation = "agitacao"
+        case agitation
         case hour = "hora"
     }
 }

@@ -33,11 +33,11 @@ public class CPTECService {
         return try await getListCPTECCapitalsUseCase.execute()
     }
     
-    public func getCPTECLocalForecast(cityCode: Int, days: Int?) async throws -> BrasilAPICPTECForecastModel {
-        return try await getCPTECLocalForecastUseCase.execute(cityCode: cityCode, days: days ?? 1)
+    public func getCPTECLocalForecast(cityCode: Int, days: ForecastAvailableDays) async throws -> BrasilAPICPTECForecastModel {
+        return try await getCPTECLocalForecastUseCase.execute(cityCode: cityCode, days: days.rawValue)
     }
     
-    public func getCPTECOceanicForecast(cityCode: Int, days: Int?) async throws -> BrasilAPICPTECOceanicForecastModel {
-        return try await getCPTECOceanicForecastUseCase.execute(cityCode: cityCode, days: days ?? 1)
+    public func getCPTECOceanicForecast(cityCode: Int, days: ForecastAvailableDays) async throws -> BrasilAPICPTECOceanicForecastModel {
+        return try await getCPTECOceanicForecastUseCase.execute(cityCode: cityCode, days: days.rawValue)
     }
 }
