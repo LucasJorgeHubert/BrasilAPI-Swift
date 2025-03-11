@@ -1,0 +1,55 @@
+{
+    "cidade": "Brasília",
+    "estado": "DF",
+    "atualizado_em": "2025-03-11",
+    "clima": [
+        {
+            "data": "2025-03-11",
+            "condicao": "pn",
+            "condicao_desc": "Parcialmente Nublado",
+            "min": 19,
+            "max": 32,
+            "indice_uv": 0
+        },
+        {
+            "data": "2025-03-12",
+            "condicao": "pn",
+            "condicao_desc": "Parcialmente Nublado",
+            "min": 19,
+            "max": 32,
+            "indice_uv": 0
+        },
+        {
+            "data": "2025-03-13",
+            "condicao": "ci",
+            "condicao_desc": "Chuvas Isoladas",
+            "min": 20,
+            "max": 32,
+            "indice_uv": 0
+        },
+        {
+            "data": "2025-03-14",
+            "condicao": "pn",
+            "condicao_desc": "Parcialmente Nublado",
+            "min": 19,
+            "max": 31,
+            "indice_uv": 0
+        },
+        {
+            "data": "2025-03-15",
+            "condicao": "c",
+            "condicao_desc": "Chuva",
+            "min": 20,
+            "max": 30,
+            "indice_uv": 0
+        },
+        {
+            "data": "2025-03-16",
+            "condicao": "c",
+            "condicao_desc": "Chuva",
+            "min": 20,
+            "max": 29,
+            "indice_uv": 0
+        }
+    ]
+}
