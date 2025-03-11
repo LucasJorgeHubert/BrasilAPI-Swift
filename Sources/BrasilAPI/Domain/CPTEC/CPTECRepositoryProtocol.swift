@@ -1,6 +1,6 @@
 import Foundation
 
-protocol CPTECRepositoryProtocol {
+public protocol CPTECRepositoryProtocol {
     func listLocals() async throws -> [BrasilAPICPTECLocalModel]
     func getLocal(localName: String) async throws -> [BrasilAPICPTECLocalModel]
     func listCapitalConditions() async throws -> [BrasilAPICPTECConditionModel]

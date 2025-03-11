@@ -1,6 +1,6 @@
 import Foundation
 
-struct BrasilAPICPTECConditionModel: Codable {
+public struct BrasilAPICPTECConditionModel: Codable {
     let codeICAO: String
     let updated: String
     let pressure: String

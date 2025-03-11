@@ -1,6 +1,6 @@
 import Foundation
 
-class CPTECRepositoryImpl: CPTECRepositoryProtocol {
+public class CPTECRepositoryImpl: CPTECRepositoryProtocol {
     private let apiDispatcher: APIRequestDispatcherProtocol
     
     public init(
@@ -9,27 +9,27 @@ class CPTECRepositoryImpl: CPTECRepositoryProtocol {
         self.apiDispatcher = apiDispatcher
     }
     
-    func listLocals() async throws -> [BrasilAPICPTECLocalModel] {
+    public func listLocals() async throws -> [BrasilAPICPTECLocalModel] {
         return try await apiDispatcher.request(apiRouter: CPTECAPIRouter.listLocals)
     }
     
-    func getLocal(localName: String) async throws -> [BrasilAPICPTECLocalModel] {
+    public func getLocal(localName: String) async throws -> [BrasilAPICPTECLocalModel] {
         return try await apiDispatcher.request(apiRouter: CPTECAPIRouter.getLocal(localName: localName))
     }
     
-    func listCapitalConditions() async throws -> [BrasilAPICPTECConditionModel] {
+    public func listCapitalConditions() async throws -> [BrasilAPICPTECConditionModel] {
         return try await apiDispatcher.request(apiRouter: CPTECAPIRouter.listCapitalConditions)
     }
     
-    func getCapitalCondition(codeICAO: String) async throws -> BrasilAPICPTECConditionModel {
+    public func getCapitalCondition(codeICAO: String) async throws -> BrasilAPICPTECConditionModel {
         return try await apiDispatcher.request(apiRouter: CPTECAPIRouter.getCapitalCondition(codeICAO: codeICAO))
     }
     
-    func getForecast(cityCode: Int, days: Int) async throws -> BrasilAPICPTECForecastModel {
+    public func getForecast(cityCode: Int, days: Int) async throws -> BrasilAPICPTECForecastModel {
         return try await apiDispatcher.request(apiRouter: CPTECAPIRouter.getForecast(cityCode: cityCode, days: days))
     }
     
-    func getOceanicForecast(cityCode: Int, days: Int) async throws -> BrasilAPICPTECOceanicForecastModel {
+    public func getOceanicForecast(cityCode: Int, days: Int) async throws -> BrasilAPICPTECOceanicForecastModel {
         return try await apiDispatcher.request(apiRouter: CPTECAPIRouter.getOceanicForecast(cityCode: cityCode, days: days))
     }
 }

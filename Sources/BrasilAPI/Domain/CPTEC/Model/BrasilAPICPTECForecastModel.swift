@@ -1,6 +1,6 @@
 import Foundation
 
-struct BrasilAPICPTECForecastModel: Codable {
+public struct BrasilAPICPTECForecastModel: Codable {
     let city: String
     let state: String
     let updated: String
@@ -14,7 +14,7 @@ struct BrasilAPICPTECForecastModel: Codable {
     }
 }
 
-struct BrasilAPICPTECWeatherModel: Codable {
+public struct BrasilAPICPTECWeatherModel: Codable {
     let date: String
     let condition: String
     let conditionDescription: String

@@ -1,6 +1,6 @@
 import Foundation
 
-struct BrasilAPICPTECLocalModel: Codable {
+public struct BrasilAPICPTECLocalModel: Codable {
     let name: String
     let state: String
     let id: Int
