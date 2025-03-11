@@ -13,7 +13,7 @@ class CPTECRepositoryImpl: CPTECRepositoryProtocol {
         return try await apiDispatcher.request(apiRouter: CPTECAPIRouter.listLocals)
     }
     
-    func getLocal(localName: String) async throws -> BrasilAPICPTECLocalModel {
+    func getLocal(localName: String) async throws -> [BrasilAPICPTECLocalModel] {
         return try await apiDispatcher.request(apiRouter: CPTECAPIRouter.getLocal(localName: localName))
     }
     
@@ -25,19 +25,11 @@ class CPTECRepositoryImpl: CPTECRepositoryProtocol {
         return try await apiDispatcher.request(apiRouter: CPTECAPIRouter.getCapitalCondition(codeICAO: codeICAO))
     }
     
-    func getForecast(cityCode: Int, days: Int?) async throws -> BrasilAPICPTECForecastModel {
-        if let days = days {
-            return try await apiDispatcher.request(apiRouter: CPTECAPIRouter.getForecast(cityCode: cityCode, days: days))
-        }
-        
-        return try await apiDispatcher.request(apiRouter: CPTECAPIRouter.getForecast(cityCode: cityCode, days: nil))
+    func getForecast(cityCode: Int, days: Int) async throws -> BrasilAPICPTECForecastModel {
+        return try await apiDispatcher.request(apiRouter: CPTECAPIRouter.getForecast(cityCode: cityCode, days: days))
     }
     
-    func getOceanicForecast(cityCode: Int, days: Int?) async throws -> BrasilAPICPTECOceanicForecastModel {
-        if let days = days {
-            return try await apiDispatcher.request(apiRouter: CPTECAPIRouter.getOceanicForecast(cityCode: cityCode, days: days))
-        }
-        
-        return try await apiDispatcher.request(apiRouter: CPTECAPIRouter.getOceanicForecast(cityCode: cityCode, days: nil))
+    func getOceanicForecast(cityCode: Int, days: Int) async throws -> BrasilAPICPTECOceanicForecastModel {
+        return try await apiDispatcher.request(apiRouter: CPTECAPIRouter.getOceanicForecast(cityCode: cityCode, days: days))
     }
 }

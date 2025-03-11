@@ -5,8 +5,8 @@ enum CPTECAPIRouter: APIRouterProtocol {
     case getLocal(localName: String)
     case listCapitalConditions
     case getCapitalCondition(codeICAO: String)
-    case getForecast(cityCode: Int, days: Int?)
-    case getOceanicForecast(cityCode: Int, days: Int?)
+    case getForecast(cityCode: Int, days: Int)
+    case getOceanicForecast(cityCode: Int, days: Int)
     
     var path: String {
         switch self {
@@ -19,9 +19,9 @@ enum CPTECAPIRouter: APIRouterProtocol {
         case .getCapitalCondition(let codeICAO):
             return "/api/cptec/v1/clima/aeroporto/\(codeICAO)"
         case .getForecast(let cityCode, let days):
-            return "/api/cptec/v1/previsao/\(cityCode)/\(days ?? 1)"
+            return "/api/cptec/v1/previsao/\(cityCode)/\(days)"
         case .getOceanicForecast(let cityCode, let days):
-            return "/api/cptec/v1/previsao/oceano/\(cityCode)/\(days ?? 1)"
+            return "/api/cptec/v1/previsao/oceano/\(cityCode)/\(days)"
         }
     }
     
