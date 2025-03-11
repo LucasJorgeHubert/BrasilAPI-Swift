@@ -25,6 +25,8 @@ class MockBankAPIRequestDispatcher: APIRequestDispatcherProtocol {
             return resolveCNPJAPIRouter(for: apiRouter)
         case is BrokerAPIRouter:
             return resolveBrokerAPIRouter(for: apiRouter)
+        case is CPTECAPIRouter:
+            return resolveCPTECAPIRouter(for: apiRouter)
         default:
             return "default_mock"
         }
@@ -96,6 +98,27 @@ class MockBankAPIRequestDispatcher: APIRequestDispatcherProtocol {
                 return "cvm_corretoras_v1"
             case .getBrokersByCnpj:
                 return "cvm_corretoras_v1_cnpj"
+            }
+        }
+        
+        return "default_mock"
+    }
+    
+    private func resolveCPTECAPIRouter(for apiRouter: APIRouterProtocol) -> String {
+        if let router = apiRouter as? CPTECAPIRouter {
+            switch router {
+            case .listLocals:
+                return "cptec_v1_cidade"
+            case .getLocal:
+                return "cptec_v1_cidade_nome"
+            case .listCapitalConditions:
+                return "cptec_v1_clima_capital"
+            case .getCapitalCondition:
+                return "cptec_v1_clima_aeroporto_icao"
+            case .getForecast:
+                return "cptec_v1_clima_previsao_code_days"
+            case .getOceanicForecast:
+                return "cptec_v1_ondas_code_days"
             }
         }
         

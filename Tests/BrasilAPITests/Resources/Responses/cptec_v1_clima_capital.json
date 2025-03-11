@@ -1,0 +1,14 @@
+[
+  {
+    "codigo_icao": "SBAR",
+    "atualizado_em": "2021-01-27T15:00:00.974Z",
+    "pressao_atmosferica": "1014",
+    "visibilidade": "9000",
+    "vento": 29,
+    "direcao_vento": 90,
+    "umidade": 74,
+    "condicao": "ps",
+    "condicao_Desc": "Predomínio de Sol",
+    "temp": 28
+  }
+]

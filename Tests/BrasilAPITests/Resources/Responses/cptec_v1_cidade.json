@@ -1,0 +1,302 @@
+[
+    {
+        "nome": "São Benedito",
+        "id": 4750,
+        "estado": "CE"
+    },
+    {
+        "nome": "São Benedito do Rio Preto",
+        "id": 4751,
+        "estado": "MA"
+    },
+    {
+        "nome": "São Benedito do Sul",
+        "id": 4752,
+        "estado": "PE"
+    },
+    {
+        "nome": "São Bento",
+        "id": 4753,
+        "estado": "MA"
+    },
+    {
+        "nome": "São Bento",
+        "id": 4754,
+        "estado": "PB"
+    },
+    {
+        "nome": "São Bento Abade",
+        "id": 4755,
+        "estado": "MG"
+    },
+    {
+        "nome": "São Bento de Pombal",
+        "id": 4756,
+        "estado": "PB"
+    },
+    {
+        "nome": "São Bento do Norte",
+        "id": 4757,
+        "estado": "RN"
+    },
+    {
+        "nome": "São Bento do Sapucaí",
+        "id": 4758,
+        "estado": "SP"
+    },
+    {
+        "nome": "São Bento do Sul",
+        "id": 4759,
+        "estado": "SC"
+    },
+    {
+        "nome": "São Bento do Tocantins",
+        "id": 4760,
+        "estado": "TO"
+    },
+    {
+        "nome": "São Bento do Trairi",
+        "id": 4761,
+        "estado": "RN"
+    },
+    {
+        "nome": "São Bento do Una",
+        "id": 4762,
+        "estado": "PE"
+    },
+    {
+        "nome": "São Bernardino",
+        "id": 4763,
+        "estado": "SC"
+    },
+    {
+        "nome": "São Bernardo",
+        "id": 4764,
+        "estado": "MA"
+    },
+    {
+        "nome": "São Bernardo do Campo",
+        "id": 4765,
+        "estado": "SP"
+    },
+    {
+        "nome": "São Bonifácio",
+        "id": 4766,
+        "estado": "SC"
+    },
+    {
+        "nome": "São Borja",
+        "id": 4767,
+        "estado": "RS"
+    },
+    {
+        "nome": "São Brás",
+        "id": 4768,
+        "estado": "AL"
+    },
+    {
+        "nome": "São Brás do Suaçuí",
+        "id": 4769,
+        "estado": "MG"
+    },
+    {
+        "nome": "São Braz do Piauí",
+        "id": 4770,
+        "estado": "PI"
+    },
+    {
+        "nome": "São Caetano de Odivelas",
+        "id": 4771,
+        "estado": "PA"
+    },
+    {
+        "nome": "São Caetano do Sul",
+        "id": 4772,
+        "estado": "SP"
+    },
+    {
+        "nome": "São Caitano",
+        "id": 4773,
+        "estado": "PE"
+    },
+    {
+        "nome": "São Carlos",
+        "id": 4774,
+        "estado": "SP"
+    },
+    {
+        "nome": "São Carlos",
+        "id": 4775,
+        "estado": "SC"
+    },
+    {
+        "nome": "São Carlos do Ivaí",
+        "id": 4776,
+        "estado": "PR"
+    },
+    {
+        "nome": "São Cristóvão",
+        "id": 4777,
+        "estado": "SE"
+    },
+    {
+        "nome": "São Cristovão do Sul",
+        "id": 4778,
+        "estado": "SC"
+    },
+    {
+        "nome": "São Desidério",
+        "id": 4779,
+        "estado": "BA"
+    },
+    {
+        "nome": "São Domingos",
+        "id": 4780,
+        "estado": "SE"
+    },
+    {
+        "nome": "São Domingos",
+        "id": 4781,
+        "estado": "BA"
+    },
+    {
+        "nome": "São Domingos",
+        "id": 4782,
+        "estado": "GO"
+    },
+    {
+        "nome": "São Domingos",
+        "id": 4783,
+        "estado": "SC"
+    },
+    {
+        "nome": "São Domingos das Dores",
+        "id": 4784,
+        "estado": "MG"
+    },
+    {
+        "nome": "São Domingos de Pombal",
+        "id": 4785,
+        "estado": "PB"
+    },
+    {
+        "nome": "São Domingos do Araguaia",
+        "id": 4786,
+        "estado": "PA"
+    },
+    {
+        "nome": "São Domingos do Azeitão",
+        "id": 4787,
+        "estado": "MA"
+    },
+    {
+        "nome": "São Domingos do Capim",
+        "id": 4788,
+        "estado": "PA"
+    },
+    {
+        "nome": "São Domingos do Cariri",
+        "id": 4789,
+        "estado": "PB"
+    },
+    {
+        "nome": "São Domingos do Maranhão",
+        "id": 4790,
+        "estado": "MA"
+    },
+    {
+        "nome": "São Domingos do Norte",
+        "id": 4791,
+        "estado": "ES"
+    },
+    {
+        "nome": "São Domingos do Prata",
+        "id": 4792,
+        "estado": "MG"
+    },
+    {
+        "nome": "São Domingos do Sul",
+        "id": 4793,
+        "estado": "RS"
+    },
+    {
+        "nome": "São Felipe",
+        "id": 4794,
+        "estado": "BA"
+    },
+    {
+        "nome": "São Felipe dOeste",
+        "id": 4795,
+        "estado": "RO"
+    },
+    {
+        "nome": "São Félix",
+        "id": 4796,
+        "estado": "BA"
+    },
+    {
+        "nome": "São Félix de Balsas",
+        "id": 4797,
+        "estado": "MA"
+    },
+    {
+        "nome": "São Félix de Minas",
+        "id": 4798,
+        "estado": "MG"
+    },
+    {
+        "nome": "São Félix do Araguaia",
+        "id": 4799,
+        "estado": "MT"
+    },
+    {
+        "nome": "São Félix do Coribe",
+        "id": 4800,
+        "estado": "BA"
+    },
+    {
+        "nome": "São Félix do Piauí",
+        "id": 4801,
+        "estado": "PI"
+    },
+    {
+        "nome": "São Félix do Tocantins",
+        "id": 4802,
+        "estado": "TO"
+    },
+    {
+        "nome": "São Félix do Xingu",
+        "id": 4803,
+        "estado": "PA"
+    },
+    {
+        "nome": "São Fernando",
+        "id": 4804,
+        "estado": "RN"
+    },
+    {
+        "nome": "São Fidélis",
+        "id": 4805,
+        "estado": "RJ"
+    },
+    {
+        "nome": "São Francisco",
+        "id": 4806,
+        "estado": "PB"
+    },
+    {
+        "nome": "São Francisco",
+        "id": 4807,
+        "estado": "SE"
+    },
+    {
+        "nome": "São Francisco",
+        "id": 4808,
+        "estado": "MG"
+    },
+    {
+        "nome": "São Francisco",
+        "id": 4809,
+        "estado": "SP"
+    }
+]
