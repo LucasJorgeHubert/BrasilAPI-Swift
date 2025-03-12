@@ -25,7 +25,14 @@ Uma SDK Swift para acessar os serviços da [BrasilAPI](https://brasilapi.com.br)
     - [Buscar corretoras](#buscar-corretoras-cvmcorretorasv1)
     - [Buscar corretora por CNPJ](#buscar-corretora-por-cnpj-cvmcorretorasv1cnpj)
   - [🌡️ CPTEC](#-cptec)
+    - [Listar localidades](#listar-localidades)
+    - [Buscar localidade](#buscar-localidade)
+    - [Condições nas capitais](#condição-nas-capitais)
+    - [Condição nos aeroportos](#condição-nos-aeroportos)
+    - [Previsão metereológica](#previsão)
+    - [Previsão oceânica](#previsão-oceanica)
   - [📱 DDD](#-ddd)
+    - [Listar cidades](#)
   - [🎉 Feriados Nacionais](#-feriados-nacionais)
   - [🚗 FIPE](#-fipe)
   - [🔎 IBGE](#-ibge)
@@ -348,8 +355,190 @@ Model BrasilAPIBrokerModel
 
 ---
 ### 🌡️ CPTEC
+
+#### Listar localidades [`cptec/v1/cidade`](https://brasilapi.com.br/docs#tag/CPTEC/operation/listcities(/cptec/v1/cidade))
+
+Retorna listagem com todas as cidades junto a seus respectivos códigos presentes nos serviços da CPTEC. O Código destas cidades será utilizado para os serviços de meteorologia e a ondas (previsão oceânica) fornecido pelo centro. Leve em consideração que o WebService do CPTEC as vezes é instável, então se não encontrar uma determinada cidade na listagem completa, tente buscando por parte de seu nome no endpoint de busca.
+
+```swift
+var cities: [BrasilAPICPTECLocalModel] = try await BrasilAPI().cptec.getListCPTECLocals()
+```
+
+<details>
+<summary>
+Model BrasilAPICPTECLocalModel
+</summary>
+
+```swift
+  name: String
+  state: String
+  id: Int
+```
+</details>
+
+#### Buscar localidade [`cptec/v1/cidade/{cityName}`](https://brasilapi.com.br/docs#tag/CPTEC/operation/searchcities(/cptec/v1/cidade/:cityName))
+
+Retorna listagem com todas as cidades correspondentes ao termo pesquisado junto a seus respectivos códigos presentes nos serviços da CPTEC. O Código destas cidades será utilizado para os serviços de meteorologia e a ondas (previsão oceânica) fornecido pelo centro.
+
+```swift
+var cities: [BrasilAPICPTECLocalModel] = try await BrasilAPI().cptec.getCPTECLocal(localName: String)
+```
+
+<details>
+<summary>
+Model BrasilAPICPTECLocalModel
+</summary>
+
+```swift
+  name: String
+  state: String
+  id: Int
+```
+</details>
+
+#### Condição nas capitais [`cptec/v1/clima/capital`](https://brasilapi.com.br/docs#tag/CPTEC/operation/Condi%C3%A7%C3%B5esatuaisnascapitais(/cptec/v1/clima/capital))
+
+Retorna condições meteorológicas atuais nas capitais do país, com base nas estações de solo de seu aeroporto.
+
+```swift
+var condition: [BrasilAPICPTECConditionModel] = try await BrasilAPI().cptec.getListCPTECCapitals()
+```
+
+<details>
+<summary>
+Model BrasilAPICPTECConditionModel
+</summary>
+
+```swift
+  codeICAO: String
+  updated: String
+  pressure: String
+  visibility: String
+  windSpeed: Int
+  windDirection: Int
+  humidity: Int
+  condition: String
+  conditionDescription: String
+  temperature: Int
+```
+</details>
+
+#### Condição nos aeroportos [`cptec/v1/clima/aeroporto/{icaoCode}`](https://brasilapi.com.br/docs#tag/CPTEC/operation/airportcurrentcondicao(/cptec/v1/clima/aeroporto/:icaoCode))
+
+Retorna condições meteorológicas atuais no aeroporto solicitado. Este endpoint utiliza o código ICAO (4 dígitos) do aeroporto.
+
+```swift
+var condition: BrasilAPICPTECConditionModel = try await BrasilAPI().cptec.getCPTECCapital(codeICAO: String)
+```
+
+<details>
+<summary>
+Model BrasilAPICPTECConditionModel
+</summary>
+
+```swift
+  codeICAO: String
+  updated: String
+  pressure: String
+  visibility: String
+  windSpeed: Int
+  windDirection: Int
+  humidity: Int
+  condition: String
+  conditionDescription: String
+  temperature: Int
+```
+</details>
+
+#### Previsão [`cptec/v1/clima/previsao/{cityCode}/{days}`](https://brasilapi.com.br/docs#tag/CPTEC/operation/climapredictionwithoutdays(/cptec/v1/clima/previsao/:cityCode/:days))
+
+Retorna a previsão meteorológica para a cidade informada para um período de 1 até 6 dias. Devido a inconsistências encontradas nos retornos da CPTEC nossa API só consegue retornar com precisão o período máximo de 6 dias.
+
+```swift
+var forecast: BrasilAPICPTECForecastModel = try await BrasilAPI().cptec.getCPTECLocalForecast(cityCode: Int, days: ForecastAvailableDays)
+
+// ForecastAvailableDays = Enum de 1 a 6 diuas
+```
+
+<details>
+<summary>
+Model BrasilAPICPTECForecastModel
+</summary>
+
+```swift
+  city: String
+  state: String
+  updated: String
+  weather: [BrasilAPICPTECWeatherModel]
+
+  // BrasilAPICPTECWeatherModel
+  date: String
+  condition: String
+  conditionDescription: String
+  min: Int
+  max: Int
+  indexUV: Int
+```
+</details>
+
+#### Previsão oceanica [`cptec/v1/ondas/{cityCode}/{days}`](https://brasilapi.com.br/docs#tag/CPTEC/operation/ondaspredictionupto6days(/cptec/v1/ondas/:cityCode/:days))
+
+Retorna a previsão oceânica para a cidade informada para um período de, até, 6 dias.
+
+```swift
+var forecast: BrasilAPICPTECOceanicForecastModel = try await BrasilAPI().cptec.getCPTECOceanicForecast(cityCode: Int, days: ForecastAvailableDays)
+
+// ForecastAvailableDays = Enum de 1 a 6 dias
+```
+
+<details>
+<summary>
+Model BrasilAPICPTECOceanicForecastModel
+</summary>
+
+```swift
+  city: String
+  state: String
+  updated: String
+  waves: [BrasilAPICPTECWavesModel]
+
+  // BrasilAPICPTECWavesModel
+  date: String
+  data: [BrasilAPICPTECWavesDataModel]
+
+  // BrasilAPICPTECWavesDataModel
+  windSpeed: Double
+  windDirection: String
+  windDirectionDescription: String?
+  waveHeight: Double
+  waveDirection: String
+  waveDirectionDescription: String?
+  agitation: String
+  hour: String
+```
+</details>
+
 ---
 ### 📱 DDD
+
+#### Listar cidades por DDD [`ddd/v1/{ddd}`](https://brasilapi.com.br/docs#tag/DDD/paths/~1ddd~1v1~1%7Bddd%7D/get)
+Retorna estado e lista de cidades por DDD
+
+```swift
+var cities: BrasilAPIDDDCitiesModel = try await BrasilAPI().ddd.getCitiesByDDD(ddd: String)
+```
+
+<details>
+<summary>
+Model BrasilAPIDDDCitiesModel
+</summary>
+
+```swift
+  let cities: [String]
+  let state: String
+```
+</details>
+
 ---
 ### 🎉 Feriados Nacionais
 ---
@@ -407,8 +596,15 @@ A Swift SDK to access [BrasilAPI](https://brasilapi.com.br) services in a simple
   - [🏦 Brokers](#-brokers)
     - [Get Brokers](#get-brokers-cvmcorretorasv1)
     - [Get Broker by CNPJ](#get-broker-by-cnpj-cvmcorretorasv1cnpj)
-  - [🌡️ CPTEC](#-cptec)
-  - [📱 DDD](#-ddd)
+- [🌡️ CPTEC](#-cptec)
+    - [List Locations](#list-locations)
+    - [Search Location](#search-location)
+    - [Conditions in Capitals](#conditions-in-capitals)
+    - [Conditions at Airports](#conditions-at-airports)
+    - [Weather Forecast](#forecast)
+    - [Ocean Forecast](#ocean-forecast)
+- [📱 DDD](#-ddd)
+    - [List Cities by DDD](#list-cities-by-ddd)
   - [🎉 National Holidays](#-national-holidays)
   - [🚗 FIPE](#-fipe)
   - [🔎 IBGE](#-ibge)
@@ -453,47 +649,47 @@ Returns information about all banks in Brazil:
 ```swift
 var banks: [BrasilAPIBankModel] = try await BrasilAPI().banking.listBanks()
 ```
-
+---
 #### Get Bank by Code [`banks/v1/{code}`](https://brasilapi.com.br/docs#tag/BANKS/paths/~1banks~1v1~1%7Bcode%7D/get)
 Fetches information about a bank using its code:
 ```swift
 var bank: BrasilAPIBankModel = try await BrasilAPI().banking.getBankByCode(code: String)
 ```
-
+---
 ### 💱 Exchange
 #### Get Currencies [`cambio/v1/moedas`](https://brasilapi.com.br/docs#tag/CAMBIO/paths/~1cambio~1v1~1moedas/get)
 Returns information about all available currencies for conversion:
 ```swift
 var coins: [BrasilAPIExchangeCoinModel] = try await BrasilAPI().exchange.listCoins()
 ```
-
+---
 #### Get Exchange Rate [`cambio/v1/cotacao/{moeda}/{data}`](https://brasilapi.com.br/docs#tag/CAMBIO/paths/~1cambio~1v1~1cotacao~1%7Bmoeda%7D~1%7Bdata%7D/get)
 Fetches exchange rates for BRL with another currency on a specific date:
 ```swift
 var quote: BrasilAPIExchangeQuotationModel = try await BrasilAPI().exchange.getQuotation(coin: String, date: String)
 ```
-
+---
 ### 📍 ZIP Code
 #### Get ZIP Code [`cep/v1/{code}`](https://brasilapi.com.br/docs#tag/CEP/paths/~1cep~1v1~1%7Bcep%7D/get)
 Fetches ZIP code information using multiple fallback providers.
 ```swift
 var zipCode: BrasilAPIZipCodeV1Model = try await BrasilAPI().zipCode.searchZipCodeV1(zipCode: String)
 ```
-
+---
 ### 📍 ZIP Code v2
 #### Get ZIP Code [`cep/v2/{code}`](https://brasilapi.com.br/docs#tag/CEP-V2/paths/~1cep~1v2~1%7Bcep%7D/get)
 Version 2 of the ZIP code lookup service with multiple fallback providers.
 ```swift
 var zipCode: BrasilAPIZipCodeV2Model = try await BrasilAPI().zipCode.searchZipCodeV2(zipCode: String)
 ```
-
+---
 ### 🏢 CNPJ
 #### Get CNPJ [`cnpj/v1/{cnpj}`](https://brasilapi.com.br/docs#tag/CNPJ/paths/~1cnpj~1v1~1%7Bcnpj%7D/get)
 Fetches company information using CNPJ from the Minha Receita API.
 ```swift
 var cnpj: BrasilAPICNPJModel = try await BrasilAPI().cnpj.getCNPJ(cnpj: String)
 ```
-
+---
 ### 🏦 Brokers
 #### Get Brokers [`/cvm/corretoras/v1`](https://brasilapi.com.br/docs#tag/Corretoras/paths/~1cvm~1corretoras~1v1/get)
 ```swift
@@ -504,6 +700,192 @@ var brokers: [BrasilAPIBrokerModel] = try await BrasilAPI().broker.getBrokers()
 ```swift
 var broker: BrasilAPIBrokerModel = try await BrasilAPI().broker.getBrokerByCnpj(cnpj: String)
 ```
+---
+### 🌡️ CPTEC
+
+#### List Locations [`cptec/v1/cidade`](https://brasilapi.com.br/docs#tag/CPTEC/operation/listcities(/cptec/v1/cidade))
+
+Returns a list of all cities along with their respective codes available in CPTEC services. These city codes will be used for meteorology and ocean wave (ocean forecast) services provided by the center. Keep in mind that CPTEC's WebService is sometimes unstable, so if you don't find a specific city in the complete list, try searching by part of its name in the search endpoint.
+
+```swift
+var cities: [BrasilAPICPTECLocalModel] = try await BrasilAPI().cptec.getListCPTECLocals()
+```
+
+<details>
+<summary>
+Model BrasilAPICPTECLocalModel
+</summary>
+
+```swift
+  name: String
+  state: String
+  id: Int
+```
+</details>
+
+#### Search Location [`cptec/v1/cidade/{cityName}`](https://brasilapi.com.br/docs#tag/CPTEC/operation/searchcities(/cptec/v1/cidade/:cityName))
+
+Returns a list of all cities matching the searched term along with their respective codes available in CPTEC services. These city codes will be used for meteorology and ocean wave (ocean forecast) services provided by the center.
+
+```swift
+var cities: [BrasilAPICPTECLocalModel] = try await BrasilAPI().cptec.getCPTECLocal(localName: String)
+```
+
+<details>
+<summary>
+Model BrasilAPICPTECLocalModel
+</summary>
+
+```swift
+  name: String
+  state: String
+  id: Int
+```
+</details>
+
+#### Conditions in Capitals [`cptec/v1/clima/capital`](https://brasilapi.com.br/docs#tag/CPTEC/operation/Condi%C3%A7%C3%B5esatuaisnascapitais(/cptec/v1/clima/capital))
+
+Returns current weather conditions in the country's capitals, based on airport ground stations.
+
+```swift
+var condition: [BrasilAPICPTECConditionModel] = try await BrasilAPI().cptec.getListCPTECCapitals()
+```
+
+<details>
+<summary>
+Model BrasilAPICPTECConditionModel
+</summary>
+
+```swift
+  codeICAO: String
+  updated: String
+  pressure: String
+  visibility: String
+  windSpeed: Int
+  windDirection: Int
+  humidity: Int
+  condition: String
+  conditionDescription: String
+  temperature: Int
+```
+</details>
+
+#### Conditions at Airports [`cptec/v1/clima/aeroporto/{icaoCode}`](https://brasilapi.com.br/docs#tag/CPTEC/operation/airportcurrentcondicao(/cptec/v1/clima/aeroporto/:icaoCode))
+
+Returns current weather conditions at the requested airport. This endpoint uses the ICAO code (4-digit) of the airport.
+
+```swift
+var condition: BrasilAPICPTECConditionModel = try await BrasilAPI().cptec.getCPTECCapital(codeICAO: String)
+```
+
+<details>
+<summary>
+Model BrasilAPICPTECConditionModel
+</summary>
+
+```swift
+  codeICAO: String
+  updated: String
+  pressure: String
+  visibility: String
+  windSpeed: Int
+  windDirection: Int
+  humidity: Int
+  condition: String
+  conditionDescription: String
+  temperature: Int
+```
+</details>
+
+#### Forecast [`cptec/v1/clima/previsao/{cityCode}/{days}`](https://brasilapi.com.br/docs#tag/CPTEC/operation/climapredictionwithoutdays(/cptec/v1/clima/previsao/:cityCode/:days))
+
+Returns the weather forecast for the specified city for a period of 1 to 6 days. Due to inconsistencies found in CPTEC's responses, our API can only reliably return a maximum period of 6 days.
+
+```swift
+var forecast: BrasilAPICPTECForecastModel = try await BrasilAPI().cptec.getCPTECLocalForecast(cityCode: Int, days: ForecastAvailableDays)
+
+// ForecastAvailableDays = Enum from 1 to 6 days
+```
+
+<details>
+<summary>
+Model BrasilAPICPTECForecastModel
+</summary>
+
+```swift
+  city: String
+  state: String
+  updated: String
+  weather: [BrasilAPICPTECWeatherModel]
+
+  // BrasilAPICPTECWeatherModel
+  date: String
+  condition: String
+  conditionDescription: String
+  min: Int
+  max: Int
+  indexUV: Int
+```
+</details>
+
+#### Ocean Forecast [`cptec/v1/ondas/{cityCode}/{days}`](https://brasilapi.com.br/docs#tag/CPTEC/operation/ondaspredictionupto6days(/cptec/v1/ondas/:cityCode/:days))
+
+Returns the ocean forecast for the specified city for a period of up to 6 days.
+
+```swift
+var forecast: BrasilAPICPTECOceanicForecastModel = try await BrasilAPI().cptec.getCPTECOceanicForecast(cityCode: Int, days: ForecastAvailableDays)
+
+// ForecastAvailableDays = Enum from 1 to 6 days
+```
+
+<details>
+<summary>
+Model BrasilAPICPTECOceanicForecastModel
+</summary>
+
+```swift
+  city: String
+  state: String
+  updated: String
+  waves: [BrasilAPICPTECWavesModel]
+
+  // BrasilAPICPTECWavesModel
+  date: String
+  data: [BrasilAPICPTECWavesDataModel]
+
+  // BrasilAPICPTECWavesDataModel
+  windSpeed: Double
+  windDirection: String
+  windDirectionDescription: String?
+  waveHeight: Double
+  waveDirection: String
+  waveDirectionDescription: String?
+  agitation: String
+  hour: String
+```
+</details>
+
+---
+### 📱 DDD
+
+#### List Cities by DDD [`ddd/v1/{ddd}`](https://brasilapi.com.br/docs#tag/DDD/paths/~1ddd~1v1~1%7Bddd%7D/get)
+Returns state and list of cities by DDD (area code).
+
+```swift
+var cities: BrasilAPIDDDCitiesModel = try await BrasilAPI().ddd.getCitiesByDDD(ddd: String)
+```
+
+<details>
+<summary>
+Model BrasilAPIDDDCitiesModel
+</summary>
+
+```swift
+  let cities: [String]
+  let state: String
+```
+</details>
+
 
 ## 📄 License
 
@@ -515,4 +897,3 @@ Contributions are welcome! Feel free to open issues and pull requests.
 
 ---
 Created with ❤️ by [Lucas Hubert](https://github.com/LucasJorgeHubert).
-

@@ -1,6 +1,6 @@
 import Foundation
 
-class DDDService {
+public class DDDService {
     private let getCitiesByDDDUseCase: GetCitiesByDDDUseCase
     
     public init(repository: DDDRepositoryProtocol = DDDRepositoryImpl()) {

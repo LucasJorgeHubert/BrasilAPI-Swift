@@ -1,6 +1,6 @@
 import Foundation
 
-class DDDRepositoryImpl: DDDRepositoryProtocol {
+public class DDDRepositoryImpl: DDDRepositoryProtocol {
     private let apiDispatcher: APIRequestDispatcherProtocol
     
     public init(
@@ -9,7 +9,7 @@ class DDDRepositoryImpl: DDDRepositoryProtocol {
         self.apiDispatcher = apiDispatcher
     }
     
-    func getCitiesByDDD(ddd: String) async throws -> BrasilAPIDDDCitiesModel {
+    public func getCitiesByDDD(ddd: String) async throws -> BrasilAPIDDDCitiesModel {
         return try await apiDispatcher.request(apiRouter: DDDApiRouter.getCitiesByDDD(ddd: ddd))
     }
 }

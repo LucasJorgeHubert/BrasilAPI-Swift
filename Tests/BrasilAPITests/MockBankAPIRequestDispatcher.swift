@@ -27,6 +27,8 @@ class MockBankAPIRequestDispatcher: APIRequestDispatcherProtocol {
             return resolveBrokerAPIRouter(for: apiRouter)
         case is CPTECAPIRouter:
             return resolveCPTECAPIRouter(for: apiRouter)
+        case is DDDApiRouter:
+            return resolveDDDApiRouter(for: apiRouter)
         default:
             return "default_mock"
         }
@@ -119,6 +121,17 @@ class MockBankAPIRequestDispatcher: APIRequestDispatcherProtocol {
                 return "cptec_v1_clima_previsao_code_days"
             case .getOceanicForecast:
                 return "cptec_v1_ondas_code_days"
+            }
+        }
+        
+        return "default_mock"
+    }
+    
+    private func resolveDDDApiRouter(for apiRouter: APIRouterProtocol) -> String {
+        if let router = apiRouter as? DDDApiRouter {
+            switch router {
+            case .getCitiesByDDD:
+                return "ddd_v1_ddd"
             }
         }
         
