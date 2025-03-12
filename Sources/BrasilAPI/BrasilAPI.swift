@@ -7,6 +7,7 @@ public class BrasilAPI {
     public var cnpj: CNPJService
     public var broker: BrokerService
     public var cptec: CPTECService
+    public var ddd: DDDService
 
     public init(
         bankingRepository: BankRepositoryProtocol = BankRepositoryImpl(),
@@ -14,7 +15,8 @@ public class BrasilAPI {
         zipCodeRepository: ZipCodeRepositoryProtocol = ZipCodeRepositoryImpl(),
         cnpjRepository: CNPJRepositoryProtocol = CNPJRepositoryImpl(),
         brokerRepository: BrokerRepositoryProtocol = BrokerRepositoryImpl(),
-        cptecRepository: CPTECRepositoryProtocol = CPTECRepositoryImpl()
+        cptecRepository: CPTECRepositoryProtocol = CPTECRepositoryImpl(),
+        dddRepository: DDDRepositoryProtocol = DDDRepositoryImpl()
     ) {
         self.banking = BankingService(repository: bankingRepository)
         self.exchange = ExchangeService(repository: exchangeRepository)
@@ -22,5 +24,6 @@ public class BrasilAPI {
         self.cnpj = CNPJService(repository: cnpjRepository)
         self.broker = BrokerService(repository: brokerRepository)
         self.cptec = CPTECService(repository: cptecRepository)
+        self.ddd = DDDService(repository: dddRepository)
     }
 }
