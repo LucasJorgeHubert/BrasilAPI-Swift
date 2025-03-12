@@ -29,6 +29,8 @@ class MockBankAPIRequestDispatcher: APIRequestDispatcherProtocol {
             return resolveCPTECAPIRouter(for: apiRouter)
         case is DDDApiRouter:
             return resolveDDDApiRouter(for: apiRouter)
+        case is HolidaysAPIRouter:
+            return resolveHolidaysMock(for: apiRouter)
         default:
             return "default_mock"
         }
@@ -135,6 +137,16 @@ class MockBankAPIRequestDispatcher: APIRequestDispatcherProtocol {
             }
         }
         
+        return "default_mock"
+    }
+    
+    private func resolveHolidaysMock(for apiRouter: APIRouterProtocol) -> String {
+        if let router = apiRouter as? HolidaysAPIRouter {
+            switch router {
+            case .getHolidays:
+                return "feriados_v1_ano"
+            }
+        }
         return "default_mock"
     }
 }

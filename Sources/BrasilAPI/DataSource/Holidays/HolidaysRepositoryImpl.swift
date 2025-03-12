@@ -9,7 +9,7 @@ public class HolidaysRepositoryImpl: HolidaysRepositoryProtocol {
         self.apiDispatcher = apiDispatcher
     }
     
-    public func getHolidays(year: Int) async throws -> BrasilAPIHolidaysModel {
+    public func getHolidays(year: Int) async throws -> [BrasilAPIHolidaysModel] {
         return try await apiDispatcher.request(apiRouter: HolidaysAPIRouter.getHolidays(year: year))
     }
 }

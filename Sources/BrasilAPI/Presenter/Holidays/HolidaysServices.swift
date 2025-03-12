@@ -7,7 +7,7 @@ public class HolidaysServices {
         self.getNationalHolidaysUseCase = GetNationalHolidaysUseCase(repository: repository)
     }
     
-    public func getNationalHolidays(year: Int) async throws -> BrasilAPIHolidaysModel {
+    public func getNationalHolidays(year: Int) async throws -> [BrasilAPIHolidaysModel] {
         return try await getNationalHolidaysUseCase.execute(year: year)
     }
 }
