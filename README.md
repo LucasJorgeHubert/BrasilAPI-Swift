@@ -34,7 +34,12 @@ Uma SDK Swift para acessar os serviços da [BrasilAPI](https://brasilapi.com.br)
   - [📱 DDD](#-ddd)
     - [Listar cidades](#)
   - [🎉 Feriados Nacionais](#-feriados-nacionais)
+    - [Listar feriados nacionais](#listar-feriados-nacionais)
   - [🚗 FIPE](#-fipe)
+    - [Listar marcas de veículos](#listar-marcas-de-veículos)
+    - [Consultar preço do veículo](#consultar-preço-do-veículo)
+    - [Listar tabelas de referência](#listar-tabelas-de-referência)
+    - [Listar veículos por marca e tipo](#listar-veículos-por-marca-e-tipo)
   - [🔎 IBGE](#-ibge)
   - [🔢 ISBN](#-isbn)
   - [🏢 NCM](#-ncm)
@@ -58,7 +63,7 @@ Ou, se preferir, adicione manualmente ao `Package.swift`:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/LucasJorgeHubert/BrasilAPI-Swift", from: "0.2.0")
+    .package(url: "https://github.com/LucasJorgeHubert/BrasilAPI-Swift", from: "0.5.0")
 ]
 ```
 
@@ -534,15 +539,113 @@ Model BrasilAPIDDDCitiesModel
 </summary>
 
 ```swift
-  let cities: [String]
-  let state: String
+  cities: [String]
+  state: String
 ```
 </details>
 
 ---
 ### 🎉 Feriados Nacionais
+
+#### Listar feriados nacionais [`feriados/v1/{ano}`](https://brasilapi.com.br/docs#tag/Feriados-Nacionais/paths/~1feriados~1v1~1%7Bano%7D/get)
+
+Calcula os feriados móveis baseados na Páscoa e adiciona os feriados fixos
+
+```swift
+var holidays: [BrasilAPIHolidaysModel] = try await BrasilAPI().holidays.getNationalHolidays(year: 2025)
+```
+
+<details>
+<summary>
+Model BrasilAPIHolidaysModel
+</summary>
+
+```swift
+  date: String
+  name: String
+  type: String
+```
+</details>
+
 ---
 ### 🚗 FIPE
+
+#### Listar marcas de veículos [`fipe/marcas/v1/{tipoVeiculo}`](https://brasilapi.com.br/docs#tag/FIPE/paths/~1fipe~1marcas~1v1~1%7BtipoVeiculo%7D/get)
+
+Lista as marcas de veículos referente ao tipo de veículo
+
+```swift
+var brands: [BrasilAPIVehiclesTypeModel] = try await BrasilAPI().fipe.getBrandByVehicleType(carType: VehicleTypeEnum)
+```
+
+VehicleTypeEnum: `car`, `truck` e `motorcycle`
+
+<details>
+<summary>
+Model BrasilAPIVehiclesTypeModel
+</summary>
+
+```swift
+  name: String
+  value: String
+```
+</details>
+
+
+#### Consultar preço do veículo [`fipe/preco/v1/{codigoFipe}`](https://brasilapi.com.br/docs#tag/FIPE/paths/~1fipe~1preco~1v1~1%7BcodigoFipe%7D/get)
+Consulta o preço do veículo segundo a tabela fipe.
+
+```swift
+var prices: [BrasilAPIVehiclesPriceModel] = try await BrasilAPI().fipe.getVehiclePrice(codeFIPE: String)
+```
+
+<details>
+<summary>
+Model BrasilAPIVehiclesPriceModel
+</summary>
+
+```swift
+  name: String
+  value: String
+```
+</details>
+
+#### Listar tabelas de referência [`fipe/tabelas/v1`](https://brasilapi.com.br/docs#tag/FIPE/paths/~1fipe~1tabelas~1v1/get)
+
+```swift
+var tables: [BrasilAPIFIPETableModel] = try await BrasilAPI().fipe.getReferenceTables()
+```
+
+<details>
+<summary>
+Model BrasilAPIFIPETableModel
+</summary>
+
+```swift
+  code: Int
+  month: String
+```
+</details>
+
+#### Listar veículos por marca e tipo [`fipe/veiculos/v1/{tipoVeiculo}/{codigoMarca}`](https://brasilapi.com.br/docs#tag/FIPE/paths/~1fipe~1veiculos~1v1~1%7BtipoVeiculo%7D~1%7BcodigoMarca%7D/get)
+
+
+```swift
+var tables: [BrasilAPIVehiclesModel] = try await BrasilAPI().fipe.listVehicles(type: VehicleTypeEnum, brandCode: String)
+```
+
+VehicleTypeEnum: `car`, `truck` e `motorcycle`
+
+<details>
+<summary>
+Model BrasilAPIVehiclesModel
+</summary>
+
+```swift
+  model: String
+```
+</details>
+
 ---
 ### 🔎 IBGE
 ---
@@ -596,17 +699,22 @@ A Swift SDK to access [BrasilAPI](https://brasilapi.com.br) services in a simple
   - [🏦 Brokers](#-brokers)
     - [Get Brokers](#get-brokers-cvmcorretorasv1)
     - [Get Broker by CNPJ](#get-broker-by-cnpj-cvmcorretorasv1cnpj)
-- [🌡️ CPTEC](#-cptec)
+  - [🌡️ CPTEC](#-cptec)
     - [List Locations](#list-locations)
     - [Search Location](#search-location)
     - [Conditions in Capitals](#conditions-in-capitals)
     - [Conditions at Airports](#conditions-at-airports)
     - [Weather Forecast](#forecast)
     - [Ocean Forecast](#ocean-forecast)
-- [📱 DDD](#-ddd)
+  - [📱 DDD](#-ddd)
     - [List Cities by DDD](#list-cities-by-ddd)
   - [🎉 National Holidays](#-national-holidays)
+    - [List National Holidays](#list-national-holidays)
   - [🚗 FIPE](#-fipe)
+    - [List Vehicle Brands](#list-vehicle-brands)
+    - [Get Vehicle Price](#get-vehicle-price)
+    - [List Reference Tables](#list-reference-tables)
+    - [List Vehicles by Brand and Type](#list-vehicles-by-brand-and-type)
   - [🔎 IBGE](#-ibge)
   - [🔢 ISBN](#-isbn)
   - [🏢 NCM](#-ncm)
@@ -629,7 +737,7 @@ Or, if you prefer, manually add it to `Package.swift`:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/LucasJorgeHubert/BrasilAPI-Swift", from: "0.2.0")
+    .package(url: "https://github.com/LucasJorgeHubert/BrasilAPI-Swift", from: "0.5.0")
 ]
 ```
 
@@ -886,6 +994,109 @@ Model BrasilAPIDDDCitiesModel
 ```
 </details>
 
+---
+### 🎉 National Holidays
+
+#### List National Holidays [`feriados/v1/{year}`](https://brasilapi.com.br/docs#tag/Feriados-Nacionais/paths/~1feriados~1v1~1%7Bano%7D/get)
+
+Calculates the movable holidays based on Easter and adds the fixed holidays.
+
+```swift
+var holidays: [BrasilAPIHolidaysModel] = try await BrasilAPI().holidays.getNationalHolidays(year: 2025)
+```
+
+<details>
+<summary>
+Model BrasilAPIHolidaysModel
+</summary>
+
+```swift
+  date: String
+  name: String
+  type: String
+```
+</details>
+
+---
+### 🚗 FIPE
+
+#### List Vehicle Brands [`fipe/marcas/v1/{vehicleType}`](https://brasilapi.com.br/docs#tag/FIPE/paths/~1fipe~1marcas~1v1~1%7BtipoVeiculo%7D/get)
+
+Lists the vehicle brands for the specified vehicle type.
+
+```swift
+var brands: [BrasilAPIVehiclesTypeModel] = try await BrasilAPI().fipe.getBrandByVehicleType(carType: VehicleTypeEnum)
+```
+
+VehicleTypeEnum: `car`, `truck`, and `motorcycle`
+
+<details>
+<summary>
+Model BrasilAPIVehiclesTypeModel
+</summary>
+
+```swift
+  name: String
+  value: String
+```
+</details>
+
+#### Get Vehicle Price [`fipe/preco/v1/{fipeCode}`](https://brasilapi.com.br/docs#tag/FIPE/paths/~1fipe~1preco~1v1~1%7BcodigoFipe%7D/get)
+
+Retrieves the vehicle price according to the FIPE table.
+
+```swift
+var prices: [BrasilAPIVehiclesPriceModel] = try await BrasilAPI().fipe.getVehiclePrice(codeFIPE: String)
+```
+
+<details>
+<summary>
+Model BrasilAPIVehiclesPriceModel
+</summary>
+
+```swift
+  name: String
+  value: String
+```
+</details>
+
+#### List Reference Tables [`fipe/tabelas/v1`](https://brasilapi.com.br/docs#tag/FIPE/paths/~1fipe~1tabelas~1v1/get)
+
+```swift
+var tables: [BrasilAPIFIPETableModel] = try await BrasilAPI().fipe.getReferenceTables()
+```
+
+<details>
+<summary>
+Model BrasilAPIFIPETableModel
+</summary>
+
+```swift
+  code: Int
+  month: String
+```
+</details>
+
+#### List Vehicles by Brand and Type [`fipe/veiculos/v1/{vehicleType}/{brandCode}`](https://brasilapi.com.br/docs#tag/FIPE/paths/~1fipe~1veiculos~1v1~1%7BtipoVeiculo%7D~1%7BcodigoMarca%7D/get)
+
+```swift
+var tables: [BrasilAPIVehiclesModel] = try await BrasilAPI().fipe.listVehicles(type: VehicleTypeEnum, brandCode: String)
+```
+
+VehicleTypeEnum: `car`, `truck`, and `motorcycle`
+
+<details>
+<summary>
+Model BrasilAPIVehiclesModel
+</summary>
+
+```swift
+  model: String
+```
+</details>
+
+
+
 
 ## 📄 License
 
@@ -897,3 +1108,5 @@ Contributions are welcome! Feel free to open issues and pull requests.
 
 ---
 Created with ❤️ by [Lucas Hubert](https://github.com/LucasJorgeHubert).
+## Summary
+
