@@ -31,6 +31,8 @@ class MockBankAPIRequestDispatcher: APIRequestDispatcherProtocol {
             return resolveDDDApiRouter(for: apiRouter)
         case is HolidaysAPIRouter:
             return resolveHolidaysMock(for: apiRouter)
+        case is FIPEAPIRouter:
+            return resolveFIPEAPIRouter(for: apiRouter)
         default:
             return "default_mock"
         }
@@ -147,6 +149,23 @@ class MockBankAPIRequestDispatcher: APIRequestDispatcherProtocol {
                 return "feriados_v1_ano"
             }
         }
+        return "default_mock"
+    }
+    
+    private func resolveFIPEAPIRouter(for apiRouter: APIRouterProtocol) -> String {
+        if let router = apiRouter as? FIPEAPIRouter {
+            switch router {
+            case .getBrandByVehicleType:
+                return "fipe_marcas_v1_tipo"
+            case .getVehiclePrice:
+                return "fipe_preco_v1_code"
+            case .getReferenceTables:
+                return "fipe_tabelas_v1"
+            case .listVehicles:
+                return "fipe_veiculos_v1_type_code"
+            }
+        }
+        
         return "default_mock"
     }
 }

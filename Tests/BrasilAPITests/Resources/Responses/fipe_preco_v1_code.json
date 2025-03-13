@@ -1,0 +1,74 @@
+[
+    {
+        "valor": "R$ 8.794,00",
+        "marca": "Fiat",
+        "modelo": "Palio EX 1.0 mpi 2p",
+        "anoModelo": 2000,
+        "combustivel": "Gasolina",
+        "codigoFipe": "001004-9",
+        "mesReferencia": "março de 2025 ",
+        "tipoVeiculo": 1,
+        "siglaCombustivel": "G",
+        "dataConsulta": "quinta-feira, 13 de março de 2025 11:57"
+    },
+    {
+        "valor": "R$ 8.799,00",
+        "marca": "Fiat",
+        "modelo": "Palio EX 1.0 mpi 2p",
+        "anoModelo": 2000,
+        "combustivel": "Álcool",
+        "codigoFipe": "001004-9",
+        "mesReferencia": "março de 2025 ",
+        "tipoVeiculo": 1,
+        "siglaCombustivel": "Á",
+        "dataConsulta": "quinta-feira, 13 de março de 2025 11:57"
+    },
+    {
+        "valor": "R$ 8.579,00",
+        "marca": "Fiat",
+        "modelo": "Palio EX 1.0 mpi 2p",
+        "anoModelo": 1999,
+        "combustivel": "Gasolina",
+        "codigoFipe": "001004-9",
+        "mesReferencia": "março de 2025 ",
+        "tipoVeiculo": 1,
+        "siglaCombustivel": "G",
+        "dataConsulta": "quinta-feira, 13 de março de 2025 11:57"
+    },
+    {
+        "valor": "R$ 7.231,00",
+        "marca": "Fiat",
+        "modelo": "Palio EX 1.0 mpi 2p",
+        "anoModelo": 1999,
+        "combustivel": "Álcool",
+        "codigoFipe": "001004-9",
+        "mesReferencia": "março de 2025 ",
+        "tipoVeiculo": 1,
+        "siglaCombustivel": "Á",
+        "dataConsulta": "quinta-feira, 13 de março de 2025 11:57"
+    },
+    {
+        "valor": "R$ 7.622,00",
+        "marca": "Fiat",
+        "modelo": "Palio EX 1.0 mpi 2p",
+        "anoModelo": 1998,
+        "combustivel": "Gasolina",
+        "codigoFipe": "001004-9",
+        "mesReferencia": "março de 2025 ",
+        "tipoVeiculo": 1,
+        "siglaCombustivel": "G",
+        "dataConsulta": "quinta-feira, 13 de março de 2025 11:57"
+    },
+    {
+        "valor": "R$ 6.319,00",
+        "marca": "Fiat",
+        "modelo": "Palio EX 1.0 mpi 2p",
+        "anoModelo": 1998,
+        "combustivel": "Álcool",
+        "codigoFipe": "001004-9",
+        "mesReferencia": "março de 2025 ",
+        "tipoVeiculo": 1,
+        "siglaCombustivel": "Á",
+        "dataConsulta": "quinta-feira, 13 de março de 2025 11:57"
+    }
+]

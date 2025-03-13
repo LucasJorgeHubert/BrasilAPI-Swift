@@ -8,7 +8,8 @@ public class BrasilAPI {
     public var broker: BrokerService
     public var cptec: CPTECService
     public var ddd: DDDService
-    public var holidays: HolidaysServices
+    public var holidays: HolidaysService
+    public var fipe: FIPEService
 
     public init(
         bankingRepository: BankRepositoryProtocol = BankRepositoryImpl(),
@@ -18,7 +19,8 @@ public class BrasilAPI {
         brokerRepository: BrokerRepositoryProtocol = BrokerRepositoryImpl(),
         cptecRepository: CPTECRepositoryProtocol = CPTECRepositoryImpl(),
         dddRepository: DDDRepositoryProtocol = DDDRepositoryImpl(),
-        holidaysRepository: HolidaysRepositoryProtocol = HolidaysRepositoryImpl()
+        holidaysRepository: HolidaysRepositoryProtocol = HolidaysRepositoryImpl(),
+        fipeRepository: FIPERepositoryProtocol = FIPERepositoryImpl()
     ) {
         self.banking = BankingService(repository: bankingRepository)
         self.exchange = ExchangeService(repository: exchangeRepository)
@@ -27,6 +29,7 @@ public class BrasilAPI {
         self.broker = BrokerService(repository: brokerRepository)
         self.cptec = CPTECService(repository: cptecRepository)
         self.ddd = DDDService(repository: dddRepository)
-        self.holidays = HolidaysServices(repository: holidaysRepository)
+        self.holidays = HolidaysService(repository: holidaysRepository)
+        self.fipe = FIPEService(repository: fipeRepository)
     }
 }
