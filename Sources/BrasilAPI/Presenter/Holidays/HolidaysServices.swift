@@ -1,6 +1,6 @@
 import Foundation
 
-public class HolidaysServices {
+public class HolidaysService {
     private let getNationalHolidaysUseCase: GetNationalHolidaysUseCase
     
     public init(repository: HolidaysRepositoryProtocol = HolidaysRepositoryImpl()) {
