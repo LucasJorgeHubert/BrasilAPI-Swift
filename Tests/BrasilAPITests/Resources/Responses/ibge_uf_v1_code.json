@@ -1,0 +1,11 @@
+
+{
+    "id": 42,
+    "sigla": "SC",
+    "nome": "Santa Catarina",
+    "regiao": {
+        "id": 4,
+        "sigla": "S",
+        "nome": "Sul"
+    }
+}

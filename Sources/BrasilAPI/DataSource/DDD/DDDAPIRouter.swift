@@ -1,6 +1,6 @@
 import Foundation
 
-public enum DDDApiRouter: APIRouterProtocol {
+public enum DDDAPIRouter: APIRouterProtocol {
     case getCitiesByDDD(ddd: String)
     
     public var path: String {

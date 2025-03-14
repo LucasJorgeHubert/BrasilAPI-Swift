@@ -25,22 +25,25 @@ Uma SDK Swift para acessar os serviços da [BrasilAPI](https://brasilapi.com.br)
     - [Buscar corretoras](#buscar-corretoras-cvmcorretorasv1)
     - [Buscar corretora por CNPJ](#buscar-corretora-por-cnpj-cvmcorretorasv1cnpj)
   - [🌡️ CPTEC](#-cptec)
-    - [Listar localidades](#listar-localidades)
-    - [Buscar localidade](#buscar-localidade)
-    - [Condições nas capitais](#condição-nas-capitais)
-    - [Condição nos aeroportos](#condição-nos-aeroportos)
-    - [Previsão metereológica](#previsão)
-    - [Previsão oceânica](#previsão-oceanica)
+    - [Listar localidades](#listar-localidades-cptecv1cidade)
+    - [Buscar localidade](#buscar-localidade-cptecv1cidadecityname)
+    - [Condições nas capitais](#condição-nas-capitais-cptecv1climacapital)
+    - [Condição nos aeroportos](#condição-nos-aeroportos-cptecv1climaaeroportoicaocode)
+    - [Previsão metereológica](#previsão-cptecv1climaprevisaocitycodedays)
+    - [Previsão oceânica](#previsão-oceanica-cptecv1ondascitycodedays)
   - [📱 DDD](#-ddd)
-    - [Listar cidades](#)
+    - [Listar cidades](#listar-cidades-por-ddd-dddv1ddd)
   - [🎉 Feriados Nacionais](#-feriados-nacionais)
-    - [Listar feriados nacionais](#listar-feriados-nacionais)
+    - [Listar feriados nacionais](#listar-feriados-nacionais-feriadosv1ano)
   - [🚗 FIPE](#-fipe)
-    - [Listar marcas de veículos](#listar-marcas-de-veículos)
-    - [Consultar preço do veículo](#consultar-preço-do-veículo)
-    - [Listar tabelas de referência](#listar-tabelas-de-referência)
-    - [Listar veículos por marca e tipo](#listar-veículos-por-marca-e-tipo)
+    - [Listar marcas de veículos](#listar-marcas-de-veículos-fipemarcasv1tipoveiculo)
+    - [Consultar preço do veículo](#consultar-preço-do-veículo-fipeprecov1codigofipe)
+    - [Listar tabelas de referência](#listar-tabelas-de-referência-fipetabelasv1)
+    - [Listar veículos por marca e tipo](#listar-veículos-por-marca-e-tipo-fipeveiculosv1tipoveiculocodigomarca)
   - [🔎 IBGE](#-ibge)
+    - [Listar cidades](#listar-cidades-ibgemunicipiosv1siglauf)
+    - [Listar estados](#listar-estados-ibgeufv1)
+    - [Buscar estado](#listar-estado-ibgeufv1code)
   - [🔢 ISBN](#-isbn)
   - [🏢 NCM](#-ncm)
   - [💰 PIX](#-pix)
@@ -63,7 +66,7 @@ Ou, se preferir, adicione manualmente ao `Package.swift`:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/LucasJorgeHubert/BrasilAPI-Swift", from: "0.5.0")
+    .package(url: "https://github.com/LucasJorgeHubert/BrasilAPI-Swift", from: "0.6.0")
 ]
 ```
 
@@ -648,6 +651,77 @@ Model BrasilAPIVehiclesModel
 
 ---
 ### 🔎 IBGE
+
+#### Listar cidades [`ibge/municipios/v1/{siglaUF}`](https://brasilapi.com.br/docs#tag/IBGE/paths/~1ibge~1municipios~1v1~1{siglaUF}?providers=dados-abertos-br,gov,wikipedia/get)
+Retorna os municípios da unidade federativa
+
+```swift
+var cities: [BrasilAPIIBGECityModel] = try await BrasilAPI().ibge.getIBGECitiesByUF(uf: BrasilState)
+// BrasilState é um enum com todos os estados brasileiros
+```
+
+<details>
+<summary>
+Model BrasilAPIIBGECityModel
+</summary>
+
+```swift
+  name: String
+  code: String
+```
+</details>
+
+#### Listar estados [`ibge/uf/v1`](https://brasilapi.com.br/docs#tag/IBGE/paths/~1ibge~1uf~1v1/get)
+Retorna informações de todos estados do Brasil
+
+```swift
+var states: [BrasilAPIIBGEStateModel] = try await BrasilAPI().ibge.getIBGEStates()
+```
+
+<details>
+<summary>
+Model BrasilAPIIBGEStateModel
+</summary>
+
+```swift
+  id: Int
+  acronym: String
+  name: String
+  region: BrasilAPIIBGEStateRegionModel
+
+  // BrasilAPIIBGEStateRegionModel
+  id: Int
+  acronym: String
+  name: String
+```
+</details>
+
+#### Listar estado [`ibge/uf/v1/{code}`](https://brasilapi.com.br/docs#tag/IBGE/paths/~1ibge~1uf~1v1~1%7Bcode%7D/get)
+Busca as informações de um estado a partir da sigla ou código
+
+```swift
+var state: BrasilAPIIBGEStateModel = try await BrasilAPI().ibge.getIBGEStateByCode(code: BrasilState)
+// BrasilState é um enum com todos os estados brasileiros
+```
+
+<details>
+<summary>
+Model BrasilAPIIBGEStateModel
+</summary>
+
+```swift
+  id: Int
+  acronym: String
+  name: String
+  region: BrasilAPIIBGEStateRegionModel
+
+  // BrasilAPIIBGEStateRegionModel
+  id: Int
+  acronym: String
+  name: String
+```
+</details>
+
 ---
 ### 🔢 ISBN
 ---
@@ -673,7 +747,7 @@ Contribuições são bem-vindas! Sinta-se à vontade para abrir issues e pull re
 ---
 Created with ❤️ by [Lucas Hubert](https://github.com/LucasJorgeHubert).
 
-# BrasilAPI-Swift
+# BrasilAPI-Swift English
 
 [![Swift Package Manager](https://img.shields.io/badge/SPM-Compatible-brightgreen.svg)](https://swift.org/package-manager/)
 
@@ -716,6 +790,9 @@ A Swift SDK to access [BrasilAPI](https://brasilapi.com.br) services in a simple
     - [List Reference Tables](#list-reference-tables)
     - [List Vehicles by Brand and Type](#list-vehicles-by-brand-and-type)
   - [🔎 IBGE](#-ibge)
+    - [List cities](#list-cities-ibge-municipios-v1-siglauf)
+    - [List states](#list-states-ibgeufv1)
+    - [Get state by code](#get-state-by-code-ibgeufv1code)
   - [🔢 ISBN](#-isbn)
   - [🏢 NCM](#-ncm)
   - [💰 PIX](#-pix)
@@ -737,7 +814,7 @@ Or, if you prefer, manually add it to `Package.swift`:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/LucasJorgeHubert/BrasilAPI-Swift", from: "0.5.0")
+    .package(url: "https://github.com/LucasJorgeHubert/BrasilAPI-Swift", from: "0.6.0")
 ]
 ```
 
@@ -1095,8 +1172,80 @@ Model BrasilAPIVehiclesModel
 ```
 </details>
 
+---
+### 🔎 IBGE
 
+#### List cities [`ibge/municipios/v1/{siglaUF}`](https://brasilapi.com.br/docs#tag/IBGE/paths/~1ibge~1municipios~1v1~1{siglaUF}?providers=dados-abertos-br,gov,wikipedia/get)
+Returns the cities of the federative unit
 
+```swift
+var cities: [BrasilAPIIBGECityModel] = try await BrasilAPI().ibge.getIBGECitiesByUF(uf: BrasilState)
+// BrasilState is an enum with all Brazilian states
+```
+
+<details>
+<summary>
+Model BrasilAPIIBGECityModel
+</summary>
+
+```swift
+  name: String
+  code: String
+```
+</details>
+
+#### List states [`ibge/uf/v1`](https://brasilapi.com.br/docs#tag/IBGE/paths/~1ibge~1uf~1v1/get)
+Returns information about all Brazilian states
+
+```swift
+var states: [BrasilAPIIBGEStateModel] = try await BrasilAPI().ibge.getIBGEStates()
+```
+
+<details>
+<summary>
+Model BrasilAPIIBGEStateModel
+</summary>
+
+```swift
+  id: Int
+  acronym: String
+  name: String
+  region: BrasilAPIIBGEStateRegionModel
+
+  // BrasilAPIIBGEStateRegionModel
+  id: Int
+  acronym: String
+  name: String
+```
+</details>
+
+#### Get state by code [`ibge/uf/v1/{code}`](https://brasilapi.com.br/docs#tag/IBGE/paths/~1ibge~1uf~1v1~1%7Bcode%7D/get)
+Fetches information about a state by acronym or code
+
+```swift
+var state: BrasilAPIIBGEStateModel = try await BrasilAPI().ibge.getIBGEStateByCode(code: BrasilState)
+// BrasilState is an enum with all Brazilian states
+```
+
+<details>
+<summary>
+Model BrasilAPIIBGEStateModel
+</summary>
+
+```swift
+  id: Int
+  acronym: String
+  name: String
+  region: BrasilAPIIBGEStateRegionModel
+
+  // BrasilAPIIBGEStateRegionModel
+  id: Int
+  acronym: String
+  name: String
+```
+</details>
+
+---
 
 ## 📄 License
 

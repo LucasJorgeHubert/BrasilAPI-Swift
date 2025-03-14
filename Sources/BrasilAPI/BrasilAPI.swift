@@ -10,6 +10,7 @@ public class BrasilAPI {
     public var ddd: DDDService
     public var holidays: HolidaysService
     public var fipe: FIPEService
+    public var ibge: IBGEService
 
     public init(
         bankingRepository: BankRepositoryProtocol = BankRepositoryImpl(),
@@ -20,7 +21,8 @@ public class BrasilAPI {
         cptecRepository: CPTECRepositoryProtocol = CPTECRepositoryImpl(),
         dddRepository: DDDRepositoryProtocol = DDDRepositoryImpl(),
         holidaysRepository: HolidaysRepositoryProtocol = HolidaysRepositoryImpl(),
-        fipeRepository: FIPERepositoryProtocol = FIPERepositoryImpl()
+        fipeRepository: FIPERepositoryProtocol = FIPERepositoryImpl(),
+        ibgeRepository: IBGERepositoryProtocol = IBGERepositoryImpl()
     ) {
         self.banking = BankingService(repository: bankingRepository)
         self.exchange = ExchangeService(repository: exchangeRepository)
@@ -31,5 +33,6 @@ public class BrasilAPI {
         self.ddd = DDDService(repository: dddRepository)
         self.holidays = HolidaysService(repository: holidaysRepository)
         self.fipe = FIPEService(repository: fipeRepository)
+        self.ibge = IBGEService(repository: ibgeRepository)
     }
 }
