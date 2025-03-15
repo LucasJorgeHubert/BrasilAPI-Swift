@@ -36,7 +36,6 @@ final class FIPEIntegrationUseCaseTests: XCTestCase {
         XCTAssertEqual(carsPrices.first?.monthReference, "março de 2025 ")
         XCTAssertEqual(carsPrices.first?.typeVehicle, 1)
         XCTAssertEqual(carsPrices.first?.fuelId, "G")
-        XCTAssertEqual(carsPrices.first?.dataConsulta, "quinta-feira, 13 de março de 2025 11:57")
     }
     
     func test_integration_fetchFIPEReferenceTable() async throws {

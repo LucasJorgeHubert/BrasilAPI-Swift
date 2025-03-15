@@ -10,6 +10,6 @@ public class DDDRepositoryImpl: DDDRepositoryProtocol {
     }
     
     public func getCitiesByDDD(ddd: String) async throws -> BrasilAPIDDDCitiesModel {
-        return try await apiDispatcher.request(apiRouter: DDDApiRouter.getCitiesByDDD(ddd: ddd))
+        return try await apiDispatcher.request(apiRouter: DDDAPIRouter.getCitiesByDDD(ddd: ddd))
     }
 }
