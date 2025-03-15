@@ -15,10 +15,8 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Configurar Swift
-      uses: swift-actions/setup-swift@v2
-      with:
-        swift-version: '5.8.1'
-
+      uses: SwiftyLab/setup-swift@latest
+      
     - name: Rodar testes
       run: swift test --enable-code-coverage
 
