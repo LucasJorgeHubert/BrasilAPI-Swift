@@ -13,15 +13,15 @@ extension Presenter.IBGE {
             self.getStateByCodeUseCase = Presenter.IBGE.UseCase.GetStateByCode(repository: repository)
         }
         
-        public func getCitiesByUF(uf: BrasilState) async throws -> [BrasilAPIIBGECityModel] {
+        public func getCitiesByUF(uf: BrasilState) async throws -> [Domain.IBGE.Models.CityModel] {
             return try await getCitiesByUFUseCase.execute(uf: uf.rawValue)
         }
         
-        public func getStates() async throws -> [BrasilAPIIBGEStateModel] {
+        public func getStates() async throws -> [Domain.IBGE.Models.StateModel] {
             return try await getStatesUseCase.execute()
         }
         
-        public func getStateByCode(code: BrasilState) async throws -> BrasilAPIIBGEStateModel {
+        public func getStateByCode(code: BrasilState) async throws -> Domain.IBGE.Models.StateModel {
             return try await getStateByCodeUseCase.execute(code: code.rawValue)
         }
     }

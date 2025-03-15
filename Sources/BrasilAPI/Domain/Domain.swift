@@ -10,7 +10,9 @@ public enum Domain {
     enum FIPE { }
     enum Holidays { }
     enum ZipCode { }
-    enum IBGE { }
+    public enum IBGE {
+        public enum Models { }
+    }
     public enum ISBN {
         public enum Models { }
     }

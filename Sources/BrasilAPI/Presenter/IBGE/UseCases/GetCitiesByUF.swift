@@ -9,7 +9,7 @@ extension Presenter.IBGE.UseCase {
             self.repository = repository
         }
         
-        func execute(uf: String) async throws -> [BrasilAPIIBGECityModel] {
+        func execute(uf: String) async throws -> [Domain.IBGE.Models.CityModel] {
             return try await repository.getCities(by: uf)
         }
     }

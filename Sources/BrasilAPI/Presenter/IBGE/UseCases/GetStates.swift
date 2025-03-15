@@ -9,7 +9,7 @@ extension Presenter.IBGE.UseCase {
             self.repository = repository
         }
         
-        func execute() async throws -> [BrasilAPIIBGEStateModel] {
+        func execute() async throws -> [Domain.IBGE.Models.StateModel] {
             return try await repository.getStates()
         }
     }
