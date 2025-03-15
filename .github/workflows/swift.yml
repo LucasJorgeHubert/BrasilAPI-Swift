@@ -8,7 +8,7 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: macos
 
     steps:
     - name: Checkout código
@@ -20,7 +20,7 @@ jobs:
         swift-version: "5.9.0"
       
     - name: Get swift version
-      run: swift --version # Swift 5.1.0
+      run: swift --version
       
     - name: Rodar testes
       run: swift test --enable-code-coverage
