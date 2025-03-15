@@ -27,16 +27,3 @@ jobs:
         swift test \
           --enable-code-coverage \
           --parallel
-
-    - name: Convert Coverage to JSON
-      run: |
-        xcrun llvm-cov export \
-          -format="lcov" \
-          .build/debug/*Tests.xctest/Contents/MacOS/*Tests \
-          -instr-profile .build/debug/codecov/default.profdata > coverage.lcov
-
-    - name: Publicar cobertura de código
-      uses: codecov/codecov-action@v3
-      with:
-        token: abd0b2b1-b925-423b-9af1-f572570da17d
-        files: .build/debug/codecov/*.json
