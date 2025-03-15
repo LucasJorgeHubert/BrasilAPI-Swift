@@ -21,9 +21,19 @@ jobs:
       
     - name: Get swift version
       run: swift --version
-      
-    - name: Rodar testes
-      run: swift test --enable-code-coverage
+
+    - name: Run Tests with Coverage
+      run: |
+        swift test \
+          --enable-code-coverage \
+          --parallel
+
+    - name: Convert Coverage to JSON
+      run: |
+        xcrun llvm-cov export \
+          -format="lcov" \
+          .build/debug/*Tests.xctest/Contents/MacOS/*Tests \
+          -instr-profile .build/debug/codecov/default.profdata > coverage.lcov
 
     - name: Publicar cobertura de código
       uses: codecov/codecov-action@v3
