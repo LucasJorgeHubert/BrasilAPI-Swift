@@ -8,7 +8,6 @@ on:
 
 jobs:
   test:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -18,11 +17,11 @@ jobs:
     - name: Configurar Swift
       uses: swift-actions/setup-swift@v2
       with:
-        swift-version: '5.9' # ou a versão que seu projeto está rodando
-        
+        swift-version: '5.9' # Ensure this version is valid
+
     - name: Rodar testes
       run: swift test --enable-code-coverage
-      
+
     - name: Publicar cobertura de código
       uses: codecov/codecov-action@v3
       with:
