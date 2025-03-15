@@ -3,7 +3,7 @@ import Foundation
 public class HolidaysService {
     private let getNationalHolidaysUseCase: GetNationalHolidaysUseCase
     
-    public init(repository: HolidaysRepositoryProtocol = HolidaysRepositoryImpl()) {
+    public init(repository: HolidaysRepositoryProtocol = DataSource.Holidays.RepositoryImpl()) {
         self.getNationalHolidaysUseCase = GetNationalHolidaysUseCase(repository: repository)
     }
     

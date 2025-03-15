@@ -21,7 +21,7 @@ public class BrasilAPI {
         brokerRepository: BrokerRepositoryProtocol = BrokerRepositoryImpl(),
         cptecRepository: CPTECRepositoryProtocol = CPTECRepositoryImpl(),
         dddRepository: DDDRepositoryProtocol = DDDRepositoryImpl(),
-        holidaysRepository: HolidaysRepositoryProtocol = HolidaysRepositoryImpl(),
+        holidaysRepository: HolidaysRepositoryProtocol = DataSource.Holidays.RepositoryImpl(),
         fipeRepository: FIPERepositoryProtocol = FIPERepositoryImpl(),
         ibgeRepository: IBGERepositoryProtocol = DataSource.IBGE.RepositoryImpl(),
         isbnRepository: ISBNRepositoryProtocol = DataSource.ISBN.RepositoryImpl()

@@ -29,7 +29,7 @@ class MockBankAPIRequestDispatcher: APIRequestDispatcherProtocol {
             return APIResolver.CPTEC.resolve(for: apiRouter)
         case is DDDAPIRouter:
             return APIResolver.DDD.resolve(for: apiRouter)
-        case is HolidaysAPIRouter:
+        case is DataSource.Holidays.APIRouter:
             return APIResolver.Holidays.resolve(for: apiRouter)
         case is FIPEAPIRouter:
             return APIResolver.FIPE.resolve(for: apiRouter)
