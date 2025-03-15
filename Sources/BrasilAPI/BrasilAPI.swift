@@ -10,7 +10,7 @@ public class BrasilAPI {
     public var ddd: DDDService
     public var holidays: HolidaysService
     public var fipe: FIPEService
-    public var ibge: IBGEService
+    public var ibge: Presenter.IBGE.IBGEService
     public var isbn: Presenter.ISBN.Service
     
     public init(
@@ -35,7 +35,7 @@ public class BrasilAPI {
         self.ddd = DDDService(repository: dddRepository)
         self.holidays = HolidaysService(repository: holidaysRepository)
         self.fipe = FIPEService(repository: fipeRepository)
-        self.ibge = IBGEService(repository: ibgeRepository)
+        self.ibge = Presenter.IBGE.IBGEService(repository: ibgeRepository)
         self.isbn = Presenter.ISBN.Service(repository: isbnRepository)
     }
 }

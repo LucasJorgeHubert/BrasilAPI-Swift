@@ -2,20 +2,20 @@ import XCTest
 @testable import BrasilAPI
 
 class IBGEIntegrationUseCaseTests: XCTestCase {
-    var getIBGECitiesByUFUseCase: GetIBGECitiesByUFUseCase!
-    var getIBGEStatesUseCase: GetIBGEStatesUseCase!
-    var getIBGEStateByCodeUseCase: GetIBGEStateByCodeUseCase!
+    var getCitiesByUFUseCase: Presenter.IBGE.UseCase.GetCitiesByUF!
+    var getStatesUseCase: Presenter.IBGE.UseCase.GetStates!
+    var getStateByCodeUseCase: Presenter.IBGE.UseCase.GetStateByCode!
     
     override func setUp() {
         let repository = IBGERepositoryImpl()
         APIConfig.environment = .production
-        getIBGECitiesByUFUseCase = GetIBGECitiesByUFUseCase(repository: repository)
-        getIBGEStatesUseCase = GetIBGEStatesUseCase(repository: repository)
-        getIBGEStateByCodeUseCase = GetIBGEStateByCodeUseCase(repository: repository)
+        getCitiesByUFUseCase = Presenter.IBGE.UseCase.GetCitiesByUF(repository: repository)
+        getStatesUseCase = Presenter.IBGE.UseCase.GetStates(repository: repository)
+        getStateByCodeUseCase = Presenter.IBGE.UseCase.GetStateByCode(repository: repository)
     }
     
     func test_getIBGECities() async throws {
-        let cities = try await getIBGECitiesByUFUseCase.execute(uf: "SC")
+        let cities = try await getCitiesByUFUseCase.execute(uf: "SC")
         
         XCTAssertNotNil(cities)
         XCTAssertEqual(cities.count, 295)
@@ -24,7 +24,7 @@ class IBGEIntegrationUseCaseTests: XCTestCase {
     }
     
     func test_getIBGEStates() async throws {
-        let states = try await getIBGEStatesUseCase.execute()
+        let states = try await getStatesUseCase.execute()
         
         XCTAssertNotNil(states)
         XCTAssertEqual(states.count, 27)
@@ -40,7 +40,7 @@ class IBGEIntegrationUseCaseTests: XCTestCase {
     }
     
     func test_getIBGEStateByCode() async throws {
-        let state = try await getIBGEStateByCodeUseCase.execute(code: "11")
+        let state = try await getStateByCodeUseCase.execute(code: "11")
         
         XCTAssertNotNil(state)
         XCTAssertEqual(state.id, 11)
