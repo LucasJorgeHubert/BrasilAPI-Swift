@@ -1,7 +1,7 @@
 import Foundation
 
 extension DataSource.IBGE {
-    public class RepositoryImpl: IBGERepositoryProtocol {
+    public struct RepositoryImpl: IBGERepositoryProtocol {
         
         private let apiDispatcher: APIRequestDispatcherProtocol
         

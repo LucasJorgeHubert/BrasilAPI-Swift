@@ -22,7 +22,7 @@ public class BrasilAPI {
         cptecRepository: CPTECRepositoryProtocol = CPTECRepositoryImpl(),
         dddRepository: DDDRepositoryProtocol = DDDRepositoryImpl(),
         holidaysRepository: HolidaysRepositoryProtocol = DataSource.Holidays.RepositoryImpl(),
-        fipeRepository: FIPERepositoryProtocol = FIPERepositoryImpl(),
+        fipeRepository: FIPERepositoryProtocol = DataSource.FIPE.RepositoryImpl(),
         ibgeRepository: IBGERepositoryProtocol = DataSource.IBGE.RepositoryImpl(),
         isbnRepository: ISBNRepositoryProtocol = DataSource.ISBN.RepositoryImpl()
     ) {

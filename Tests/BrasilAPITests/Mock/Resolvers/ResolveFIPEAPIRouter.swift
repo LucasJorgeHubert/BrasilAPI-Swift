@@ -3,7 +3,7 @@ import BrasilAPI
 
 extension APIResolver.FIPE {
     static func resolve(for apiRouter: APIRouterProtocol) -> String {
-        guard let router = apiRouter as? FIPEAPIRouter else {
+        guard let router = apiRouter as? DataSource.FIPE.APIRouter else {
             return "default_mock"
         }
         

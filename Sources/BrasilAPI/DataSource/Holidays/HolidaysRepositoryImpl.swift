@@ -1,7 +1,7 @@
 import Foundation
 
 extension DataSource.Holidays {
-    public class RepositoryImpl: HolidaysRepositoryProtocol {
+    public struct RepositoryImpl: HolidaysRepositoryProtocol {
         private let apiDispatcher: APIRequestDispatcherProtocol
         
         public init(
