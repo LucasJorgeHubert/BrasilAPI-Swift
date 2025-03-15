@@ -12,4 +12,5 @@ enum APIResolver {
     enum Holidays {}
     enum ZipCode {}
     enum IBGE {}
+    enum ISBN {}
 }

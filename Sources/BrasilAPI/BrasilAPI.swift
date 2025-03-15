@@ -11,7 +11,8 @@ public class BrasilAPI {
     public var holidays: HolidaysService
     public var fipe: FIPEService
     public var ibge: IBGEService
-
+    public var isbn: Presenter.ISBN.Service
+    
     public init(
         bankingRepository: BankRepositoryProtocol = BankRepositoryImpl(),
         exchangeRepository: ExchangeRepositoryProtocol = ExchangeRepositoryImpl(),
@@ -22,7 +23,8 @@ public class BrasilAPI {
         dddRepository: DDDRepositoryProtocol = DDDRepositoryImpl(),
         holidaysRepository: HolidaysRepositoryProtocol = HolidaysRepositoryImpl(),
         fipeRepository: FIPERepositoryProtocol = FIPERepositoryImpl(),
-        ibgeRepository: IBGERepositoryProtocol = IBGERepositoryImpl()
+        ibgeRepository: IBGERepositoryProtocol = IBGERepositoryImpl(),
+        isbnRepository: ISBNRepositoryProtocol = DataSource.ISBN.RepositoryImpl()
     ) {
         self.banking = BankingService(repository: bankingRepository)
         self.exchange = ExchangeService(repository: exchangeRepository)
@@ -34,5 +36,6 @@ public class BrasilAPI {
         self.holidays = HolidaysService(repository: holidaysRepository)
         self.fipe = FIPEService(repository: fipeRepository)
         self.ibge = IBGEService(repository: ibgeRepository)
+        self.isbn = Presenter.ISBN.Service(repository: isbnRepository)
     }
 }
