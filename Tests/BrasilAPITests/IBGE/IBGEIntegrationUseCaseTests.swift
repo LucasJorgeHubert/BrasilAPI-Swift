@@ -7,8 +7,8 @@ class IBGEIntegrationUseCaseTests: XCTestCase {
     var getStateByCodeUseCase: Presenter.IBGE.UseCase.GetStateByCode!
     
     override func setUp() {
-        let repository = IBGERepositoryImpl()
-        APIConfig.environment = .production
+        let repository = DataSource.IBGE.RepositoryImpl()
+        DataSource.APIConfig.environment = .production
         getCitiesByUFUseCase = Presenter.IBGE.UseCase.GetCitiesByUF(repository: repository)
         getStatesUseCase = Presenter.IBGE.UseCase.GetStates(repository: repository)
         getStateByCodeUseCase = Presenter.IBGE.UseCase.GetStateByCode(repository: repository)

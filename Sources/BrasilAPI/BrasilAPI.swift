@@ -23,7 +23,7 @@ public class BrasilAPI {
         dddRepository: DDDRepositoryProtocol = DDDRepositoryImpl(),
         holidaysRepository: HolidaysRepositoryProtocol = HolidaysRepositoryImpl(),
         fipeRepository: FIPERepositoryProtocol = FIPERepositoryImpl(),
-        ibgeRepository: IBGERepositoryProtocol = IBGERepositoryImpl(),
+        ibgeRepository: IBGERepositoryProtocol = DataSource.IBGE.RepositoryImpl(),
         isbnRepository: ISBNRepositoryProtocol = DataSource.ISBN.RepositoryImpl()
     ) {
         self.banking = BankingService(repository: bankingRepository)

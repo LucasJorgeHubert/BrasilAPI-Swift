@@ -3,7 +3,7 @@ import XCTest
 
 class IBGEBrasilAPITests: XCTestCase {
     
-    let repository = IBGERepositoryImpl(apiDispatcher: MockBankAPIRequestDispatcher())
+    let repository = DataSource.IBGE.RepositoryImpl(apiDispatcher: MockBankAPIRequestDispatcher())
     
     override func setUp() {
         super.setUp()

@@ -6,7 +6,7 @@ final class DDDIntegrationUseCaseTests: XCTestCase {
 
     override func setUp() {
         let repository = DDDRepositoryImpl()
-        APIConfig.environment = .production
+        DataSource.APIConfig.environment = .production
         getCitiesByDDDUseCase = GetCitiesByDDDUseCase(repository: repository)
     }
 

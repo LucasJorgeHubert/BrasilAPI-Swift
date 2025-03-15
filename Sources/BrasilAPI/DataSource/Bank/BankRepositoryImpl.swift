@@ -5,7 +5,7 @@ public class BankRepositoryImpl: BankRepositoryProtocol {
     private let apiDispatcher: APIRequestDispatcherProtocol
 
     public init(
-        apiDispatcher: APIRequestDispatcherProtocol = APIRequestDispatcher()
+        apiDispatcher: APIRequestDispatcherProtocol = DataSource.APIRequestDispatcher()
     ) {
         self.apiDispatcher = apiDispatcher
     }

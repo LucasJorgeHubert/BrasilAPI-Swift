@@ -3,7 +3,7 @@ import Foundation
 public class FIPERepositoryImpl: FIPERepositoryProtocol {
     private let apiDispatcher: APIRequestDispatcherProtocol
     
-    public init(apiDispatcher: APIRequestDispatcherProtocol = APIRequestDispatcher()) {
+    public init(apiDispatcher: APIRequestDispatcherProtocol = DataSource.APIRequestDispatcher()) {
         self.apiDispatcher = apiDispatcher
     }
     

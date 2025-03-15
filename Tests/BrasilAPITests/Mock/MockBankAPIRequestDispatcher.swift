@@ -7,7 +7,7 @@ class MockBankAPIRequestDispatcher: APIRequestDispatcherProtocol {
         let jsonFileName = resolveMockFileName(for: apiRouter)
         
         guard let jsonData = loadMockJSON(named: jsonFileName) else {
-            throw BrasilAPIRequestError.badUrl
+            throw DataSource.BrasilAPIRequestError.badUrl
         }
         
         return try JSONDecoder().decode(T.self, from: jsonData)
@@ -33,7 +33,7 @@ class MockBankAPIRequestDispatcher: APIRequestDispatcherProtocol {
             return APIResolver.Holidays.resolve(for: apiRouter)
         case is FIPEAPIRouter:
             return APIResolver.FIPE.resolve(for: apiRouter)
-        case is IBGEAPIRouter:
+        case is DataSource.IBGE.APIRouter:
             return APIResolver.IBGE.resolve(for: apiRouter)
         case is DataSource.ISBN.APIRouter:
             return APIResolver.ISBN.resolve(for: apiRouter)

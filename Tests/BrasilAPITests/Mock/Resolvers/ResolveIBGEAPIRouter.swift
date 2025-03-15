@@ -3,7 +3,7 @@ import BrasilAPI
 
 extension APIResolver.IBGE {
     static func resolve(for apiRouter: APIRouterProtocol) -> String {
-        guard let router = apiRouter as? IBGEAPIRouter else {
+        guard let router = apiRouter as? DataSource.IBGE.APIRouter else {
             return "default_mock"
         }
         

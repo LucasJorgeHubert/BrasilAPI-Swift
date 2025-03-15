@@ -6,7 +6,7 @@ final class IntegrationUseCaseTests: XCTestCase {
 
     override func setUp() {
         let repository = DataSource.ISBN.RepositoryImpl()
-        APIConfig.environment = .production
+        DataSource.APIConfig.environment = .production
         getBookUseCase = Presenter.ISBN.UseCase.GetBook(repository: repository)
     }
 

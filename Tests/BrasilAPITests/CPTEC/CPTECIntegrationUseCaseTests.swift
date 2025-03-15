@@ -11,7 +11,7 @@ final class CPTECIntegrationUseCaseTests: XCTestCase {
 
     override func setUp() {
         let repository = CPTECRepositoryImpl()
-        APIConfig.environment = .production
+        DataSource.APIConfig.environment = .production
         getCPTECCapitalUseCase = GetCPTECCapitalUseCase(repository: repository)
         getCPTECLocalForecastUseCase = GetCPTECLocalForecastUseCase(repository: repository)
         getCPTECLocalUseCase = GetCPTECLocalUseCase(repository: repository)

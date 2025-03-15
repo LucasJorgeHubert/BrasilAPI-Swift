@@ -7,7 +7,7 @@ final class BankIntegrationUseCaseTests: XCTestCase {
 
     override func setUp() {
         let repository = BankRepositoryImpl()
-        APIConfig.environment = .production
+        DataSource.APIConfig.environment = .production
         listBanksUseCase = GetBankListUseCase(repository: repository)
         getBankByIdUseCase = GetBankByIdUseCase(repository: repository)
     }
@@ -27,7 +27,7 @@ final class BankIntegrationUseCaseTests: XCTestCase {
             _ = try await getBankByIdUseCase.execute(code: "999")
             XCTFail("Erro não foi lançado")
         } catch {
-            XCTAssert(error is BrasilAPIRequestError)
+            XCTAssert(error is DataSource.BrasilAPIRequestError)
         }
     }
 }

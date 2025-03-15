@@ -7,7 +7,7 @@ extension Presenter.IBGE {
         private let getStatesUseCase: Presenter.IBGE.UseCase.GetStates
         private let getStateByCodeUseCase: Presenter.IBGE.UseCase.GetStateByCode
         
-        public init(repository: IBGERepositoryProtocol = IBGERepositoryImpl()) {
+        public init(repository: IBGERepositoryProtocol = DataSource.IBGE.RepositoryImpl()) {
             self.getCitiesByUFUseCase = Presenter.IBGE.UseCase.GetCitiesByUF(repository: repository)
             self.getStatesUseCase = Presenter.IBGE.UseCase.GetStates(repository: repository)
             self.getStateByCodeUseCase = Presenter.IBGE.UseCase.GetStateByCode(repository: repository)
