@@ -16,6 +16,11 @@ jobs:
 
     - name: Configurar Swift
       uses: SwiftyLab/setup-swift@latest
+      with:
+        swift-version: "5.9.0"
+      
+    - name: Get swift version
+      run: swift --version # Swift 5.1.0
       
     - name: Rodar testes
       run: swift test --enable-code-coverage
