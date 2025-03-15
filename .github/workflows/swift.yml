@@ -1,7 +1,7 @@
 # This workflow will build a Swift project
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-swift
 
-name: Swift
+name: Swift CI
 
 on:
   push:
@@ -10,13 +10,23 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  test:
 
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Build
-      run: swift build -v
-    - name: Run tests
-      run: swift test -v
+    - name: Checkout código
+      uses: actions/checkout@v4
+
+    - name: Configurar Swift
+      uses: swift-actions/setup-swift@v2
+      with:
+        swift-version: '5.9' # ou a versão que seu projeto está rodando
+        
+    - name: Rodar testes
+      run: swift test --enable-code-coverage
+      
+    - name: Publicar cobertura de código
+      uses: codecov/codecov-action@v3
+      with:
+        files: .build/debug/codecov/*.json
