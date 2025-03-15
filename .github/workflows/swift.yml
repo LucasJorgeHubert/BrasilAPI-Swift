@@ -17,7 +17,7 @@ jobs:
     - name: Configurar Swift
       uses: swift-actions/setup-swift@v2
       with:
-        swift-version: '5.9' # Ensure this version is valid
+        swift-version: '5.8.1'
 
     - name: Rodar testes
       run: swift test --enable-code-coverage
