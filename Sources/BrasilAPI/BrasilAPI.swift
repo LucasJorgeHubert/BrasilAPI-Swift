@@ -15,7 +15,7 @@ public class BrasilAPI {
     
     public init(
         bankingRepository: BankRepositoryProtocol = BankRepositoryImpl(),
-        exchangeRepository: ExchangeRepositoryProtocol = ExchangeRepositoryImpl(),
+        exchangeRepository: ExchangeRepositoryProtocol = DataSource.Exchange.RepositoryImpl(),
         zipCodeRepository: ZipCodeRepositoryProtocol = ZipCodeRepositoryImpl(),
         cnpjRepository: CNPJRepositoryProtocol = CNPJRepositoryImpl(),
         brokerRepository: BrokerRepositoryProtocol = BrokerRepositoryImpl(),

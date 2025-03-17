@@ -1,20 +1,22 @@
 import Foundation
 
-public class ExchangeRepositoryImpl: ExchangeRepositoryProtocol {
-    
-    private let apiDispatcher: APIRequestDispatcherProtocol
-
-    public init(
-        apiDispatcher: APIRequestDispatcherProtocol = DataSource.APIRequestDispatcher()
-    ) {
-        self.apiDispatcher = apiDispatcher
-    }
-    
-    public func listCoins() async throws -> [BrasilAPIExchangeCoinModel] {
-        return try await apiDispatcher.request(apiRouter: ExchangeAPIRouter.getCoins)
-    }
-    
-    public func getQuotation(coin: String, date: String) async throws -> BrasilAPIExchangeQuotationModel {
-        return try await apiDispatcher.request(apiRouter: ExchangeAPIRouter.getQuotation(coin: coin, date: date))
+extension DataSource.Exchange {
+    public class RepositoryImpl: ExchangeRepositoryProtocol {
+        
+        private let apiDispatcher: APIRequestDispatcherProtocol
+        
+        public init(
+            apiDispatcher: APIRequestDispatcherProtocol = DataSource.APIRequestDispatcher()
+        ) {
+            self.apiDispatcher = apiDispatcher
+        }
+        
+        public func listCoins() async throws -> [BrasilAPIExchangeCoinModel] {
+            return try await apiDispatcher.request(apiRouter: DataSource.Exchange.APIRouter.getCoins)
+        }
+        
+        public func getQuotation(coin: String, date: String) async throws -> BrasilAPIExchangeQuotationModel {
+            return try await apiDispatcher.request(apiRouter: DataSource.Exchange.APIRouter.getQuotation(coin: coin, date: date))
+        }
     }
 }

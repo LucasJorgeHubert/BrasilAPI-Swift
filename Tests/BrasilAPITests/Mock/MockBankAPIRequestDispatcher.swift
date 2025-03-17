@@ -17,7 +17,7 @@ class MockBankAPIRequestDispatcher: APIRequestDispatcherProtocol {
         switch apiRouter {
         case is BankAPIRouter:
             return APIResolver.Bank.resolve(for: apiRouter)
-        case is ExchangeAPIRouter:
+        case is DataSource.Exchange.APIRouter:
             return APIResolver.Exchange.resolve(for: apiRouter)
         case is ZipCodeAPIRouter:
             return APIResolver.ZipCode.resolve(for: apiRouter)

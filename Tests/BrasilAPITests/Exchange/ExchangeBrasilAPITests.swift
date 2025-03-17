@@ -2,7 +2,7 @@ import XCTest
 @testable import BrasilAPI
 
 final class ExchangeBrasilAPITests: XCTestCase {
-    let repository = ExchangeRepositoryImpl(apiDispatcher: MockBankAPIRequestDispatcher())
+    let repository = DataSource.Exchange.RepositoryImpl(apiDispatcher: MockBankAPIRequestDispatcher())
     
     override func setUp() {
         super.setUp()
