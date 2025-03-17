@@ -14,13 +14,13 @@ public class BrasilAPI {
     public var isbn: Presenter.ISBN.Service
     
     public init(
-        bankingRepository: BankRepositoryProtocol = BankRepositoryImpl(),
+        bankingRepository: BankRepositoryProtocol = DataSource.Bank.RepositoryImpl(),
         exchangeRepository: ExchangeRepositoryProtocol = DataSource.Exchange.RepositoryImpl(),
-        zipCodeRepository: ZipCodeRepositoryProtocol = ZipCodeRepositoryImpl(),
-        cnpjRepository: CNPJRepositoryProtocol = CNPJRepositoryImpl(),
-        brokerRepository: BrokerRepositoryProtocol = BrokerRepositoryImpl(),
-        cptecRepository: CPTECRepositoryProtocol = CPTECRepositoryImpl(),
-        dddRepository: DDDRepositoryProtocol = DDDRepositoryImpl(),
+        zipCodeRepository: ZipCodeRepositoryProtocol = DataSource.ZipCode.RepositoryImpl(),
+        cnpjRepository: CNPJRepositoryProtocol = DataSource.CNPJ.RepositoryImpl(),
+        brokerRepository: BrokerRepositoryProtocol = DataSource.Broker.RepositoryImpl(),
+        cptecRepository: CPTECRepositoryProtocol = DataSource.CPTEC.RepositoryImpl(),
+        dddRepository: DDDRepositoryProtocol = DataSource.DDD.RepositoryImpl(),
         holidaysRepository: HolidaysRepositoryProtocol = DataSource.Holidays.RepositoryImpl(),
         fipeRepository: FIPERepositoryProtocol = DataSource.FIPE.RepositoryImpl(),
         ibgeRepository: IBGERepositoryProtocol = DataSource.IBGE.RepositoryImpl(),

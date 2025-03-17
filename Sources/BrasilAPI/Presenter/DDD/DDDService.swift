@@ -3,7 +3,7 @@ import Foundation
 public class DDDService {
     private let getCitiesByDDDUseCase: GetCitiesByDDDUseCase
     
-    public init(repository: DDDRepositoryProtocol = DDDRepositoryImpl()) {
+    public init(repository: DDDRepositoryProtocol = DataSource.DDD.RepositoryImpl()) {
         self.getCitiesByDDDUseCase = GetCitiesByDDDUseCase(repository: repository)
     }
     

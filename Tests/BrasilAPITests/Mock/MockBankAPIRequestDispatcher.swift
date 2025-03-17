@@ -15,19 +15,19 @@ class MockBankAPIRequestDispatcher: APIRequestDispatcherProtocol {
     
     private func resolveMockFileName(for apiRouter: APIRouterProtocol) -> String {
         switch apiRouter {
-        case is BankAPIRouter:
+        case is DataSource.Bank.APIRouter:
             return APIResolver.Bank.resolve(for: apiRouter)
         case is DataSource.Exchange.APIRouter:
             return APIResolver.Exchange.resolve(for: apiRouter)
-        case is ZipCodeAPIRouter:
+        case is DataSource.ZipCode.APIRouter:
             return APIResolver.ZipCode.resolve(for: apiRouter)
-        case is CNPJAPIRouter:
+        case is DataSource.CNPJ.APIRouter:
             return APIResolver.CNPJ.resolve(for: apiRouter)
-        case is BrokerAPIRouter:
+        case is DataSource.Broker.APIRouter:
             return APIResolver.Broker.resolve(for: apiRouter)
-        case is CPTECAPIRouter:
+        case is DataSource.CPTEC.APIRouter:
             return APIResolver.CPTEC.resolve(for: apiRouter)
-        case is DDDAPIRouter:
+        case is DataSource.DDD.APIRouter:
             return APIResolver.DDD.resolve(for: apiRouter)
         case is DataSource.Holidays.APIRouter:
             return APIResolver.Holidays.resolve(for: apiRouter)

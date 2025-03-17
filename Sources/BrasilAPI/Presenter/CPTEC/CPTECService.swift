@@ -8,7 +8,7 @@ public class CPTECService {
     let getListCPTECLocalsUseCase: GetListCPTECLocalsUseCase
     let getListCPTECCapitalsUseCase: GetListCPTECCapitalsUseCase
     
-    public init(repository: CPTECRepositoryProtocol = CPTECRepositoryImpl()) {
+    public init(repository: CPTECRepositoryProtocol = DataSource.CPTEC.RepositoryImpl()) {
         self.getCPTECCapitalUseCase = GetCPTECCapitalUseCase(repository: repository)
         self.getCPTECLocalForecastUseCase = GetCPTECLocalForecastUseCase(repository: repository)
         self.getCPTECLocalUseCase = GetCPTECLocalUseCase(repository: repository)

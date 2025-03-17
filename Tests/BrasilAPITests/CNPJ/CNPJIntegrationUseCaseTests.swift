@@ -5,7 +5,7 @@ final class CNPJIntegrationUseCaseTests: XCTestCase {
     var getCNPJUseCase: GetCNPJUseCase!
 
     override func setUp() {
-        let repository = CNPJRepositoryImpl()
+        let repository = DataSource.CNPJ.RepositoryImpl()
         DataSource.APIConfig.environment = .production
         getCNPJUseCase = GetCNPJUseCase(repository: repository)
     }

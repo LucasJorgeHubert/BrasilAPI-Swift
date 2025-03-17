@@ -4,7 +4,7 @@ public class BrokerService {
     private let getBrokersUseCase: GetBrokersUseCase
     private let getBrokerByCNPJUseCase: GetBrokerByCNPJUseCase
     
-    public init(repository: BrokerRepositoryProtocol = BrokerRepositoryImpl()) {
+    public init(repository: BrokerRepositoryProtocol = DataSource.Broker.RepositoryImpl()) {
         self.getBrokersUseCase = GetBrokersUseCase(repository: repository)
         self.getBrokerByCNPJUseCase = GetBrokerByCNPJUseCase(repository: repository)
     }

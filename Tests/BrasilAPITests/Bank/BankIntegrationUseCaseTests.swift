@@ -6,7 +6,7 @@ final class BankIntegrationUseCaseTests: XCTestCase {
     var getBankByIdUseCase: GetBankByIdUseCase!
 
     override func setUp() {
-        let repository = BankRepositoryImpl()
+        let repository = DataSource.Bank.RepositoryImpl()
         DataSource.APIConfig.environment = .production
         listBanksUseCase = GetBankListUseCase(repository: repository)
         getBankByIdUseCase = GetBankByIdUseCase(repository: repository)

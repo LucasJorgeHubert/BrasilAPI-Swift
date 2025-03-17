@@ -2,7 +2,7 @@ import XCTest
 @testable import BrasilAPI
 
 final class ZipCodeBrasilAPITests: XCTestCase {
-    let repository = ZipCodeRepositoryImpl(apiDispatcher: MockBankAPIRequestDispatcher())
+    let repository = DataSource.ZipCode.RepositoryImpl(apiDispatcher: MockBankAPIRequestDispatcher())
     
     override func setUp() {
         super.setUp()

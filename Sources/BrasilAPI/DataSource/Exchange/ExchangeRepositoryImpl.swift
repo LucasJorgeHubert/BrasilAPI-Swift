@@ -1,7 +1,7 @@
 import Foundation
 
 extension DataSource.Exchange {
-    public class RepositoryImpl: ExchangeRepositoryProtocol {
+    public struct RepositoryImpl: ExchangeRepositoryProtocol {
         
         private let apiDispatcher: APIRequestDispatcherProtocol
         

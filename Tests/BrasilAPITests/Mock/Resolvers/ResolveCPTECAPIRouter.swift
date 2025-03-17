@@ -3,7 +3,7 @@ import BrasilAPI
 
 extension APIResolver.CPTEC {
     static func resolve(for apiRouter: APIRouterProtocol) -> String {
-        guard let router = apiRouter as? CPTECAPIRouter else {
+        guard let router = apiRouter as? DataSource.CPTEC.APIRouter else {
             return "default_mock"
         }
         
