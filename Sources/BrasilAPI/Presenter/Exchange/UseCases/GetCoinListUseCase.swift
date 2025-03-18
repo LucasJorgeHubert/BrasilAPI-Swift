@@ -7,7 +7,7 @@ class GetCoinListUseCase {
         self.repository = repository
     }
     
-    func execute() async throws -> [BrasilAPIExchangeCoinModel] {
+    func execute() async throws -> [Domain.Exchange.Models.Coin] {
         return try await repository.listCoins()
     }
 }

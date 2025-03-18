@@ -114,11 +114,11 @@ Model BankingService.BrasilAPIBankModel
 Retorna informações de todas as moedas disponíveis para conversão:
 
 ```swift
-var coins: [BrasilAPIExchangeCoinModel] = try await BrasilAPI().exchange.listCoins()
+var coins: [ExchangeService.BrasilAPIExchangeCoinModel] = try await BrasilAPI().exchange.listCoins()
 ```
 <details>
 <summary>
-Model BrasilAPIExchangeCoinModel
+Model ExchangeService.BrasilAPIExchangeCoinModel
 </summary>
 
 ```swift
@@ -133,24 +133,24 @@ Model BrasilAPIExchangeCoinModel
 Busca pelo câmbio do Real com outra moeda, em uma data específica:
 
 ```swift
-var quote: BrasilAPIExchangeQuotationModel = try await BrasilAPI().exchange.getQuotation(coin: String, date: String)
+var quote: ExchangeService.BrasilAPIExchangeQuotationModel = try await BrasilAPI().exchange.getQuotation(coin: String, date: String)
 /// coin: "USD"
 /// date: YYYY-MM-DD
 ```
 <details>
 <summary>
-Model BrasilAPIExchangeQuotationModel
+Model ExchangeService.BrasilAPIExchangeQuotationModel
 </summary>
 
 ```swift
 
-/// BrasilAPIExchangeQuotationModel
+/// ExchangeService.BrasilAPIExchangeQuotationModel
 	cotacoes: [BrasilAPIExchangeQuotationCoinModel]
 	moeda: String
 	data: String
 
 
-/// BrasilAPIExchangeQuotationCoinModel
+/// ExchangeService.BrasilAPIExchangeQuotationCoinModel
 	paridadeCompra: Double
 	paridadeVenda: Double
 	cotacaoCompra: Double
@@ -840,7 +840,7 @@ var bank: BankingService.BrasilAPIBankModel = try await BrasilAPI().banking.getB
 #### Get Currencies [`cambio/v1/moedas`](https://brasilapi.com.br/docs#tag/CAMBIO/paths/~1cambio~1v1~1moedas/get)
 Returns information about all available currencies for conversion:
 ```swift
-var coins: [BrasilAPIExchangeCoinModel] = try await BrasilAPI().exchange.listCoins()
+var coins: [ExchangeService.BrasilAPIExchangeCoinModel] = try await BrasilAPI().exchange.listCoins()
 ```
 ---
 #### Get Exchange Rate [`cambio/v1/cotacao/{moeda}/{data}`](https://brasilapi.com.br/docs#tag/CAMBIO/paths/~1cambio~1v1~1cotacao~1%7Bmoeda%7D~1%7Bdata%7D/get)
