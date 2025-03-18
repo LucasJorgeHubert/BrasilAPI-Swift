@@ -11,11 +11,11 @@ extension DataSource.Bank {
             self.apiDispatcher = apiDispatcher
         }
         
-        public func listBanks() async throws -> [BrasilAPIBankModel] {
+        public func listBanks() async throws -> [Domain.Bank.Models.BankModel] {
             return try await apiDispatcher.request(apiRouter: DataSource.Bank.APIRouter.getBanks)
         }
         
-        public func getBankByCode(code: String) async throws -> BrasilAPIBankModel {
+        public func getBankByCode(code: String) async throws -> Domain.Bank.Models.BankModel {
             return try await apiDispatcher.request(apiRouter: DataSource.Bank.APIRouter.getBanksByCode(code: code))
         }
     }

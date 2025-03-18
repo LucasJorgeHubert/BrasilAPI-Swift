@@ -3,6 +3,8 @@ import Foundation
 public class BankingService {
     private let bankListUseCase: GetBankListUseCase
     private let bankByIdUseCase: GetBankByIdUseCase
+    
+    public typealias BrasilAPIBankModel = Domain.Bank.Models.BankModel
 
     public init(repository: BankRepositoryProtocol = DataSource.Bank.RepositoryImpl()) {
         self.bankListUseCase = GetBankListUseCase(repository: repository)
