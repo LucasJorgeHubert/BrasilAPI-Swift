@@ -7,7 +7,7 @@ public class GetNationalHolidaysUseCase {
         self.repository = repository
     }
     
-    public func execute(year: Int) async throws -> [BrasilAPIHolidaysModel] {
+    public func execute(year: Int) async throws -> [Domain.Holidays.Models.Holiday] {
         return try await repository.getHolidays(year: year)
     }
 }

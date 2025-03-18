@@ -550,12 +550,12 @@ Model DDDService.BrasilAPIDDDCitiesModel
 Calcula os feriados móveis baseados na Páscoa e adiciona os feriados fixos
 
 ```swift
-var holidays: [BrasilAPIHolidaysModel] = try await BrasilAPI().holidays.getNationalHolidays(year: 2025)
+var holidays: [HolidaysService.BrasilAPIHolidaysModel] = try await BrasilAPI().holidays.getNationalHolidays(year: 2025)
 ```
 
 <details>
 <summary>
-Model BrasilAPIHolidaysModel
+Model HolidaysService.BrasilAPIHolidaysModel
 </summary>
 
 ```swift
@@ -1074,12 +1074,12 @@ Model DDDService.BrasilAPIDDDCitiesModel
 Calculates the movable holidays based on Easter and adds the fixed holidays.
 
 ```swift
-var holidays: [BrasilAPIHolidaysModel] = try await BrasilAPI().holidays.getNationalHolidays(year: 2025)
+var holidays: [HolidaysService.BrasilAPIHolidaysModel] = try await BrasilAPI().holidays.getNationalHolidays(year: 2025)
 ```
 
 <details>
 <summary>
-Model BrasilAPIHolidaysModel
+Model HolidaysService.BrasilAPIHolidaysModel
 </summary>
 
 ```swift

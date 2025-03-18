@@ -1,7 +1,9 @@
 import Foundation
 
-public struct BrasilAPIHolidaysModel: Codable {
-    let date: String
-    let name: String
-    let type: String
+extension Domain.Holidays.Models {
+    public struct Holiday: Codable {
+        let date: String
+        let name: String
+        let type: String
+    }
 }
