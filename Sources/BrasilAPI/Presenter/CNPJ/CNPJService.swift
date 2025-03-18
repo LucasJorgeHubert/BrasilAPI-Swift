@@ -3,7 +3,7 @@ import Foundation
 public class CNPJService {
     private let getCNPJUseCase: GetCNPJUseCase
     
-    public init(repository: CNPJRepositoryProtocol = CNPJRepositoryImpl()) {
+    public init(repository: CNPJRepositoryProtocol = DataSource.CNPJ.RepositoryImpl()) {
         self.getCNPJUseCase = GetCNPJUseCase(repository: repository)
     }
     

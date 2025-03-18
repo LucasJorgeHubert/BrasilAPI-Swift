@@ -8,8 +8,8 @@ final class FIPEIntegrationUseCaseTests: XCTestCase {
     var listVehiclesUseCase: GetListVehicleBrandByTypeUseCase!
 
     override func setUp() {
-        let repository = FIPERepositoryImpl()
-        APIConfig.environment = .production
+        let repository = DataSource.FIPE.RepositoryImpl()
+        DataSource.APIConfig.environment = .production
         getBrandByVehicleTypeUseCase = GetListVehiclesByBrandAndTypeUseCase(repository: repository)
         getVehiclePriceUseCase = GetVeihclePriceUseCase(repository: repository)
         getReferenceTablesUseCase = GetFIPEReferenceTableUseCase(repository: repository)

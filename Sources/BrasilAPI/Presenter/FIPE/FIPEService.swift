@@ -6,7 +6,7 @@ public class FIPEService {
     private let getReferenceTablesUseCase: GetFIPEReferenceTableUseCase
     private let listVehiclesUseCase: GetListVehicleBrandByTypeUseCase
     
-    public init(repository: FIPERepositoryProtocol = FIPERepositoryImpl()) {
+    public init(repository: FIPERepositoryProtocol = DataSource.FIPE.RepositoryImpl()) {
         self.getBrandByVehicleTypeUseCase = GetListVehiclesByBrandAndTypeUseCase(repository: repository)
         self.getVehiclePriceUseCase = GetVeihclePriceUseCase(repository: repository)
         self.getReferenceTablesUseCase = GetFIPEReferenceTableUseCase(repository: repository)

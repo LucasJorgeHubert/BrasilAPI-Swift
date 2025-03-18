@@ -10,20 +10,20 @@ public class BrasilAPI {
     public var ddd: DDDService
     public var holidays: HolidaysService
     public var fipe: FIPEService
-    public var ibge: IBGEService
+    public var ibge: Presenter.IBGE.IBGEService
     public var isbn: Presenter.ISBN.Service
     
     public init(
-        bankingRepository: BankRepositoryProtocol = BankRepositoryImpl(),
-        exchangeRepository: ExchangeRepositoryProtocol = ExchangeRepositoryImpl(),
-        zipCodeRepository: ZipCodeRepositoryProtocol = ZipCodeRepositoryImpl(),
-        cnpjRepository: CNPJRepositoryProtocol = CNPJRepositoryImpl(),
-        brokerRepository: BrokerRepositoryProtocol = BrokerRepositoryImpl(),
-        cptecRepository: CPTECRepositoryProtocol = CPTECRepositoryImpl(),
-        dddRepository: DDDRepositoryProtocol = DDDRepositoryImpl(),
-        holidaysRepository: HolidaysRepositoryProtocol = HolidaysRepositoryImpl(),
-        fipeRepository: FIPERepositoryProtocol = FIPERepositoryImpl(),
-        ibgeRepository: IBGERepositoryProtocol = IBGERepositoryImpl(),
+        bankingRepository: BankRepositoryProtocol = DataSource.Bank.RepositoryImpl(),
+        exchangeRepository: ExchangeRepositoryProtocol = DataSource.Exchange.RepositoryImpl(),
+        zipCodeRepository: ZipCodeRepositoryProtocol = DataSource.ZipCode.RepositoryImpl(),
+        cnpjRepository: CNPJRepositoryProtocol = DataSource.CNPJ.RepositoryImpl(),
+        brokerRepository: BrokerRepositoryProtocol = DataSource.Broker.RepositoryImpl(),
+        cptecRepository: CPTECRepositoryProtocol = DataSource.CPTEC.RepositoryImpl(),
+        dddRepository: DDDRepositoryProtocol = DataSource.DDD.RepositoryImpl(),
+        holidaysRepository: HolidaysRepositoryProtocol = DataSource.Holidays.RepositoryImpl(),
+        fipeRepository: FIPERepositoryProtocol = DataSource.FIPE.RepositoryImpl(),
+        ibgeRepository: IBGERepositoryProtocol = DataSource.IBGE.RepositoryImpl(),
         isbnRepository: ISBNRepositoryProtocol = DataSource.ISBN.RepositoryImpl()
     ) {
         self.banking = BankingService(repository: bankingRepository)
@@ -35,7 +35,7 @@ public class BrasilAPI {
         self.ddd = DDDService(repository: dddRepository)
         self.holidays = HolidaysService(repository: holidaysRepository)
         self.fipe = FIPEService(repository: fipeRepository)
-        self.ibge = IBGEService(repository: ibgeRepository)
+        self.ibge = Presenter.IBGE.IBGEService(repository: ibgeRepository)
         self.isbn = Presenter.ISBN.Service(repository: isbnRepository)
     }
 }

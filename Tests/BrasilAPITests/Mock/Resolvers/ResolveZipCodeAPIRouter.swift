@@ -3,7 +3,7 @@ import BrasilAPI
 
 extension APIResolver.ZipCode {
     static func resolve(for apiRouter: APIRouterProtocol) -> String {
-        guard let router = apiRouter as? ZipCodeAPIRouter else {
+        guard let router = apiRouter as? DataSource.ZipCode.APIRouter else {
             return "default_mock"
         }
         

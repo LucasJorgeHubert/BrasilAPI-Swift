@@ -6,8 +6,8 @@ final class BrokerIntegrationUseCaseTests: XCTestCase {
     var getBrokerByCNPJUseCase: GetBrokerByCNPJUseCase!
 
     override func setUp() {
-        let repository = BrokerRepositoryImpl()
-        APIConfig.environment = .production
+        let repository = DataSource.Broker.RepositoryImpl()
+        DataSource.APIConfig.environment = .production
         listBrokersUseCase = GetBrokersUseCase(repository: repository)
         getBrokerByCNPJUseCase = GetBrokerByCNPJUseCase(repository: repository)
     }

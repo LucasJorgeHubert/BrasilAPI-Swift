@@ -3,7 +3,7 @@ import Foundation
 class GetListCPTECCapitalsUseCase {
     private let repository: CPTECRepositoryProtocol
     
-    init(repository: CPTECRepositoryProtocol = CPTECRepositoryImpl()) {
+    init(repository: CPTECRepositoryProtocol = DataSource.CPTEC.RepositoryImpl()) {
         self.repository = repository
     }
     

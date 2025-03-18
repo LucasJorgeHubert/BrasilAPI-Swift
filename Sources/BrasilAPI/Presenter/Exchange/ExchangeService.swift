@@ -4,7 +4,7 @@ public class ExchangeService {
     private let coinListUseCase: GetCoinListUseCase
     private let quotationUseCase: GetQuotationUseCase
     
-    public init(repository: ExchangeRepositoryProtocol = ExchangeRepositoryImpl()) {
+    public init(repository: ExchangeRepositoryProtocol = DataSource.Exchange.RepositoryImpl()) {
         self.coinListUseCase = GetCoinListUseCase(repository: repository)
         self.quotationUseCase = GetQuotationUseCase(repository: repository)
     }

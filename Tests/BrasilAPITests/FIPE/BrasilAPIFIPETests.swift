@@ -2,7 +2,7 @@ import XCTest
 @testable import BrasilAPI
 
 final class FIPEBrasilAPITests: XCTestCase {
-    let repository = FIPERepositoryImpl(apiDispatcher: MockBankAPIRequestDispatcher())
+    let repository = DataSource.FIPE.RepositoryImpl(apiDispatcher: MockBankAPIRequestDispatcher())
     
     override func setUp() {
         super.setUp()

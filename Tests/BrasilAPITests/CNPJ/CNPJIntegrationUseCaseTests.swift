@@ -5,8 +5,8 @@ final class CNPJIntegrationUseCaseTests: XCTestCase {
     var getCNPJUseCase: GetCNPJUseCase!
 
     override func setUp() {
-        let repository = CNPJRepositoryImpl()
-        APIConfig.environment = .production
+        let repository = DataSource.CNPJ.RepositoryImpl()
+        DataSource.APIConfig.environment = .production
         getCNPJUseCase = GetCNPJUseCase(repository: repository)
     }
 
@@ -19,7 +19,7 @@ final class CNPJIntegrationUseCaseTests: XCTestCase {
         do {
             _ = try await getCNPJUseCase.execute(cnpj: "19131243000198")
         } catch {
-            XCTAssertTrue(error is BrasilAPIRequestError)
+            XCTAssertTrue(error is DataSource.BrasilAPIRequestError)
         }
     }
 }

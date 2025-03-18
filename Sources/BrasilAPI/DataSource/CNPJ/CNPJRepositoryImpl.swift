@@ -1,16 +1,19 @@
 import Foundation
 
-public class CNPJRepositoryImpl: CNPJRepositoryProtocol {
+extension DataSource.CNPJ {
     
-    private let apiDispatcher: APIRequestDispatcherProtocol
-    
-    public init(
-        apiDispatcher: APIRequestDispatcherProtocol = APIRequestDispatcher()
-    ) {
-        self.apiDispatcher = apiDispatcher
-    }
-    
-    public func searchCNPJ(cnpj: String) async throws -> BrasilAPICNPJModel {
-        return try await apiDispatcher.request(apiRouter: CNPJAPIRouter.getCNPJ(cnpj: cnpj))
+    public struct RepositoryImpl: CNPJRepositoryProtocol {
+        
+        private let apiDispatcher: APIRequestDispatcherProtocol
+        
+        public init(
+            apiDispatcher: APIRequestDispatcherProtocol = DataSource.APIRequestDispatcher()
+        ) {
+            self.apiDispatcher = apiDispatcher
+        }
+        
+        public func searchCNPJ(cnpj: String) async throws -> BrasilAPICNPJModel {
+            return try await apiDispatcher.request(apiRouter: DataSource.CNPJ.APIRouter.getCNPJ(cnpj: cnpj))
+        }
     }
 }

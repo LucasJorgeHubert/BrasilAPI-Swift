@@ -3,7 +3,7 @@ import BrasilAPI
 
 extension APIResolver.Broker {
     static func resolve(for apiRouter: APIRouterProtocol) -> String {
-        guard let router = apiRouter as? BrokerAPIRouter else {
+        guard let router = apiRouter as? DataSource.Broker.APIRouter else {
             return "default_mock"
         }
         

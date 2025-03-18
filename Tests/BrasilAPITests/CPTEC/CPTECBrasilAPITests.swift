@@ -2,7 +2,7 @@ import XCTest
 @testable import BrasilAPI
 
 final class CPTECBrasilAPITests: XCTestCase {
-    let repository = CPTECRepositoryImpl(apiDispatcher: MockBankAPIRequestDispatcher())
+    let repository = DataSource.CPTEC.RepositoryImpl(apiDispatcher: MockBankAPIRequestDispatcher())
     
     override func setUp() {
         super.setUp()

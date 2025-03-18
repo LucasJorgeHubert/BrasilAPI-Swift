@@ -1,17 +1,15 @@
 import Foundation
 
 public enum Domain {
-    enum Bank { }
-    enum Broker { }
-    enum CNPJ { }
-    enum CPTEC { }
-    enum DDD { }
-    enum Exchange { }
-    enum FIPE { }
-    enum Holidays { }
-    enum ZipCode { }
-    enum IBGE { }
-    public enum ISBN {
-        public enum Models { }
-    }
+    public enum Bank { public enum Models { } }
+    public enum Broker { public enum Models { } }
+    public enum CNPJ { public enum Models { } }
+    public enum CPTEC { public enum Models { } }
+    public enum DDD { public enum Models { } }
+    public enum Exchange { public enum Models { } }
+    public enum FIPE { public enum Models { } }
+    public enum Holidays { public enum Models { } }
+    public enum ZipCode { public enum Models { } }
+    public enum IBGE { public enum Models { } }
+    public enum ISBN { public enum Models { } }
 }

@@ -5,8 +5,8 @@ class HolidaysIntegrationUseCaseTests: XCTestCase {
     var getNationalHolidaysUseCase: GetNationalHolidaysUseCase!
     
     override func setUp() {
-        let repository = HolidaysRepositoryImpl()
-        APIConfig.environment = .production
+        let repository = DataSource.Holidays.RepositoryImpl()
+        DataSource.APIConfig.environment = .production
         getNationalHolidaysUseCase = GetNationalHolidaysUseCase(repository: repository)
     }
     

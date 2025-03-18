@@ -6,8 +6,8 @@ final class ZipCodeIntegrationUseCaseTests: XCTestCase {
     var searchZipCodeUseCaseV2: SearchZipCodeUseCaseV2!
 
     override func setUp() {
-        let repository = ZipCodeRepositoryImpl()
-        APIConfig.environment = .production
+        let repository = DataSource.ZipCode.RepositoryImpl()
+        DataSource.APIConfig.environment = .production
         searchZipCodeUseCase = SearchZipCodeUseCaseV1(repository: repository)
         searchZipCodeUseCaseV2 = SearchZipCodeUseCaseV2(repository: repository)
     }

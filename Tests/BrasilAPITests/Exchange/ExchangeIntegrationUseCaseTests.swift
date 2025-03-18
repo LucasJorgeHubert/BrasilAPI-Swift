@@ -6,8 +6,8 @@ final class ExchangeIntegrationUseCaseTests: XCTestCase {
     var getQuotationUseCase: GetQuotationUseCase!
 
     override func setUp() {
-        let repository = ExchangeRepositoryImpl()
-        APIConfig.environment = .production
+        let repository = DataSource.Exchange.RepositoryImpl()
+        DataSource.APIConfig.environment = .production
         getCoinListUseCase = GetCoinListUseCase(repository: repository)
         getQuotationUseCase = GetQuotationUseCase(repository: repository)
     }
