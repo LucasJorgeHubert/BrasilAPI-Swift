@@ -7,7 +7,7 @@ class GetVeihclePriceUseCase {
         self.repository = repository
     }
     
-    func execute(codeFIPE: String) async throws -> [BrasilAPIVehiclesPriceModel] {
+    func execute(codeFIPE: String) async throws -> [Domain.FIPE.Models.VehiclePrice] {
         return try await repository.getVehiclePrice(codeFIPE: codeFIPE)
     }
 }

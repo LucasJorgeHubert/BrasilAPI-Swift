@@ -10,7 +10,7 @@ final class ExchangeBrasilAPITests: XCTestCase {
 
     func test_getExchangeCoins() async throws {
         let brasilAPI = BrasilAPI(exchangeRepository: repository)
-        let coins = try await brasilAPI.exchange.listCoins()
+        let coins: [ExchangeService.BrasilAPIExchangeCoinModel] = try await brasilAPI.exchange.listCoins()
         
         XCTAssertEqual(coins.first?.symbol, "AUD")
         XCTAssertEqual(coins.first?.name, "Dólar australiano")
@@ -21,7 +21,10 @@ final class ExchangeBrasilAPITests: XCTestCase {
     
     func test_getExchangeQuotation() async throws {
         let brasilAPI = BrasilAPI(exchangeRepository: repository)
-        let quote = try await brasilAPI.exchange.getQuotation(coin: "USD", date: "2025-02-28")
+        let quote: ExchangeService.BrasilAPIExchangeQuotationModel = try await brasilAPI.exchange.getQuotation(
+            coin: "USD",
+            date: "2025-02-28"
+        )
         
         XCTAssertEqual(quote.data, "2025-02-28")
         XCTAssertFalse(quote.cotacoes.isEmpty)

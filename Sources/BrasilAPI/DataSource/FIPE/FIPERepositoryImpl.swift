@@ -9,19 +9,19 @@ extension DataSource.FIPE {
             self.apiDispatcher = apiDispatcher
         }
         
-        public func getBrandByVehicleType(carType: String) async throws -> [BrasilAPIVehiclesTypeModel] {
+        public func getBrandByVehicleType(carType: String) async throws -> [Domain.FIPE.Models.VehicleType] {
             return try await apiDispatcher.request(apiRouter: DataSource.FIPE.APIRouter.getBrandByVehicleType(carType: carType))
         }
         
-        public func getVehiclePrice(codeFIPE: String) async throws -> [BrasilAPIVehiclesPriceModel] {
+        public func getVehiclePrice(codeFIPE: String) async throws -> [Domain.FIPE.Models.VehiclePrice] {
             return try await apiDispatcher.request(apiRouter: DataSource.FIPE.APIRouter.getVehiclePrice(codeFIPE: codeFIPE))
         }
         
-        public func getReferenceTables() async throws -> [BrasilAPIFIPETableModel] {
+        public func getReferenceTables() async throws -> [Domain.FIPE.Models.Table] {
             return try await apiDispatcher.request(apiRouter: DataSource.FIPE.APIRouter.getReferenceTables)
         }
         
-        public func listVehicles(type: String, brandCode: String) async throws -> [BrasilAPIVehiclesModel] {
+        public func listVehicles(type: String, brandCode: String) async throws -> [Domain.FIPE.Models.Vehicle] {
             return try await apiDispatcher.request(apiRouter: DataSource.FIPE.APIRouter.listVehicles(type: type, brandCode: brandCode))
         }
     }

@@ -7,7 +7,7 @@ class GetFIPEReferenceTableUseCase {
         self.repository = repository
     }
     
-    func execute() async throws -> [BrasilAPIFIPETableModel] {
+    func execute() async throws -> [Domain.FIPE.Models.Table] {
         return try await repository.getReferenceTables()
     }
 }

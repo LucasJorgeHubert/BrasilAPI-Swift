@@ -7,7 +7,7 @@ public class GetListVehicleBrandByTypeUseCase {
         self.repository = repository
     }
     
-    func execute(carType: VehicleTypeEnum) async throws -> [BrasilAPIVehiclesTypeModel] {
+    func execute(carType: Domain.FIPE.Enums.VehicleType) async throws -> [Domain.FIPE.Models.VehicleType] {
         return try await repository.getBrandByVehicleType(carType: carType.rawValue)
     }
 }
