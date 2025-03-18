@@ -7,7 +7,7 @@ class GetCNPJUseCase {
         self.repository = repository
     }
     
-    func execute(cnpj: String) async throws -> BrasilAPICNPJModel {
+    func execute(cnpj: String) async throws -> Domain.CNPJ.Models.CNPJ {
         return try await repository.searchCNPJ(cnpj: cnpj)
     }
 }

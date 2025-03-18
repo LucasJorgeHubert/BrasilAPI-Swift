@@ -7,7 +7,7 @@ class GetBrokerByCNPJUseCase {
         self.repository = repository
     }
 
-    func execute(cnpj: String) async throws -> BrasilAPIBrokerModel {
+    func execute(cnpj: String) async throws -> Domain.Broker.Models.Broker {
         return try await repository.getBrokerByCnpj(cnpj: cnpj)
     }
 }

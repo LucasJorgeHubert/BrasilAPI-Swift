@@ -7,7 +7,7 @@ class GetCPTECLocalUseCase {
         self.repository = repository
     }
     
-    func execute(localName: String) async throws -> [BrasilAPICPTECLocalModel] {
+    func execute(localName: String) async throws -> [Domain.CPTEC.Models.Local] {
         return try await repository.getLocal(localName: localName)
     }
 }

@@ -7,7 +7,7 @@ class GetBrokersUseCase {
         self.repository = repository
     }
 
-    func execute() async throws -> [BrasilAPIBrokerModel] {
+    func execute() async throws -> [Domain.Broker.Models.Broker] {
         return try await repository.getBrokers()
     }
 }

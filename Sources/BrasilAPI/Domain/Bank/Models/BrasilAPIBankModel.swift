@@ -1,7 +1,7 @@
 import Foundation
 
 extension Domain.Bank.Models {
-    public struct BankModel: Codable, Hashable, Equatable {
+    public struct Bank: Codable, Hashable, Equatable {
         public let ispb: String
         public let name: String?
         public let code: Int?

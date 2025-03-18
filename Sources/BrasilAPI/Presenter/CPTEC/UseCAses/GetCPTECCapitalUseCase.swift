@@ -7,7 +7,7 @@ class GetCPTECCapitalUseCase {
         self.repository = repository
     }
     
-    func execute(codeICAO: String) async throws -> BrasilAPICPTECConditionModel {
+    func execute(codeICAO: String) async throws -> Domain.CPTEC.Models.Condition {
         return try await repository.getCapitalCondition(codeICAO: codeICAO)
     }
 }

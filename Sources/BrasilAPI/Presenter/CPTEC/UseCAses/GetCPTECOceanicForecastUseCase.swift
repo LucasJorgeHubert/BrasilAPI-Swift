@@ -7,7 +7,7 @@ class GetCPTECOceanicForecastUseCase {
         self.repository = repository
     }
     
-    func execute(cityCode: Int, days: Int) async throws -> BrasilAPICPTECOceanicForecastModel {
+    func execute(cityCode: Int, days: Int) async throws -> Domain.CPTEC.Models.OceanicForecast {
         return try await repository.getOceanicForecast(cityCode: cityCode, days: days)
     }
 }

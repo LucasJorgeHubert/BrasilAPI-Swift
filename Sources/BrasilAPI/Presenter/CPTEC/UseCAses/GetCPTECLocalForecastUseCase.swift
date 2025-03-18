@@ -7,7 +7,7 @@ class GetCPTECLocalForecastUseCase {
         self.repository = repository
     }
     
-    func execute(cityCode: Int, days: Int) async throws -> BrasilAPICPTECForecastModel {
+    func execute(cityCode: Int, days: Int) async throws -> Domain.CPTEC.Models.Forecast {
         return try await repository.getForecast(cityCode: cityCode, days: days)
     }
 }

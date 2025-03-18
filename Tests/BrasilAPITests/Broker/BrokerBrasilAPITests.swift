@@ -10,7 +10,7 @@ final class BrokerBrasilAPITests: XCTestCase {
 
     func test_listBrokers() async throws {
         let brasilAPI = BrasilAPI(brokerRepository: repository)
-        let brokers: [BrasilAPIBrokerModel] = try await brasilAPI.broker.getBrokers()
+        let brokers: [BrokerService.BrasilAPIBrokerModel] = try await brasilAPI.broker.getBrokers()
         
         XCTAssertEqual(brokers.first?.cnpj, "76621457000185")
         XCTAssertTrue(brokers.first?.nomeSocial.contains("4UM DTVM S.A.") ?? false)
@@ -20,7 +20,7 @@ final class BrokerBrasilAPITests: XCTestCase {
     
     func test_getBrokersByCNPJ() async throws {
         let brasilAPI = BrasilAPI(brokerRepository: repository)
-        let broker: BrasilAPIBrokerModel = try await brasilAPI.broker.getBrokerByCnpj(cnpj: "76621457000185")
+        let broker: BrokerService.BrasilAPIBrokerModel = try await brasilAPI.broker.getBrokerByCnpj(cnpj: "76621457000185")
         
         XCTAssertEqual(broker.nomeSocial, "4UM DTVM S.A.")
         XCTAssertEqual(broker.cnpj, "76621457000185")

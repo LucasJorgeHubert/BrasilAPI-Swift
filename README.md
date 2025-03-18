@@ -85,17 +85,17 @@ O SPM foi feito para facilitar a integração com a [BrasilAPI](https://brasilap
 Retorna informações de todos os bancos do Brasil:
 
 ```swift
-var banks: [BrasilAPIBankModel] = try await BrasilAPI().banking.listBanks()
+var banks: [BankingService.BrasilAPIBankModel] = try await BrasilAPI().banking.listBanks()
 ```
 
 #### Buscar banco pelo código [`banks/v1/{code}`](https://brasilapi.com.br/docs#tag/BANKS/paths/~1banks~1v1~1%7Bcode%7D/get)
 Busca as informações de um banco a partir do código do banco:
 ```swift
-var bank: BrasilAPIBankModel = try await BrasilAPI().banking.getBankByCode(code: String)
+var bank: BankingService.BrasilAPIBankModel = try await BrasilAPI().banking.getBankByCode(code: String)
 ```
 <details>
 <summary>
-Model BrasilAPIBankModel
+Model BankingService.BrasilAPIBankModel
 </summary>
 
 ```swift
@@ -224,11 +224,11 @@ Model BrasilAPIZipCodeV2Model
 #### Buscar CNPJ [`cnpj/v1/{cnpj}`](https://brasilapi.com.br/docs#tag/CNPJ/paths/~1cnpj~1v1~1%7Bcnpj%7D/get)
 Busca por CNPJ na API Minha Receita.
 ```swift
-var cnpj: BrasilAPICNPJModel = try await BrasilAPI().cnpj.getCNPJ(cnpj: String) // Apenas números
+var cnpj: CNPJService.BrasilAPICNPJModel = try await BrasilAPI().cnpj.getCNPJ(cnpj: String) // Apenas números
 ```
 <details>
 <summary>
-Model BrasilAPICNPJModel
+Model CNPJService.BrasilAPICNPJModel
 </summary>
 
 ```swift
@@ -318,18 +318,18 @@ Model BrasilAPICNPJModel
 #### Buscar corretoras [`/cvm/corretoras/v1`](https://brasilapi.com.br/docs#tag/Corretoras/paths/~1cvm~1corretoras~1v1/get)
 
 ```swift
-var brokers: [BrasilAPIBrokerModel] = try await BrasilAPI().broker.getBrokers()
+var brokers: [BrokerService.BrasilAPIBrokerModel] = try await BrasilAPI().broker.getBrokers()
 ```
 
 #### Buscar corretora por CNPJ [`/cvm/corretoras/v1/{cnpj}`](https://brasilapi.com.br/docs#tag/Corretoras/paths/~1cvm~1corretoras~1v1~1%7Bcnpj%7D/get)
 
 ```swift
-var broker: BrasilAPIBrokerModel = try await BrasilAPI().broker.getBrokerByCnpj(cnpj: String)
+var broker: BrokerService.BrasilAPIBrokerModel = try await BrasilAPI().broker.getBrokerByCnpj(cnpj: String)
 ```
 
 <details>
 <summary>
-Model BrasilAPIBrokerModel
+Model BrokerService.BrasilAPIBrokerModel
 </summary>
 
 ```swift
@@ -337,7 +337,7 @@ Model BrasilAPIBrokerModel
   type: String
   nomeSocial: String
   nomeComercial: String
-  status: Status
+  status: String
   email: String
   telefone: String
   cep: String
@@ -353,11 +353,6 @@ Model BrasilAPIBrokerModel
   dataInicioSituacao: String
   dataRegistro: String
 
-  /// Status
-  cancelada
-  emFuncionamentoNormal
-  incorporação
-  liquidaçãoExtrajudicial
 ``` 
 </details>
 
@@ -369,12 +364,12 @@ Model BrasilAPIBrokerModel
 Retorna listagem com todas as cidades junto a seus respectivos códigos presentes nos serviços da CPTEC. O Código destas cidades será utilizado para os serviços de meteorologia e a ondas (previsão oceânica) fornecido pelo centro. Leve em consideração que o WebService do CPTEC as vezes é instável, então se não encontrar uma determinada cidade na listagem completa, tente buscando por parte de seu nome no endpoint de busca.
 
 ```swift
-var cities: [BrasilAPICPTECLocalModel] = try await BrasilAPI().cptec.getListCPTECLocals()
+var cities: [CPTECService.BrasilAPICPTECLocalModel] = try await BrasilAPI().cptec.getListCPTECLocals()
 ```
 
 <details>
 <summary>
-Model BrasilAPICPTECLocalModel
+Model CPTECService.BrasilAPICPTECLocalModel
 </summary>
 
 ```swift
@@ -389,12 +384,12 @@ Model BrasilAPICPTECLocalModel
 Retorna listagem com todas as cidades correspondentes ao termo pesquisado junto a seus respectivos códigos presentes nos serviços da CPTEC. O Código destas cidades será utilizado para os serviços de meteorologia e a ondas (previsão oceânica) fornecido pelo centro.
 
 ```swift
-var cities: [BrasilAPICPTECLocalModel] = try await BrasilAPI().cptec.getCPTECLocal(localName: String)
+var cities: [CPTECService.BrasilAPICPTECLocalModel] = try await BrasilAPI().cptec.getCPTECLocal(localName: String)
 ```
 
 <details>
 <summary>
-Model BrasilAPICPTECLocalModel
+Model CPTECService.BrasilAPICPTECLocalModel
 </summary>
 
 ```swift
@@ -409,12 +404,12 @@ Model BrasilAPICPTECLocalModel
 Retorna condições meteorológicas atuais nas capitais do país, com base nas estações de solo de seu aeroporto.
 
 ```swift
-var condition: [BrasilAPICPTECConditionModel] = try await BrasilAPI().cptec.getListCPTECCapitals()
+var condition: [CPTECService.BrasilAPICPTECConditionModel] = try await BrasilAPI().cptec.getListCPTECCapitals()
 ```
 
 <details>
 <summary>
-Model BrasilAPICPTECConditionModel
+Model CPTECService.BrasilAPICPTECConditionModel
 </summary>
 
 ```swift
@@ -436,12 +431,12 @@ Model BrasilAPICPTECConditionModel
 Retorna condições meteorológicas atuais no aeroporto solicitado. Este endpoint utiliza o código ICAO (4 dígitos) do aeroporto.
 
 ```swift
-var condition: BrasilAPICPTECConditionModel = try await BrasilAPI().cptec.getCPTECCapital(codeICAO: String)
+var condition: CPTECService.BrasilAPICPTECConditionModel = try await BrasilAPI().cptec.getCPTECCapital(codeICAO: String)
 ```
 
 <details>
 <summary>
-Model BrasilAPICPTECConditionModel
+Model CPTECService.BrasilAPICPTECConditionModel
 </summary>
 
 ```swift
@@ -463,23 +458,23 @@ Model BrasilAPICPTECConditionModel
 Retorna a previsão meteorológica para a cidade informada para um período de 1 até 6 dias. Devido a inconsistências encontradas nos retornos da CPTEC nossa API só consegue retornar com precisão o período máximo de 6 dias.
 
 ```swift
-var forecast: BrasilAPICPTECForecastModel = try await BrasilAPI().cptec.getCPTECLocalForecast(cityCode: Int, days: ForecastAvailableDays)
+var forecast: CPTECService.BrasilAPICPTECForecastModel = try await BrasilAPI().cptec.getCPTECLocalForecast(cityCode: Int, days: ForecastAvailableDays)
 
 // ForecastAvailableDays = Enum de 1 a 6 diuas
 ```
 
 <details>
 <summary>
-Model BrasilAPICPTECForecastModel
+Model CPTECService.BrasilAPICPTECForecastModel
 </summary>
 
 ```swift
   city: String
   state: String
   updated: String
-  weather: [BrasilAPICPTECWeatherModel]
+  weather: [CPTECService.BrasilAPICPTECWeatherModel]
 
-  // BrasilAPICPTECWeatherModel
+  // CPTECService.BrasilAPICPTECWeatherModel
   date: String
   condition: String
   conditionDescription: String
@@ -494,14 +489,14 @@ Model BrasilAPICPTECForecastModel
 Retorna a previsão oceânica para a cidade informada para um período de, até, 6 dias.
 
 ```swift
-var forecast: BrasilAPICPTECOceanicForecastModel = try await BrasilAPI().cptec.getCPTECOceanicForecast(cityCode: Int, days: ForecastAvailableDays)
+var forecast: CPTECService.BrasilAPICPTECOceanicForecastModel = try await BrasilAPI().cptec.getCPTECOceanicForecast(cityCode: Int, days: ForecastAvailableDays)
 
 // ForecastAvailableDays = Enum de 1 a 6 dias
 ```
 
 <details>
 <summary>
-Model BrasilAPICPTECOceanicForecastModel
+Model CPTECService.BrasilAPICPTECOceanicForecastModel
 </summary>
 
 ```swift
@@ -512,9 +507,9 @@ Model BrasilAPICPTECOceanicForecastModel
 
   // BrasilAPICPTECWavesModel
   date: String
-  data: [BrasilAPICPTECWavesDataModel]
+  data: [CPTECService.BrasilAPICPTECWavesDataModel]
 
-  // BrasilAPICPTECWavesDataModel
+  // CPTECService.BrasilAPICPTECWavesDataModel
   windSpeed: Double
   windDirection: String
   windDirectionDescription: String?
@@ -533,12 +528,12 @@ Model BrasilAPICPTECOceanicForecastModel
 Retorna estado e lista de cidades por DDD
 
 ```swift
-var cities: BrasilAPIDDDCitiesModel = try await BrasilAPI().ddd.getCitiesByDDD(ddd: String)
+var cities: DDDService.BrasilAPIDDDCitiesModel = try await BrasilAPI().ddd.getCitiesByDDD(ddd: String)
 ```
 
 <details>
 <summary>
-Model BrasilAPIDDDCitiesModel
+Model DDDService.BrasilAPIDDDCitiesModel
 </summary>
 
 ```swift
@@ -832,13 +827,13 @@ The SPM was created to facilitate integration with [BrasilAPI](https://brasilapi
 #### List Banks [`banks/v1`](https://brasilapi.com.br/docs#tag/BANKS/paths/~1banks~1v1/get)
 Returns information about all banks in Brazil:
 ```swift
-var banks: [BrasilAPIBankModel] = try await BrasilAPI().banking.listBanks()
+var banks: [BankingService.BrasilAPIBankModel] = try await BrasilAPI().banking.listBanks()
 ```
 ---
 #### Get Bank by Code [`banks/v1/{code}`](https://brasilapi.com.br/docs#tag/BANKS/paths/~1banks~1v1~1%7Bcode%7D/get)
 Fetches information about a bank using its code:
 ```swift
-var bank: BrasilAPIBankModel = try await BrasilAPI().banking.getBankByCode(code: String)
+var bank: BankingService.BrasilAPIBankModel = try await BrasilAPI().banking.getBankByCode(code: String)
 ```
 ---
 ### 💱 Exchange
@@ -878,12 +873,12 @@ var cnpj: BrasilAPICNPJModel = try await BrasilAPI().cnpj.getCNPJ(cnpj: String)
 ### 🏦 Brokers
 #### Get Brokers [`/cvm/corretoras/v1`](https://brasilapi.com.br/docs#tag/Corretoras/paths/~1cvm~1corretoras~1v1/get)
 ```swift
-var brokers: [BrasilAPIBrokerModel] = try await BrasilAPI().broker.getBrokers()
+var brokers: [BrokerService.BrasilAPIBrokerModel] = try await BrasilAPI().broker.getBrokers()
 ```
 
 #### Get Broker by CNPJ [`/cvm/corretoras/v1/{cnpj}`](https://brasilapi.com.br/docs#tag/Corretoras/paths/~1cvm~1corretoras~1v1~1%7Bcnpj%7D/get)
 ```swift
-var broker: BrasilAPIBrokerModel = try await BrasilAPI().broker.getBrokerByCnpj(cnpj: String)
+var broker: BrokerService.BrasilAPIBrokerModel = try await BrasilAPI().broker.getBrokerByCnpj(cnpj: String)
 ```
 ---
 ### 🌡️ CPTEC
@@ -893,12 +888,12 @@ var broker: BrasilAPIBrokerModel = try await BrasilAPI().broker.getBrokerByCnpj(
 Returns a list of all cities along with their respective codes available in CPTEC services. These city codes will be used for meteorology and ocean wave (ocean forecast) services provided by the center. Keep in mind that CPTEC's WebService is sometimes unstable, so if you don't find a specific city in the complete list, try searching by part of its name in the search endpoint.
 
 ```swift
-var cities: [BrasilAPICPTECLocalModel] = try await BrasilAPI().cptec.getListCPTECLocals()
+var cities: [CPTECService.BrasilAPICPTECLocalModel] = try await BrasilAPI().cptec.getListCPTECLocals()
 ```
 
 <details>
 <summary>
-Model BrasilAPICPTECLocalModel
+Model CPTECService.BrasilAPICPTECLocalModel
 </summary>
 
 ```swift
@@ -913,12 +908,12 @@ Model BrasilAPICPTECLocalModel
 Returns a list of all cities matching the searched term along with their respective codes available in CPTEC services. These city codes will be used for meteorology and ocean wave (ocean forecast) services provided by the center.
 
 ```swift
-var cities: [BrasilAPICPTECLocalModel] = try await BrasilAPI().cptec.getCPTECLocal(localName: String)
+var cities: [CPTECService.BrasilAPICPTECLocalModel] = try await BrasilAPI().cptec.getCPTECLocal(localName: String)
 ```
 
 <details>
 <summary>
-Model BrasilAPICPTECLocalModel
+Model CPTECService.BrasilAPICPTECLocalModel
 </summary>
 
 ```swift
@@ -933,12 +928,12 @@ Model BrasilAPICPTECLocalModel
 Returns current weather conditions in the country's capitals, based on airport ground stations.
 
 ```swift
-var condition: [BrasilAPICPTECConditionModel] = try await BrasilAPI().cptec.getListCPTECCapitals()
+var condition: [CPTECService.BrasilAPICPTECConditionModel] = try await BrasilAPI().cptec.getListCPTECCapitals()
 ```
 
 <details>
 <summary>
-Model BrasilAPICPTECConditionModel
+Model CPTECService.BrasilAPICPTECConditionModel
 </summary>
 
 ```swift
@@ -960,12 +955,12 @@ Model BrasilAPICPTECConditionModel
 Returns current weather conditions at the requested airport. This endpoint uses the ICAO code (4-digit) of the airport.
 
 ```swift
-var condition: BrasilAPICPTECConditionModel = try await BrasilAPI().cptec.getCPTECCapital(codeICAO: String)
+var condition: CPTECService.BrasilAPICPTECConditionModel = try await BrasilAPI().cptec.getCPTECCapital(codeICAO: String)
 ```
 
 <details>
 <summary>
-Model BrasilAPICPTECConditionModel
+Model CPTECService.BrasilAPICPTECConditionModel
 </summary>
 
 ```swift
@@ -987,23 +982,23 @@ Model BrasilAPICPTECConditionModel
 Returns the weather forecast for the specified city for a period of 1 to 6 days. Due to inconsistencies found in CPTEC's responses, our API can only reliably return a maximum period of 6 days.
 
 ```swift
-var forecast: BrasilAPICPTECForecastModel = try await BrasilAPI().cptec.getCPTECLocalForecast(cityCode: Int, days: ForecastAvailableDays)
+var forecast: CPTECService.BrasilAPICPTECForecastModel = try await BrasilAPI().cptec.getCPTECLocalForecast(cityCode: Int, days: ForecastAvailableDays)
 
 // ForecastAvailableDays = Enum from 1 to 6 days
 ```
 
 <details>
 <summary>
-Model BrasilAPICPTECForecastModel
+Model CPTECService.BrasilAPICPTECForecastModel
 </summary>
 
 ```swift
   city: String
   state: String
   updated: String
-  weather: [BrasilAPICPTECWeatherModel]
+  weather: [CPTECService.BrasilAPICPTECWeatherModel]
 
-  // BrasilAPICPTECWeatherModel
+  // CPTECService.BrasilAPICPTECWeatherModel
   date: String
   condition: String
   conditionDescription: String
@@ -1018,14 +1013,14 @@ Model BrasilAPICPTECForecastModel
 Returns the ocean forecast for the specified city for a period of up to 6 days.
 
 ```swift
-var forecast: BrasilAPICPTECOceanicForecastModel = try await BrasilAPI().cptec.getCPTECOceanicForecast(cityCode: Int, days: ForecastAvailableDays)
+var forecast: CPTECService.BrasilAPICPTECOceanicForecastModel = try await BrasilAPI().cptec.getCPTECOceanicForecast(cityCode: Int, days: ForecastAvailableDays)
 
 // ForecastAvailableDays = Enum from 1 to 6 days
 ```
 
 <details>
 <summary>
-Model BrasilAPICPTECOceanicForecastModel
+Model CPTECService.BrasilAPICPTECOceanicForecastModel
 </summary>
 
 ```swift
@@ -1036,9 +1031,9 @@ Model BrasilAPICPTECOceanicForecastModel
 
   // BrasilAPICPTECWavesModel
   date: String
-  data: [BrasilAPICPTECWavesDataModel]
+  data: [CPTECService.BrasilAPICPTECWavesDataModel]
 
-  // BrasilAPICPTECWavesDataModel
+  // CPTECService.BrasilAPICPTECWavesDataModel
   windSpeed: Double
   windDirection: String
   windDirectionDescription: String?
@@ -1057,12 +1052,12 @@ Model BrasilAPICPTECOceanicForecastModel
 Returns state and list of cities by DDD (area code).
 
 ```swift
-var cities: BrasilAPIDDDCitiesModel = try await BrasilAPI().ddd.getCitiesByDDD(ddd: String)
+var cities: DDDService.BrasilAPIDDDCitiesModel = try await BrasilAPI().ddd.getCitiesByDDD(ddd: String)
 ```
 
 <details>
 <summary>
-Model BrasilAPIDDDCitiesModel
+Model DDDService.BrasilAPIDDDCitiesModel
 </summary>
 
 ```swift

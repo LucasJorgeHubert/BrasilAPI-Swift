@@ -7,7 +7,7 @@ class GetBankListUseCase {
         self.repository = repository
     }
 
-    func execute() async throws -> [Domain.Bank.Models.BankModel] {
+    func execute() async throws -> [Domain.Bank.Models.Bank] {
         return try await repository.listBanks()
     }
 }

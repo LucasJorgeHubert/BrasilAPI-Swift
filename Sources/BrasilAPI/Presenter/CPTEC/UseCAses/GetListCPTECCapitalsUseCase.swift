@@ -7,7 +7,7 @@ class GetListCPTECCapitalsUseCase {
         self.repository = repository
     }
     
-    func execute() async throws -> [BrasilAPICPTECConditionModel] {
+    func execute() async throws -> [Domain.CPTEC.Models.Condition] {
         return try await repository.listCapitalConditions()
     }
 }

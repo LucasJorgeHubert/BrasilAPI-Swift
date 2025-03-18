@@ -7,7 +7,7 @@ class GetCitiesByDDDUseCase {
         self.repository = repository
     }
     
-    func execute(ddd: String) async throws -> BrasilAPIDDDCitiesModel {
+    func execute(ddd: String) async throws -> Domain.DDD.Models.Cities {
         return try await repository.getCitiesByDDD(ddd: ddd)
     }
 }

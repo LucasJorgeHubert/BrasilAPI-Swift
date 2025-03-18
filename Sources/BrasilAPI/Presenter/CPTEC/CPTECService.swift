@@ -8,6 +8,14 @@ public class CPTECService {
     let getListCPTECLocalsUseCase: GetListCPTECLocalsUseCase
     let getListCPTECCapitalsUseCase: GetListCPTECCapitalsUseCase
     
+    public typealias BrasilAPICPTECConditionModel = Domain.CPTEC.Models.Condition
+    public typealias BrasilAPICPTECWeatherModel = Domain.CPTEC.Models.Weather
+    public typealias BrasilAPICPTECForecastModel = Domain.CPTEC.Models.Forecast
+    public typealias BrasilAPICPTECLocalModel = Domain.CPTEC.Models.Local
+    public typealias BrasilAPICPTECWavesDataModel = Domain.CPTEC.Models.WavesData
+    public typealias BrasilAPICPTECWavesModel = Domain.CPTEC.Models.Waves
+    public typealias BrasilAPICPTECOceanicForecastModel = Domain.CPTEC.Models.OceanicForecast
+    
     public init(repository: CPTECRepositoryProtocol = DataSource.CPTEC.RepositoryImpl()) {
         self.getCPTECCapitalUseCase = GetCPTECCapitalUseCase(repository: repository)
         self.getCPTECLocalForecastUseCase = GetCPTECLocalForecastUseCase(repository: repository)
