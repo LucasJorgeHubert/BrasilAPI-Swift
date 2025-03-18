@@ -167,11 +167,11 @@ Busca por CEP com múltiplos providers de fallback
 A busca utiliza como fonte principal o OpenCep, caso não encontre o CEP é buscado em diversos outros providers de CEP.
 
 ```swift
-var zipCode: BrasilAPIZipCodeV1Model = try await BrasilAPI().zipCode.searchZipCodeV1(zipCode: String) // Apenas números
+var zipCode: ZipCodeService.BrasilAPIZipCodeV1Model = try await BrasilAPI().zipCode.searchZipCodeV1(zipCode: String) // Apenas números
 ```
 <details>
 <summary>
-Model BrasilAPIZipCodeV1Model
+Model ZipCodeService.BrasilAPIZipCodeV1Model
 </summary>
 
 ```swift
@@ -189,28 +189,28 @@ Model BrasilAPIZipCodeV1Model
 #### Buscar CEP [`cep/v2/{code}`](https://brasilapi.com.br/docs#tag/CEP-V2/paths/~1cep~1v2~1%7Bcep%7D/get)
 Versão 2 do serviço de busca por CEP com múltiplos providers de fallback.
 ```swift
-var zipCode: BrasilAPIZipCodeV2Model = try await BrasilAPI().zipCode.searchZipCodeV2(zipCode: String) // Apenas números
+var zipCode: ZipCodeService.BrasilAPIZipCodeV2Model = try await BrasilAPI().zipCode.searchZipCodeV2(zipCode: String) // Apenas números
 ```
 <details>
 <summary>
-Model BrasilAPIZipCodeV2Model
+Model ZipCodeService.BrasilAPIZipCodeV2Model
 </summary>
 
 ```swift
-/// BrasilAPIZipCodeV2Model
+/// ZipCodeService.BrasilAPIZipCodeV2Model
 	cep: String
 	state: String
 	city: String
 	neighborhood: String?
 	street: String?
 	service: String
-	location: Location
+	location: BrasilAPIZipCodeV2LocationModel
 
-/// Location
+/// ZipCodeService.BrasilAPIZipCodeV2LocationModel
 	type: String
-	coordinates: Coordinates?
+	coordinates: BrasilAPIZipCodeV2CoordinatesModel?
 
-/// Coordinates
+/// ZipCodeService.BrasilAPIZipCodeV2CoordinatesModel
 	longitude: String?
 	latitude: String?
 
@@ -853,7 +853,7 @@ var quote: BrasilAPIExchangeQuotationModel = try await BrasilAPI().exchange.getQ
 #### Get ZIP Code [`cep/v1/{code}`](https://brasilapi.com.br/docs#tag/CEP/paths/~1cep~1v1~1%7Bcep%7D/get)
 Fetches ZIP code information using multiple fallback providers.
 ```swift
-var zipCode: BrasilAPIZipCodeV1Model = try await BrasilAPI().zipCode.searchZipCodeV1(zipCode: String)
+var zipCode: ZipCodeService.BrasilAPIZipCodeV1Model = try await BrasilAPI().zipCode.searchZipCodeV1(zipCode: String)
 ```
 ---
 ### 📍 ZIP Code v2

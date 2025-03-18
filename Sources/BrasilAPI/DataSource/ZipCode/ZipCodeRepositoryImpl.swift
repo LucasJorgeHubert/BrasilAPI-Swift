@@ -11,11 +11,11 @@ extension DataSource.ZipCode {
             self.apiDispatcher = apiDispatcher
         }
         
-        public func searchZipCodeV1(zipCode: String) async throws -> BrasilAPIZipCodeV1Model {
+        public func searchZipCodeV1(zipCode: String) async throws -> Domain.ZipCode.Models.v1.ZipCode {
             return try await apiDispatcher.request(apiRouter: DataSource.ZipCode.APIRouter.getZipCodeV1(zipCode: zipCode))
         }
         
-        public func searchZipCodeV2(zipCode: String) async throws -> BrasilAPIZipCodeV2Model {
+        public func searchZipCodeV2(zipCode: String) async throws -> Domain.ZipCode.Models.v2.ZipCode {
             return try await apiDispatcher.request(apiRouter: DataSource.ZipCode.APIRouter.getZipCodeV2(zipCode: zipCode))
         }
     }
