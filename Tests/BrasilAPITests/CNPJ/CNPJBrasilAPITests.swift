@@ -10,9 +10,8 @@ final class CNPJBrasilAPITests: XCTestCase {
 
     func test_getCNPJInformation() async throws {
         let brasilAPI = BrasilAPI(cnpjRepository: repository)
-        let cnpj: CNPJService.BrasilAPICNPJModel = try await brasilAPI.cnpj.getCNPJ(cnpj: "00000000000")
+        let cnpj: BrasilAPI.CNPJ.CNPJModel = try await brasilAPI.cnpj.getCNPJ(cnpj: "00000000000")
         
         XCTAssertNotNil(cnpj)
     }
-
 }

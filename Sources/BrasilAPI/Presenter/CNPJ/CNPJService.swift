@@ -1,15 +1,17 @@
 import Foundation
 
-public class CNPJService {
-    private let getCNPJUseCase: GetCNPJUseCase
-    
-    public typealias BrasilAPICNPJModel = Domain.CNPJ.Models.CNPJ
-    
-    public init(repository: CNPJRepositoryProtocol = DataSource.CNPJ.RepositoryImpl()) {
-        self.getCNPJUseCase = GetCNPJUseCase(repository: repository)
-    }
-    
-    public func getCNPJ(cnpj: String) async throws -> BrasilAPICNPJModel {
-        return try await getCNPJUseCase.execute(cnpj: cnpj)
+extension Presenter.CNPJ {
+    public class Service {
+        private let getCNPJUseCase: Presenter.CNPJ.UseCase.GetCNPJ
+        
+        public typealias CNPJModel = Domain.CNPJ.Models.CNPJ
+        
+        public init(repository: CNPJRepositoryProtocol = DataSource.CNPJ.RepositoryImpl()) {
+            self.getCNPJUseCase = Presenter.CNPJ.UseCase.GetCNPJ(repository: repository)
+        }
+        
+        public func getCNPJ(cnpj: String) async throws -> CNPJModel {
+            return try await getCNPJUseCase.execute(cnpj: cnpj)
+        }
     }
 }

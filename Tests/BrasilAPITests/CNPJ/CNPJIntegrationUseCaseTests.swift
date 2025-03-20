@@ -2,12 +2,12 @@ import XCTest
 @testable import BrasilAPI
 
 final class CNPJIntegrationUseCaseTests: XCTestCase {
-    var getCNPJUseCase: GetCNPJUseCase!
+    var getCNPJUseCase: Presenter.CNPJ.UseCase.GetCNPJ!
 
     override func setUp() {
         let repository = DataSource.CNPJ.RepositoryImpl()
         DataSource.APIConfig.environment = .production
-        getCNPJUseCase = GetCNPJUseCase(repository: repository)
+        getCNPJUseCase = Presenter.CNPJ.UseCase.GetCNPJ(repository: repository)
     }
 
     func test_integration_fetchCNPJ() async throws {

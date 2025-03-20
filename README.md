@@ -224,11 +224,11 @@ Model ZipCodeService.BrasilAPIZipCodeV2Model
 #### Buscar CNPJ [`cnpj/v1/{cnpj}`](https://brasilapi.com.br/docs#tag/CNPJ/paths/~1cnpj~1v1~1%7Bcnpj%7D/get)
 Busca por CNPJ na API Minha Receita.
 ```swift
-var cnpj: CNPJService.BrasilAPICNPJModel = try await BrasilAPI().cnpj.getCNPJ(cnpj: String) // Apenas números
+var cnpj: BrasilAPI.CNPJ.CNPJModel = try await BrasilAPI().cnpj.getCNPJ(cnpj: String) // Apenas números
 ```
 <details>
 <summary>
-Model CNPJService.BrasilAPICNPJModel
+Model BrasilAPI.CNPJ.CNPJModel
 </summary>
 
 ```swift
@@ -867,7 +867,7 @@ var zipCode: BrasilAPIZipCodeV2Model = try await BrasilAPI().zipCode.searchZipCo
 #### Get CNPJ [`cnpj/v1/{cnpj}`](https://brasilapi.com.br/docs#tag/CNPJ/paths/~1cnpj~1v1~1%7Bcnpj%7D/get)
 Fetches company information using CNPJ from the Minha Receita API.
 ```swift
-var cnpj: BrasilAPICNPJModel = try await BrasilAPI().cnpj.getCNPJ(cnpj: String)
+var cnpj: BrasilAPI.CNPJ.CNPJModel = try await BrasilAPI().cnpj.getCNPJ(cnpj: String)
 ```
 ---
 ### 🏦 Brokers
