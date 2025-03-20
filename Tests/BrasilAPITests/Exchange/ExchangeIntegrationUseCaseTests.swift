@@ -2,14 +2,14 @@ import XCTest
 @testable import BrasilAPI
 
 final class ExchangeIntegrationUseCaseTests: XCTestCase {
-    var getCoinListUseCase: GetCoinListUseCase!
-    var getQuotationUseCase: GetQuotationUseCase!
+    var getCoinListUseCase: Presenter.Exchange.UseCase.GetCoinList!
+    var getQuotationUseCase: Presenter.Exchange.UseCase.GetQuotation!
 
     override func setUp() {
         let repository = DataSource.Exchange.RepositoryImpl()
         DataSource.APIConfig.environment = .production
-        getCoinListUseCase = GetCoinListUseCase(repository: repository)
-        getQuotationUseCase = GetQuotationUseCase(repository: repository)
+        getCoinListUseCase = Presenter.Exchange.UseCase.GetCoinList(repository: repository)
+        getQuotationUseCase = Presenter.Exchange.UseCase.GetQuotation(repository: repository)
     }
 
     func test_integration_fetchCoins() async throws {

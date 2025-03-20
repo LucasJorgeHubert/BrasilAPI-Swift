@@ -2,7 +2,7 @@ import Foundation
 
 public class BrasilAPI {
     public var banking: Presenter.Bank.Service
-    public var exchange: ExchangeService
+    public var exchange: Presenter.Exchange.Service
     public var zipCode: ZipCodeService
     public var cnpj: Presenter.CNPJ.Service
     public var broker: Presenter.Broker.Service
@@ -18,6 +18,7 @@ public class BrasilAPI {
     public typealias CNPJ = Presenter.CNPJ.Service
     public typealias CPTEC = Presenter.CPTEC.Service
     public typealias DDD = Presenter.DDD.Service
+    public typealias Exchange = Presenter.Exchange.Service
     
     public init(
         bankingRepository: BankRepositoryProtocol = DataSource.Bank.RepositoryImpl(),
@@ -33,7 +34,7 @@ public class BrasilAPI {
         isbnRepository: ISBNRepositoryProtocol = DataSource.ISBN.RepositoryImpl()
     ) {
         self.banking = Presenter.Bank.Service(repository: bankingRepository)
-        self.exchange = ExchangeService(repository: exchangeRepository)
+        self.exchange = Presenter.Exchange.Service(repository: exchangeRepository)
         self.zipCode = ZipCodeService(repository: zipCodeRepository)
         self.cnpj = Presenter.CNPJ.Service(repository: cnpjRepository)
         self.broker = Presenter.Broker.Service(repository: brokerRepository)

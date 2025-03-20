@@ -114,11 +114,11 @@ Model BrasilAPI.Bank.BankModel
 Retorna informações de todas as moedas disponíveis para conversão:
 
 ```swift
-var coins: [ExchangeService.BrasilAPIExchangeCoinModel] = try await BrasilAPI().exchange.listCoins()
+var coins: [BrasilAPI.Exchange.CoinModel] = try await BrasilAPI().exchange.listCoins()
 ```
 <details>
 <summary>
-Model ExchangeService.BrasilAPIExchangeCoinModel
+Model BrasilAPI.Exchange.CoinModel
 </summary>
 
 ```swift
@@ -133,24 +133,24 @@ Model ExchangeService.BrasilAPIExchangeCoinModel
 Busca pelo câmbio do Real com outra moeda, em uma data específica:
 
 ```swift
-var quote: ExchangeService.BrasilAPIExchangeQuotationModel = try await BrasilAPI().exchange.getQuotation(coin: String, date: String)
+var quote: BrasilAPI.Exchange.QuotationModel = try await BrasilAPI().exchange.getQuotation(coin: String, date: String)
 /// coin: "USD"
 /// date: YYYY-MM-DD
 ```
 <details>
 <summary>
-Model ExchangeService.BrasilAPIExchangeQuotationModel
+Model BrasilAPI.Exchange.QuotationModel
 </summary>
 
 ```swift
 
-/// ExchangeService.BrasilAPIExchangeQuotationModel
+/// BrasilAPI.Exchange.QuotationModel
 	cotacoes: [BrasilAPIExchangeQuotationCoinModel]
 	moeda: String
 	data: String
 
 
-/// ExchangeService.BrasilAPIExchangeQuotationCoinModel
+/// BrasilAPI.Exchange.QuotationCoinModel
 	paridadeCompra: Double
 	paridadeVenda: Double
 	cotacaoCompra: Double
@@ -840,13 +840,13 @@ var bank: BrasilAPI.Bank.BankModel = try await BrasilAPI().banking.getBankByCode
 #### Get Currencies [`cambio/v1/moedas`](https://brasilapi.com.br/docs#tag/CAMBIO/paths/~1cambio~1v1~1moedas/get)
 Returns information about all available currencies for conversion:
 ```swift
-var coins: [ExchangeService.BrasilAPIExchangeCoinModel] = try await BrasilAPI().exchange.listCoins()
+var coins: [BrasilAPI.Exchange.CoinModel] = try await BrasilAPI().exchange.listCoins()
 ```
 ---
 #### Get Exchange Rate [`cambio/v1/cotacao/{moeda}/{data}`](https://brasilapi.com.br/docs#tag/CAMBIO/paths/~1cambio~1v1~1cotacao~1%7Bmoeda%7D~1%7Bdata%7D/get)
 Fetches exchange rates for BRL with another currency on a specific date:
 ```swift
-var quote: BrasilAPIExchangeQuotationModel = try await BrasilAPI().exchange.getQuotation(coin: String, date: String)
+var quote: BrasilAPI.Exchange.QuotationModel = try await BrasilAPI().exchange.getQuotation(coin: String, date: String)
 ```
 ---
 ### 📍 ZIP Code
