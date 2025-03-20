@@ -2,18 +2,18 @@ import XCTest
 @testable import BrasilAPI
 
 final class FIPEIntegrationUseCaseTests: XCTestCase {
-    var getBrandByVehicleTypeUseCase: GetListVehiclesByBrandAndTypeUseCase!
-    var getVehiclePriceUseCase: GetVeihclePriceUseCase!
-    var getReferenceTablesUseCase: GetFIPEReferenceTableUseCase!
-    var listVehiclesUseCase: GetListVehicleBrandByTypeUseCase!
+    var getBrandByVehicleTypeUseCase: Presenter.FIPE.UseCase.GetListVehiclesByBrandAndType!
+    var getVehiclePriceUseCase: Presenter.FIPE.UseCase.GetVeihclePrice!
+    var getReferenceTablesUseCase: Presenter.FIPE.UseCase.GetFIPEReferenceTable!
+    var listVehiclesUseCase: Presenter.FIPE.UseCase.GetListVehicleBrandByType!
 
     override func setUp() {
         let repository = DataSource.FIPE.RepositoryImpl()
         DataSource.APIConfig.environment = .production
-        getBrandByVehicleTypeUseCase = GetListVehiclesByBrandAndTypeUseCase(repository: repository)
-        getVehiclePriceUseCase = GetVeihclePriceUseCase(repository: repository)
-        getReferenceTablesUseCase = GetFIPEReferenceTableUseCase(repository: repository)
-        listVehiclesUseCase = GetListVehicleBrandByTypeUseCase(repository: repository)
+        getBrandByVehicleTypeUseCase = Presenter.FIPE.UseCase.GetListVehiclesByBrandAndType(repository: repository)
+        getVehiclePriceUseCase = Presenter.FIPE.UseCase.GetVeihclePrice(repository: repository)
+        getReferenceTablesUseCase = Presenter.FIPE.UseCase.GetFIPEReferenceTable(repository: repository)
+        listVehiclesUseCase = Presenter.FIPE.UseCase.GetListVehicleBrandByType(repository: repository)
     }
 
     func test_integration_fetchFIPEVehicleByBrandAndType() async throws {

@@ -573,14 +573,14 @@ Model HolidaysService.BrasilAPIHolidaysModel
 Lista as marcas de veículos referente ao tipo de veículo
 
 ```swift
-var brands: [FIPEService.BrasilAPIVehiclesTypeModel] = try await BrasilAPI().fipe.getBrandByVehicleType(carType: FIPEService.VehicleTypeEnum)
+var brands: [BrasilAPI.FIPE.VehiclesTypeModel] = try await BrasilAPI().fipe.getBrandByVehicleType(carType: FIPEService.VehicleTypeEnum)
 ```
 
 FIPEService.VehicleTypeEnum: `car`, `truck` e `motorcycle`
 
 <details>
 <summary>
-Model FIPEService.BrasilAPIVehiclesTypeModel
+Model BrasilAPI.FIPE.VehiclesTypeModel
 </summary>
 
 ```swift
@@ -594,12 +594,12 @@ Model FIPEService.BrasilAPIVehiclesTypeModel
 Consulta o preço do veículo segundo a tabela fipe.
 
 ```swift
-var prices: [FIPEService.BrasilAPIVehiclePriceModel] = try await BrasilAPI().fipe.getVehiclePrice(codeFIPE: String)
+var prices: [BrasilAPI.FIPE.VehiclePriceModel] = try await BrasilAPI().fipe.getVehiclePrice(codeFIPE: String)
 ```
 
 <details>
 <summary>
-Model FIPEService.BrasilAPIVehiclePriceModel
+Model BrasilAPI.FIPE.VehiclePriceModel
 </summary>
 
 ```swift
@@ -611,12 +611,12 @@ Model FIPEService.BrasilAPIVehiclePriceModel
 #### Listar tabelas de referência [`fipe/tabelas/v1`](https://brasilapi.com.br/docs#tag/FIPE/paths/~1fipe~1tabelas~1v1/get)
 
 ```swift
-var tables: [FIPEService.BrasilAPIFIPETableModel] = try await BrasilAPI().fipe.getReferenceTables()
+var tables: [BrasilAPI.FIPE.FIPETableModel] = try await BrasilAPI().fipe.getReferenceTables()
 ```
 
 <details>
 <summary>
-Model FIPEService.BrasilAPIFIPETableModel
+Model BrasilAPI.FIPE.FIPETableModel
 </summary>
 
 ```swift
@@ -629,14 +629,14 @@ Model FIPEService.BrasilAPIFIPETableModel
 
 
 ```swift
-var tables: [FIPEService.BrasilAPIVehicleModel] = try await BrasilAPI().fipe.listVehicles(type: FIPEService.VehicleTypeEnum, brandCode: String)
+var tables: [BrasilAPI.FIPE.VehicleModel] = try await BrasilAPI().fipe.listVehicles(type: FIPEService.VehicleTypeEnum, brandCode: String)
 ```
 
 FIPEService.VehicleTypeEnum: `car`, `truck` e `motorcycle`
 
 <details>
 <summary>
-Model FIPEService.BrasilAPIVehicleModel
+Model BrasilAPI.FIPE.VehicleModel
 </summary>
 
 ```swift
@@ -1097,14 +1097,14 @@ Model HolidaysService.BrasilAPIHolidaysModel
 Lists the vehicle brands for the specified vehicle type.
 
 ```swift
-var brands: [FIPEService.BrasilAPIVehiclesTypeModel] = try await BrasilAPI().fipe.getBrandByVehicleType(carType: FIPEService.VehicleTypeEnum)
+var brands: [BrasilAPI.FIPE.VehiclesTypeModel] = try await BrasilAPI().fipe.getBrandByVehicleType(carType: FIPEService.VehicleTypeEnum)
 ```
 
 FIPEService.VehicleTypeEnum: `car`, `truck`, and `motorcycle`
 
 <details>
 <summary>
-Model FIPEService.BrasilAPIVehiclesTypeModel
+Model BrasilAPI.FIPE.VehiclesTypeModel
 </summary>
 
 ```swift
@@ -1118,12 +1118,12 @@ Model FIPEService.BrasilAPIVehiclesTypeModel
 Retrieves the vehicle price according to the FIPE table.
 
 ```swift
-var prices: [FIPEService.BrasilAPIVehiclePriceModel] = try await BrasilAPI().fipe.getVehiclePrice(codeFIPE: String)
+var prices: [BrasilAPI.FIPE.VehiclePriceModel] = try await BrasilAPI().fipe.getVehiclePrice(codeFIPE: String)
 ```
 
 <details>
 <summary>
-Model FIPEService.BrasilAPIVehiclePriceModel
+Model BrasilAPI.FIPE.VehiclePriceModel
 </summary>
 
 ```swift
@@ -1135,12 +1135,12 @@ Model FIPEService.BrasilAPIVehiclePriceModel
 #### List Reference Tables [`fipe/tabelas/v1`](https://brasilapi.com.br/docs#tag/FIPE/paths/~1fipe~1tabelas~1v1/get)
 
 ```swift
-var tables: [FIPEService.BrasilAPIFIPETableModel] = try await BrasilAPI().fipe.getReferenceTables()
+var tables: [BrasilAPI.FIPE.FIPETableModel] = try await BrasilAPI().fipe.getReferenceTables()
 ```
 
 <details>
 <summary>
-Model FIPEService.BrasilAPIFIPETableModel
+Model BrasilAPI.FIPE.FIPETableModel
 </summary>
 
 ```swift
@@ -1152,14 +1152,14 @@ Model FIPEService.BrasilAPIFIPETableModel
 #### List Vehicles by Brand and Type [`fipe/veiculos/v1/{vehicleType}/{brandCode}`](https://brasilapi.com.br/docs#tag/FIPE/paths/~1fipe~1veiculos~1v1~1%7BtipoVeiculo%7D~1%7BcodigoMarca%7D/get)
 
 ```swift
-var tables: [FIPEService.BrasilAPIVehicleModel] = try await BrasilAPI().fipe.listVehicles(type: FIPEService.VehicleTypeEnum, brandCode: String)
+var tables: [BrasilAPI.FIPE.VehicleModel] = try await BrasilAPI().fipe.listVehicles(type: FIPEService.VehicleTypeEnum, brandCode: String)
 ```
 
 FIPEService.VehicleTypeEnum: `car`, `truck`, and `motorcycle`
 
 <details>
 <summary>
-Model FIPEService.BrasilAPIVehicleModel
+Model BrasilAPI.FIPE.VehicleModel
 </summary>
 
 ```swift

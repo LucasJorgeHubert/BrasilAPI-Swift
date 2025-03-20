@@ -1,6 +1,15 @@
 import Foundation
 
 public class BrasilAPI {
+    
+    public typealias Bank = Presenter.Bank.Service
+    public typealias Broker = Presenter.Broker.Service
+    public typealias CNPJ = Presenter.CNPJ.Service
+    public typealias CPTEC = Presenter.CPTEC.Service
+    public typealias DDD = Presenter.DDD.Service
+    public typealias Exchange = Presenter.Exchange.Service
+    public typealias FIPE = Presenter.FIPE.Service
+    
     public var banking: Presenter.Bank.Service
     public var exchange: Presenter.Exchange.Service
     public var zipCode: ZipCodeService
@@ -9,16 +18,9 @@ public class BrasilAPI {
     public var cptec: Presenter.CPTEC.Service
     public var ddd: Presenter.DDD.Service
     public var holidays: HolidaysService
-    public var fipe: FIPEService
+    public var fipe: Presenter.FIPE.Service
     public var ibge: Presenter.IBGE.IBGEService
     public var isbn: Presenter.ISBN.Service
-    
-    public typealias Bank = Presenter.Bank.Service
-    public typealias Broker = Presenter.Broker.Service
-    public typealias CNPJ = Presenter.CNPJ.Service
-    public typealias CPTEC = Presenter.CPTEC.Service
-    public typealias DDD = Presenter.DDD.Service
-    public typealias Exchange = Presenter.Exchange.Service
     
     public init(
         bankingRepository: BankRepositoryProtocol = DataSource.Bank.RepositoryImpl(),
@@ -41,7 +43,7 @@ public class BrasilAPI {
         self.cptec = Presenter.CPTEC.Service(repository: cptecRepository)
         self.ddd = Presenter.DDD.Service(repository: dddRepository)
         self.holidays = HolidaysService(repository: holidaysRepository)
-        self.fipe = FIPEService(repository: fipeRepository)
+        self.fipe = Presenter.FIPE.Service(repository: fipeRepository)
         self.ibge = Presenter.IBGE.IBGEService(repository: ibgeRepository)
         self.isbn = Presenter.ISBN.Service(repository: isbnRepository)
     }
