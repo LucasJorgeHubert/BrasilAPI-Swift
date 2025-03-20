@@ -651,13 +651,13 @@ Model BrasilAPI.FIPE.VehicleModel
 Retorna os municípios da unidade federativa
 
 ```swift
-var cities: [BrasilAPIIBGECityModel] = try await BrasilAPI().ibge.getIBGECitiesByUF(uf: BrasilState)
+var cities: [BrasilAPI.IBGE.CityModel] = try await BrasilAPI().ibge.getIBGECitiesByUF(uf: BrasilState)
 // BrasilState é um enum com todos os estados brasileiros
 ```
 
 <details>
 <summary>
-Model BrasilAPIIBGECityModel
+Model BrasilAPI.IBGE.CityModel
 </summary>
 
 ```swift
@@ -670,12 +670,12 @@ Model BrasilAPIIBGECityModel
 Retorna informações de todos estados do Brasil
 
 ```swift
-var states: [BrasilAPIIBGEStateModel] = try await BrasilAPI().ibge.getIBGEStates()
+var states: [BrasilAPI.IBGE.StateModel] = try await BrasilAPI().ibge.getIBGEStates()
 ```
 
 <details>
 <summary>
-Model BrasilAPIIBGEStateModel
+Model BrasilAPI.IBGE.StateModel
 </summary>
 
 ```swift
@@ -695,13 +695,13 @@ Model BrasilAPIIBGEStateModel
 Busca as informações de um estado a partir da sigla ou código
 
 ```swift
-var state: BrasilAPIIBGEStateModel = try await BrasilAPI().ibge.getIBGEStateByCode(code: BrasilState)
+var state: BrasilAPI.IBGE.StateModel = try await BrasilAPI().ibge.getIBGEStateByCode(code: BrasilState)
 // BrasilState é um enum com todos os estados brasileiros
 ```
 
 <details>
 <summary>
-Model BrasilAPIIBGEStateModel
+Model BrasilAPI.IBGE.StateModel
 </summary>
 
 ```swift
@@ -1174,13 +1174,13 @@ Model BrasilAPI.FIPE.VehicleModel
 Returns the cities of the federative unit
 
 ```swift
-var cities: [BrasilAPIIBGECityModel] = try await BrasilAPI().ibge.getIBGECitiesByUF(uf: BrasilState)
+var cities: [BrasilAPI.IBGE.CityModel] = try await BrasilAPI().ibge.getIBGECitiesByUF(uf: BrasilState)
 // BrasilState is an enum with all Brazilian states
 ```
 
 <details>
 <summary>
-Model BrasilAPIIBGECityModel
+Model BrasilAPI.IBGE.CityModel
 </summary>
 
 ```swift
@@ -1193,12 +1193,12 @@ Model BrasilAPIIBGECityModel
 Returns information about all Brazilian states
 
 ```swift
-var states: [BrasilAPIIBGEStateModel] = try await BrasilAPI().ibge.getIBGEStates()
+var states: [BrasilAPI.IBGE.StateModel] = try await BrasilAPI().ibge.getIBGEStates()
 ```
 
 <details>
 <summary>
-Model BrasilAPIIBGEStateModel
+Model BrasilAPI.IBGE.StateModel
 </summary>
 
 ```swift
@@ -1218,13 +1218,13 @@ Model BrasilAPIIBGEStateModel
 Fetches information about a state by acronym or code
 
 ```swift
-var state: BrasilAPIIBGEStateModel = try await BrasilAPI().ibge.getIBGEStateByCode(code: BrasilState)
+var state: BrasilAPI.IBGE.StateModel = try await BrasilAPI().ibge.getIBGEStateByCode(code: BrasilState)
 // BrasilState is an enum with all Brazilian states
 ```
 
 <details>
 <summary>
-Model BrasilAPIIBGEStateModel
+Model BrasilAPI.IBGE.StateModel
 </summary>
 
 ```swift

@@ -11,7 +11,7 @@ class IBGEBrasilAPITests: XCTestCase {
 
     func test_getIBGECities() async throws {
         let brasilAPI = BrasilAPI(ibgeRepository: repository)
-        let cities = try await brasilAPI.ibge.getCitiesByUF(uf: .SC)
+        let cities: [BrasilAPI.IBGE.CityModel] = try await brasilAPI.ibge.getCitiesByUF(uf: .SC)
 
         XCTAssertNotNil(cities)
         XCTAssertEqual(cities.count, 295)
@@ -21,7 +21,7 @@ class IBGEBrasilAPITests: XCTestCase {
     
     func test_getIBGEStates() async throws {
         let brasilAPI = BrasilAPI(ibgeRepository: repository)
-        let states = try await brasilAPI.ibge.getStates()
+        let states: [BrasilAPI.IBGE.StateModel] = try await brasilAPI.ibge.getStates()
         
         XCTAssertNotNil(states)
         XCTAssertEqual(states.count, 27)
@@ -38,7 +38,7 @@ class IBGEBrasilAPITests: XCTestCase {
     
     func test_getIBGEStateByCode() async throws {
         let brasilAPI = BrasilAPI(ibgeRepository: repository)
-        let state = try await brasilAPI.ibge.getStateByCode(code: .SC)
+        let state: BrasilAPI.IBGE.StateModel = try await brasilAPI.ibge.getStateByCode(code: .SC)
         
         XCTAssertNotNil(state)
         XCTAssertEqual(state.id, 42)

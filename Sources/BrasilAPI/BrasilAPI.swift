@@ -10,6 +10,8 @@ public class BrasilAPI {
     public typealias Exchange = Presenter.Exchange.Service
     public typealias FIPE = Presenter.FIPE.Service
     public typealias Holidays = Presenter.Holidays.Service
+    public typealias IBGE = Presenter.IBGE.Service
+    public typealias ISBN = Presenter.ISBN.Service
     
     public var banking: Presenter.Bank.Service
     public var exchange: Presenter.Exchange.Service
@@ -20,7 +22,7 @@ public class BrasilAPI {
     public var ddd: Presenter.DDD.Service
     public var holidays: Presenter.Holidays.Service
     public var fipe: Presenter.FIPE.Service
-    public var ibge: Presenter.IBGE.IBGEService
+    public var ibge: Presenter.IBGE.Service
     public var isbn: Presenter.ISBN.Service
     
     public init(
@@ -45,7 +47,7 @@ public class BrasilAPI {
         self.ddd = Presenter.DDD.Service(repository: dddRepository)
         self.holidays = Presenter.Holidays.Service(repository: holidaysRepository)
         self.fipe = Presenter.FIPE.Service(repository: fipeRepository)
-        self.ibge = Presenter.IBGE.IBGEService(repository: ibgeRepository)
+        self.ibge = Presenter.IBGE.Service(repository: ibgeRepository)
         self.isbn = Presenter.ISBN.Service(repository: isbnRepository)
     }
 }
