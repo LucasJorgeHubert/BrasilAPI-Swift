@@ -4,7 +4,10 @@ public enum Presenter {
     public enum Bank { public enum UseCase { } }
     public enum Broker { public enum UseCase { } }
     public enum CNPJ { public enum UseCase { } }
-    public enum CPTEC { public enum UseCase { } }
+    public enum CPTEC {
+        public enum UseCase { }
+        public enum Helper { }
+    }
     public enum DDD { public enum UseCase { } }
     public enum Exchange { public enum UseCase { } }
     public enum FIPE { public enum UseCase { } }

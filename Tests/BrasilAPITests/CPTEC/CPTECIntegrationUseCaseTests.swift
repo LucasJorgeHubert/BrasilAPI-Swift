@@ -2,22 +2,22 @@ import XCTest
 @testable import BrasilAPI
 
 final class CPTECIntegrationUseCaseTests: XCTestCase {
-    var getCPTECCapitalUseCase: GetCPTECCapitalUseCase!
-    var getCPTECLocalForecastUseCase: GetCPTECLocalForecastUseCase!
-    var getCPTECLocalUseCase: GetCPTECLocalUseCase!
-    var getCPTECOceanicForecastUseCase: GetCPTECOceanicForecastUseCase!
-    var getListCPTECLocalsUseCase: GetListCPTECLocalsUseCase!
-    var getListCPTECCapitalsUseCase: GetListCPTECCapitalsUseCase!
+    var getCPTECCapitalUseCase: Presenter.CPTEC.UseCase.GetCPTECCapital!
+    var getCPTECLocalForecastUseCase: Presenter.CPTEC.UseCase.GetCPTECLocalForecast!
+    var getCPTECLocalUseCase: Presenter.CPTEC.UseCase.GetCPTECLocal!
+    var getCPTECOceanicForecastUseCase: Presenter.CPTEC.UseCase.GetCPTECOceanicForecast!
+    var getListCPTECLocalsUseCase: Presenter.CPTEC.UseCase.GetListCPTECLocals!
+    var getListCPTECCapitalsUseCase: Presenter.CPTEC.UseCase.GetListCPTECCapitals!
 
     override func setUp() {
         let repository = DataSource.CPTEC.RepositoryImpl()
         DataSource.APIConfig.environment = .production
-        getCPTECCapitalUseCase = GetCPTECCapitalUseCase(repository: repository)
-        getCPTECLocalForecastUseCase = GetCPTECLocalForecastUseCase(repository: repository)
-        getCPTECLocalUseCase = GetCPTECLocalUseCase(repository: repository)
-        getCPTECOceanicForecastUseCase = GetCPTECOceanicForecastUseCase(repository: repository)
-        getListCPTECLocalsUseCase = GetListCPTECLocalsUseCase(repository: repository)
-        getListCPTECCapitalsUseCase = GetListCPTECCapitalsUseCase(repository: repository)
+        getCPTECCapitalUseCase = Presenter.CPTEC.UseCase.GetCPTECCapital(repository: repository)
+        getCPTECLocalForecastUseCase = Presenter.CPTEC.UseCase.GetCPTECLocalForecast(repository: repository)
+        getCPTECLocalUseCase = Presenter.CPTEC.UseCase.GetCPTECLocal(repository: repository)
+        getCPTECOceanicForecastUseCase = Presenter.CPTEC.UseCase.GetCPTECOceanicForecast(repository: repository)
+        getListCPTECLocalsUseCase = Presenter.CPTEC.UseCase.GetListCPTECLocals(repository: repository)
+        getListCPTECCapitalsUseCase = Presenter.CPTEC.UseCase.GetListCPTECCapitals(repository: repository)
     }
 
     func test_integration_fetchCPTECListLocals() async throws {

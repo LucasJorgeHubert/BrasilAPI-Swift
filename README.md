@@ -364,12 +364,12 @@ Model Broker.BrokerModel
 Retorna listagem com todas as cidades junto a seus respectivos códigos presentes nos serviços da CPTEC. O Código destas cidades será utilizado para os serviços de meteorologia e a ondas (previsão oceânica) fornecido pelo centro. Leve em consideração que o WebService do CPTEC as vezes é instável, então se não encontrar uma determinada cidade na listagem completa, tente buscando por parte de seu nome no endpoint de busca.
 
 ```swift
-var cities: [CPTECService.BrasilAPICPTECLocalModel] = try await BrasilAPI().cptec.getListCPTECLocals()
+var cities: [BrasilAPI.CPTEC.LocalModel] = try await BrasilAPI().cptec.getListCPTECLocals()
 ```
 
 <details>
 <summary>
-Model CPTECService.BrasilAPICPTECLocalModel
+Model BrasilAPI.CPTEC.LocalModel
 </summary>
 
 ```swift
@@ -384,12 +384,12 @@ Model CPTECService.BrasilAPICPTECLocalModel
 Retorna listagem com todas as cidades correspondentes ao termo pesquisado junto a seus respectivos códigos presentes nos serviços da CPTEC. O Código destas cidades será utilizado para os serviços de meteorologia e a ondas (previsão oceânica) fornecido pelo centro.
 
 ```swift
-var cities: [CPTECService.BrasilAPICPTECLocalModel] = try await BrasilAPI().cptec.getCPTECLocal(localName: String)
+var cities: [BrasilAPI.CPTEC.LocalModel] = try await BrasilAPI().cptec.getCPTECLocal(localName: String)
 ```
 
 <details>
 <summary>
-Model CPTECService.BrasilAPICPTECLocalModel
+Model BrasilAPI.CPTEC.LocalModel
 </summary>
 
 ```swift
@@ -404,12 +404,12 @@ Model CPTECService.BrasilAPICPTECLocalModel
 Retorna condições meteorológicas atuais nas capitais do país, com base nas estações de solo de seu aeroporto.
 
 ```swift
-var condition: [CPTECService.BrasilAPICPTECConditionModel] = try await BrasilAPI().cptec.getListCPTECCapitals()
+var condition: [BrasilAPI.CPTEC.ConditionModel] = try await BrasilAPI().cptec.getListCPTECCapitals()
 ```
 
 <details>
 <summary>
-Model CPTECService.BrasilAPICPTECConditionModel
+Model BrasilAPI.CPTEC.ConditionModel
 </summary>
 
 ```swift
@@ -431,12 +431,12 @@ Model CPTECService.BrasilAPICPTECConditionModel
 Retorna condições meteorológicas atuais no aeroporto solicitado. Este endpoint utiliza o código ICAO (4 dígitos) do aeroporto.
 
 ```swift
-var condition: CPTECService.BrasilAPICPTECConditionModel = try await BrasilAPI().cptec.getCPTECCapital(codeICAO: String)
+var condition: BrasilAPI.CPTEC.ConditionModel = try await BrasilAPI().cptec.getCPTECCapital(codeICAO: String)
 ```
 
 <details>
 <summary>
-Model CPTECService.BrasilAPICPTECConditionModel
+Model BrasilAPI.CPTEC.ConditionModel
 </summary>
 
 ```swift
@@ -458,14 +458,14 @@ Model CPTECService.BrasilAPICPTECConditionModel
 Retorna a previsão meteorológica para a cidade informada para um período de 1 até 6 dias. Devido a inconsistências encontradas nos retornos da CPTEC nossa API só consegue retornar com precisão o período máximo de 6 dias.
 
 ```swift
-var forecast: CPTECService.BrasilAPICPTECForecastModel = try await BrasilAPI().cptec.getCPTECLocalForecast(cityCode: Int, days: ForecastAvailableDays)
+var forecast: BrasilAPI.CPTEC.ForecastModel = try await BrasilAPI().cptec.getCPTECLocalForecast(cityCode: Int, days: ForecastAvailableDays)
 
 // ForecastAvailableDays = Enum de 1 a 6 diuas
 ```
 
 <details>
 <summary>
-Model CPTECService.BrasilAPICPTECForecastModel
+Model BrasilAPI.CPTEC.ForecastModel
 </summary>
 
 ```swift
@@ -489,14 +489,14 @@ Model CPTECService.BrasilAPICPTECForecastModel
 Retorna a previsão oceânica para a cidade informada para um período de, até, 6 dias.
 
 ```swift
-var forecast: CPTECService.BrasilAPICPTECOceanicForecastModel = try await BrasilAPI().cptec.getCPTECOceanicForecast(cityCode: Int, days: ForecastAvailableDays)
+var forecast: BrasilAPI.CPTEC.OceanicForecastModel = try await BrasilAPI().cptec.getCPTECOceanicForecast(cityCode: Int, days: ForecastAvailableDays)
 
 // ForecastAvailableDays = Enum de 1 a 6 dias
 ```
 
 <details>
 <summary>
-Model CPTECService.BrasilAPICPTECOceanicForecastModel
+Model BrasilAPI.CPTEC.OceanicForecastModel
 </summary>
 
 ```swift
@@ -888,12 +888,12 @@ var broker: Broker.BrokerModel = try await BrasilAPI().broker.getBrokerByCnpj(cn
 Returns a list of all cities along with their respective codes available in CPTEC services. These city codes will be used for meteorology and ocean wave (ocean forecast) services provided by the center. Keep in mind that CPTEC's WebService is sometimes unstable, so if you don't find a specific city in the complete list, try searching by part of its name in the search endpoint.
 
 ```swift
-var cities: [CPTECService.BrasilAPICPTECLocalModel] = try await BrasilAPI().cptec.getListCPTECLocals()
+var cities: [BrasilAPI.CPTEC.LocalModel] = try await BrasilAPI().cptec.getListCPTECLocals()
 ```
 
 <details>
 <summary>
-Model CPTECService.BrasilAPICPTECLocalModel
+Model BrasilAPI.CPTEC.LocalModel
 </summary>
 
 ```swift
@@ -908,12 +908,12 @@ Model CPTECService.BrasilAPICPTECLocalModel
 Returns a list of all cities matching the searched term along with their respective codes available in CPTEC services. These city codes will be used for meteorology and ocean wave (ocean forecast) services provided by the center.
 
 ```swift
-var cities: [CPTECService.BrasilAPICPTECLocalModel] = try await BrasilAPI().cptec.getCPTECLocal(localName: String)
+var cities: [BrasilAPI.CPTEC.LocalModel] = try await BrasilAPI().cptec.getCPTECLocal(localName: String)
 ```
 
 <details>
 <summary>
-Model CPTECService.BrasilAPICPTECLocalModel
+Model BrasilAPI.CPTEC.LocalModel
 </summary>
 
 ```swift
@@ -928,12 +928,12 @@ Model CPTECService.BrasilAPICPTECLocalModel
 Returns current weather conditions in the country's capitals, based on airport ground stations.
 
 ```swift
-var condition: [CPTECService.BrasilAPICPTECConditionModel] = try await BrasilAPI().cptec.getListCPTECCapitals()
+var condition: [BrasilAPI.CPTEC.ConditionModel] = try await BrasilAPI().cptec.getListCPTECCapitals()
 ```
 
 <details>
 <summary>
-Model CPTECService.BrasilAPICPTECConditionModel
+Model BrasilAPI.CPTEC.ConditionModel
 </summary>
 
 ```swift
@@ -955,12 +955,12 @@ Model CPTECService.BrasilAPICPTECConditionModel
 Returns current weather conditions at the requested airport. This endpoint uses the ICAO code (4-digit) of the airport.
 
 ```swift
-var condition: CPTECService.BrasilAPICPTECConditionModel = try await BrasilAPI().cptec.getCPTECCapital(codeICAO: String)
+var condition: BrasilAPI.CPTEC.ConditionModel = try await BrasilAPI().cptec.getCPTECCapital(codeICAO: String)
 ```
 
 <details>
 <summary>
-Model CPTECService.BrasilAPICPTECConditionModel
+Model BrasilAPI.CPTEC.ConditionModel
 </summary>
 
 ```swift
@@ -982,14 +982,14 @@ Model CPTECService.BrasilAPICPTECConditionModel
 Returns the weather forecast for the specified city for a period of 1 to 6 days. Due to inconsistencies found in CPTEC's responses, our API can only reliably return a maximum period of 6 days.
 
 ```swift
-var forecast: CPTECService.BrasilAPICPTECForecastModel = try await BrasilAPI().cptec.getCPTECLocalForecast(cityCode: Int, days: ForecastAvailableDays)
+var forecast: BrasilAPI.CPTEC.ForecastModel = try await BrasilAPI().cptec.getCPTECLocalForecast(cityCode: Int, days: ForecastAvailableDays)
 
 // ForecastAvailableDays = Enum from 1 to 6 days
 ```
 
 <details>
 <summary>
-Model CPTECService.BrasilAPICPTECForecastModel
+Model BrasilAPI.CPTEC.ForecastModel
 </summary>
 
 ```swift
@@ -1013,14 +1013,14 @@ Model CPTECService.BrasilAPICPTECForecastModel
 Returns the ocean forecast for the specified city for a period of up to 6 days.
 
 ```swift
-var forecast: CPTECService.BrasilAPICPTECOceanicForecastModel = try await BrasilAPI().cptec.getCPTECOceanicForecast(cityCode: Int, days: ForecastAvailableDays)
+var forecast: BrasilAPI.CPTEC.OceanicForecastModel = try await BrasilAPI().cptec.getCPTECOceanicForecast(cityCode: Int, days: ForecastAvailableDays)
 
 // ForecastAvailableDays = Enum from 1 to 6 days
 ```
 
 <details>
 <summary>
-Model CPTECService.BrasilAPICPTECOceanicForecastModel
+Model BrasilAPI.CPTEC.OceanicForecastModel
 </summary>
 
 ```swift

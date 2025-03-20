@@ -10,7 +10,7 @@ final class CPTECBrasilAPITests: XCTestCase {
 
     func test_getCPTECCapital() async throws {
         let brasilAPI = BrasilAPI(cptecRepository: repository)
-        let local: CPTECService.BrasilAPICPTECConditionModel = try await brasilAPI.cptec.getCPTECCapital(codeICAO: "SBAR")
+        let local: BrasilAPI.CPTEC.ConditionModel = try await brasilAPI.cptec.getCPTECCapital(codeICAO: "SBAR")
         
         XCTAssertEqual(local.codeICAO, "SBAR")
         XCTAssertEqual(local.pressure, "1014")
@@ -26,7 +26,7 @@ final class CPTECBrasilAPITests: XCTestCase {
     
     func test_getCPTECLocals() async throws {
         let brasilAPI = BrasilAPI(cptecRepository: repository)
-        let locals: [CPTECService.BrasilAPICPTECLocalModel] = try await brasilAPI.cptec.getCPTECLocal(localName: "São Paulo")
+        let locals: [BrasilAPI.CPTEC.LocalModel] = try await brasilAPI.cptec.getCPTECLocal(localName: "São Paulo")
         
         XCTAssertNotNil(locals)
         XCTAssertEqual(locals.count, 4)
@@ -41,7 +41,7 @@ final class CPTECBrasilAPITests: XCTestCase {
     
     func test_getCPTECLocalForecast() async throws {
         let brasilAPI = BrasilAPI(cptecRepository: repository)
-        let forecast: CPTECService.BrasilAPICPTECForecastModel = try await brasilAPI.cptec.getCPTECLocalForecast(
+        let forecast: BrasilAPI.CPTEC.ForecastModel = try await brasilAPI.cptec.getCPTECLocalForecast(
             cityCode: 4772,
             days: .six
         )
@@ -61,7 +61,7 @@ final class CPTECBrasilAPITests: XCTestCase {
     
     func test_getCPTECOceanicForecast() async throws {
         let brasilAPI = BrasilAPI(cptecRepository: repository)
-        let forecast: CPTECService.BrasilAPICPTECOceanicForecastModel = try await brasilAPI.cptec.getCPTECOceanicForecast(
+        let forecast: BrasilAPI.CPTEC.OceanicForecastModel = try await brasilAPI.cptec.getCPTECOceanicForecast(
             cityCode: 4772,
             days: .six
         )
@@ -78,7 +78,7 @@ final class CPTECBrasilAPITests: XCTestCase {
     
     func test_getCPTECCapitalList() async throws {
         let brasilAPI = BrasilAPI(cptecRepository: repository)
-        let capitals: [CPTECService.BrasilAPICPTECConditionModel] = try await brasilAPI.cptec.getListCPTECCapitals()
+        let capitals: [BrasilAPI.CPTEC.ConditionModel] = try await brasilAPI.cptec.getListCPTECCapitals()
         
         let capital = capitals[0]
         
@@ -95,7 +95,7 @@ final class CPTECBrasilAPITests: XCTestCase {
     
     func test_getCPTECLocalList() async throws {
         let brasilAPI = BrasilAPI(cptecRepository: repository)
-        let locals: [CPTECService.BrasilAPICPTECLocalModel] = try await brasilAPI.cptec.getListCPTECLocals()
+        let locals: [BrasilAPI.CPTEC.LocalModel] = try await brasilAPI.cptec.getListCPTECLocals()
         
         let local = locals[0]
         
