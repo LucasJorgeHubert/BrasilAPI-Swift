@@ -10,7 +10,7 @@ final class HolidaysBrasilAPITests: XCTestCase {
 
     func test_getExchangeCoins() async throws {
         let brasilAPI = BrasilAPI(holidaysRepository: repository)
-        let holidays: [HolidaysService.BrasilAPIHolidaysModel] = try await brasilAPI.holidays.getNationalHolidays(
+        let holidays: [BrasilAPI.Holidays.BrasilAPIHolidaysModel] = try await brasilAPI.holidays.getNationalHolidays(
             year: 2025
         )
         
