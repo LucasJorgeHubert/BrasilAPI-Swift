@@ -85,17 +85,17 @@ O SPM foi feito para facilitar a integração com a [BrasilAPI](https://brasilap
 Retorna informações de todos os bancos do Brasil:
 
 ```swift
-var banks: [BankingService.BrasilAPIBankModel] = try await BrasilAPI().banking.listBanks()
+var banks: [BankService.BrasilAPIBankModel] = try await BrasilAPI().banking.listBanks()
 ```
 
 #### Buscar banco pelo código [`banks/v1/{code}`](https://brasilapi.com.br/docs#tag/BANKS/paths/~1banks~1v1~1%7Bcode%7D/get)
 Busca as informações de um banco a partir do código do banco:
 ```swift
-var bank: BankingService.BrasilAPIBankModel = try await BrasilAPI().banking.getBankByCode(code: String)
+var bank: BankService.BrasilAPIBankModel = try await BrasilAPI().banking.getBankByCode(code: String)
 ```
 <details>
 <summary>
-Model BankingService.BrasilAPIBankModel
+Model BankService.BrasilAPIBankModel
 </summary>
 
 ```swift
@@ -827,13 +827,13 @@ The SPM was created to facilitate integration with [BrasilAPI](https://brasilapi
 #### List Banks [`banks/v1`](https://brasilapi.com.br/docs#tag/BANKS/paths/~1banks~1v1/get)
 Returns information about all banks in Brazil:
 ```swift
-var banks: [BankingService.BrasilAPIBankModel] = try await BrasilAPI().banking.listBanks()
+var banks: [BankService.BrasilAPIBankModel] = try await BrasilAPI().banking.listBanks()
 ```
 ---
 #### Get Bank by Code [`banks/v1/{code}`](https://brasilapi.com.br/docs#tag/BANKS/paths/~1banks~1v1~1%7Bcode%7D/get)
 Fetches information about a bank using its code:
 ```swift
-var bank: BankingService.BrasilAPIBankModel = try await BrasilAPI().banking.getBankByCode(code: String)
+var bank: BankService.BrasilAPIBankModel = try await BrasilAPI().banking.getBankByCode(code: String)
 ```
 ---
 ### 💱 Exchange
