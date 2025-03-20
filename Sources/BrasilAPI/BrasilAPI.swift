@@ -5,7 +5,7 @@ public class BrasilAPI {
     public var exchange: ExchangeService
     public var zipCode: ZipCodeService
     public var cnpj: CNPJService
-    public var broker: BrokerService
+    public var broker: Presenter.Broker.Service
     public var cptec: CPTECService
     public var ddd: DDDService
     public var holidays: HolidaysService
@@ -13,7 +13,8 @@ public class BrasilAPI {
     public var ibge: Presenter.IBGE.IBGEService
     public var isbn: Presenter.ISBN.Service
     
-    public typealias BankService = Presenter.Bank.Service
+    public typealias Bank = Presenter.Bank.Service
+    public typealias Broker = Presenter.Broker.Service
     
     public init(
         bankingRepository: BankRepositoryProtocol = DataSource.Bank.RepositoryImpl(),
@@ -32,7 +33,7 @@ public class BrasilAPI {
         self.exchange = ExchangeService(repository: exchangeRepository)
         self.zipCode = ZipCodeService(repository: zipCodeRepository)
         self.cnpj = CNPJService(repository: cnpjRepository)
-        self.broker = BrokerService(repository: brokerRepository)
+        self.broker = Presenter.Broker.Service(repository: brokerRepository)
         self.cptec = CPTECService(repository: cptecRepository)
         self.ddd = DDDService(repository: dddRepository)
         self.holidays = HolidaysService(repository: holidaysRepository)

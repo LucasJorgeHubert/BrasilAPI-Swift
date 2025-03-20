@@ -10,7 +10,7 @@ final class BankBrasilAPITests: XCTestCase {
 
     func test_listBanks() async throws {
         let brasilAPI = BrasilAPI(bankingRepository: repository)
-        let banks: [BrasilAPI.BankService.BrasilAPIBankModel] = try await brasilAPI.banking.listBanks()
+        let banks: [BrasilAPI.Bank.BankModel] = try await brasilAPI.banking.listBanks()
         
         XCTAssertEqual(banks.first?.code, 1)
         XCTAssertTrue(banks.first?.name?.contains("BCO DO BRASIL S.A.") ?? false)
@@ -20,7 +20,7 @@ final class BankBrasilAPITests: XCTestCase {
     
     func test_getBankById() async throws {
         let brasilAPI = BrasilAPI(bankingRepository: repository)
-        let bank: BrasilAPI.BankService.BrasilAPIBankModel = try await brasilAPI.banking.getBankByCode(code: "001")
+        let bank: BrasilAPI.Bank.BankModel = try await brasilAPI.banking.getBankByCode(code: "001")
         
         XCTAssertEqual(bank.code, 1)
         XCTAssertTrue(bank.name?.contains("BCO DO BRASIL S.A.") ?? false)
