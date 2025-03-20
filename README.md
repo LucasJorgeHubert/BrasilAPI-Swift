@@ -528,12 +528,12 @@ Model BrasilAPI.CPTEC.OceanicForecastModel
 Retorna estado e lista de cidades por DDD
 
 ```swift
-var cities: DDDService.BrasilAPIDDDCitiesModel = try await BrasilAPI().ddd.getCitiesByDDD(ddd: String)
+var cities: BrasilAPI.DDD.CitiesModel = try await BrasilAPI().ddd.getCitiesByDDD(ddd: String)
 ```
 
 <details>
 <summary>
-Model DDDService.BrasilAPIDDDCitiesModel
+Model BrasilAPI.DDD.CitiesModel
 </summary>
 
 ```swift
@@ -1052,12 +1052,12 @@ Model BrasilAPI.CPTEC.OceanicForecastModel
 Returns state and list of cities by DDD (area code).
 
 ```swift
-var cities: DDDService.BrasilAPIDDDCitiesModel = try await BrasilAPI().ddd.getCitiesByDDD(ddd: String)
+var cities: BrasilAPI.DDD.CitiesModel = try await BrasilAPI().ddd.getCitiesByDDD(ddd: String)
 ```
 
 <details>
 <summary>
-Model DDDService.BrasilAPIDDDCitiesModel
+Model BrasilAPI.DDD.CitiesModel
 </summary>
 
 ```swift

@@ -7,7 +7,7 @@ public class BrasilAPI {
     public var cnpj: Presenter.CNPJ.Service
     public var broker: Presenter.Broker.Service
     public var cptec: Presenter.CPTEC.Service
-    public var ddd: DDDService
+    public var ddd: Presenter.DDD.Service
     public var holidays: HolidaysService
     public var fipe: FIPEService
     public var ibge: Presenter.IBGE.IBGEService
@@ -17,6 +17,7 @@ public class BrasilAPI {
     public typealias Broker = Presenter.Broker.Service
     public typealias CNPJ = Presenter.CNPJ.Service
     public typealias CPTEC = Presenter.CPTEC.Service
+    public typealias DDD = Presenter.DDD.Service
     
     public init(
         bankingRepository: BankRepositoryProtocol = DataSource.Bank.RepositoryImpl(),
@@ -37,7 +38,7 @@ public class BrasilAPI {
         self.cnpj = Presenter.CNPJ.Service(repository: cnpjRepository)
         self.broker = Presenter.Broker.Service(repository: brokerRepository)
         self.cptec = Presenter.CPTEC.Service(repository: cptecRepository)
-        self.ddd = DDDService(repository: dddRepository)
+        self.ddd = Presenter.DDD.Service(repository: dddRepository)
         self.holidays = HolidaysService(repository: holidaysRepository)
         self.fipe = FIPEService(repository: fipeRepository)
         self.ibge = Presenter.IBGE.IBGEService(repository: ibgeRepository)

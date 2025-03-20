@@ -2,12 +2,12 @@ import XCTest
 @testable import BrasilAPI
 
 final class DDDIntegrationUseCaseTests: XCTestCase {
-    var getCitiesByDDDUseCase: GetCitiesByDDDUseCase!
+    var getCitiesByDDDUseCase: Presenter.DDD.UseCase.GetCitiesByDDD!
 
     override func setUp() {
         let repository = DataSource.DDD.RepositoryImpl()
         DataSource.APIConfig.environment = .production
-        getCitiesByDDDUseCase = GetCitiesByDDDUseCase(repository: repository)
+        getCitiesByDDDUseCase = Presenter.DDD.UseCase.GetCitiesByDDD(repository: repository)
     }
 
     func test_integration_fetchCities() async throws {
