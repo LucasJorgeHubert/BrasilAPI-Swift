@@ -11,6 +11,7 @@ enum APIResolver {
     enum FIPE {}
     enum Holidays {}
     enum ZipCode {}
+    enum NCM {}
     enum IBGE {}
     enum ISBN {}
 }

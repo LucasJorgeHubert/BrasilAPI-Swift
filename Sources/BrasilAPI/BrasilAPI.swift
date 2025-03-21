@@ -12,6 +12,7 @@ public class BrasilAPI {
     public typealias Holidays = Presenter.Holidays.Service
     public typealias IBGE = Presenter.IBGE.Service
     public typealias ISBN = Presenter.ISBN.Service
+    public typealias NCM = Presenter.NCM.Service
     public typealias ZipCode = Presenter.ZipCode.Service
     
     public var banking: Presenter.Bank.Service
@@ -24,6 +25,7 @@ public class BrasilAPI {
     public var holidays: Presenter.Holidays.Service
     public var ibge: Presenter.IBGE.Service
     public var isbn: Presenter.ISBN.Service
+    public var ncm: Presenter.NCM.Service
     public var zipCode: Presenter.ZipCode.Service
     
     public init(
@@ -37,6 +39,7 @@ public class BrasilAPI {
         holidaysRepository: HolidaysRepositoryProtocol = DataSource.Holidays.RepositoryImpl(),
         ibgeRepository: IBGERepositoryProtocol = DataSource.IBGE.RepositoryImpl(),
         isbnRepository: ISBNRepositoryProtocol = DataSource.ISBN.RepositoryImpl(),
+        ncmRepository: NCMRepositoryProtocol = DataSource.NCM.RepositoryImpl(),
         zipCodeRepository: ZipCodeRepositoryProtocol = DataSource.ZipCode.RepositoryImpl()
     ) {
         self.banking = Presenter.Bank.Service(repository: bankingRepository)
@@ -49,6 +52,7 @@ public class BrasilAPI {
         self.holidays = Presenter.Holidays.Service(repository: holidaysRepository)
         self.ibge = Presenter.IBGE.Service(repository: ibgeRepository)
         self.isbn = Presenter.ISBN.Service(repository: isbnRepository)
+        self.ncm = Presenter.NCM.Service(repository: ncmRepository)
         self.zipCode = Presenter.ZipCode.Service(repository: zipCodeRepository)
     }
 }

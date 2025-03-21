@@ -5,7 +5,7 @@
 
 Uma SDK Swift para acessar os serviços da [BrasilAPI](https://brasilapi.com.br) de forma simples e integrada.
 
-Respeite as regras de uso da API, conforme a [documentação](https://brasilapi.com.br/docs).
+🚨 Respeite as regras de uso da API, conforme a [documentação](https://brasilapi.com.br/docs).
 
 ## 📖 Sumário
 
@@ -49,7 +49,10 @@ Respeite as regras de uso da API, conforme a [documentação](https://brasilapi.
     - [Buscar estado](#listar-estado-ibgeufv1code)
   - [📖 ISBN](#-isbn)
     - [Buscar livro](#buscar-livro-isbnv1isbn)
-  - [🏢 NCM [WIP]](#-ncm)
+  - [🏢 NCM](#-ncm)
+    - [Buscar todos os NCMs](#buscar-ncm-ncmv1)
+    - [Buscar NCM](#buscar-um-ncm-ncmv1code)
+    - [Pesquisar NCM](#pesquisar-ncm-ncmv1searchterm)
   - [💰 PIX [WIP]](#-pix)
   - [🌐 Registro BR [WIP]](#-registro-br)
   - [💸 Taxas[WIP]](#-taxas)
@@ -70,7 +73,7 @@ Ou, se preferir, adicione manualmente ao `Package.swift`:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/LucasJorgeHubert/BrasilAPI-Swift", from: "0.6.0")
+    .package(url: "https://github.com/LucasJorgeHubert/BrasilAPI-Swift", from: "0.7.0")
 ]
 ```
 
@@ -760,7 +763,43 @@ Model BrasilAPI.ISBN.BookModel
 </details>
 
 ---
-### 🏢 NCM [WIP]
+### 🏢 NCM
+
+#### Buscar todos os NCMs [`ncm/v1`](https://brasilapi.com.br/docs#tag/NCM/paths/~1ncm~1v1/get)
+
+```swift
+var ncms: [BrasilAPI.NCM.NCMModel] = try await BrasilAPI().ncm.getAllNCM()
+```
+
+<details>
+<summary>
+Model BrasilAPI.NCM.NCMModel
+</summary>
+
+```swift
+codigo: String
+descricao: String
+dataInicio: String
+dataFim: String
+tipoAto: String
+numeroAto: String
+anoAto: String
+```
+</details>
+
+#### Buscar NCM [`ncm/v1/{code}`](https://brasilapi.com.br/docs#tag/NCM/paths/~1ncm~1v1~1%7Bcode%7D/get)
+
+```swift
+let ncm: BrasilAPI.NCM.NCMModel = try await brasilAPI.ncm.getNCMByCode(code: String)
+```
+
+#### Pesquisar NCM [`ncm/v1?search={term}`](https://brasilapi.com.br/docs#tag/NCM/paths/~1ncm~1v1?search=%7Bcode%7D/get)
+
+```swift
+let ncm: [BrasilAPI.NCM.NCMModel] = try await brasilAPI.ncm.searchNCM(term: String)
+/// Termo pode ser o número ou descrição, conforme documentação da BrasilAPI
+```
+
 ---
 ### 💰 PIX [WIP]
 ---
@@ -830,7 +869,10 @@ A Swift SDK to access [BrasilAPI](https://brasilapi.com.br) services in a simple
     - [Get state by code](#get-state-by-code-ibgeufv1code)
   - [📖 ISBN](#-isbn)
     - [Search book](#search-book-isbnv1isbn)
-  - [🏢 NCM [WIP]](#-ncm)
+  - [🏢 NCM](#-ncm)
+    - [Get all NCMs](#get-all-ncms-ncmv1)
+    - [Get NCM](#get-ncm-ncmv1code)
+    - [Search NCM](#search-ncm-ncmv1searchterm)
   - [💰 PIX [WIP]](#-pix)
   - [🌐 Registro BR [WIP]](#-registro-br)
   - [💸 Taxes [WIP]](#-taxes)
@@ -850,7 +892,7 @@ Or, if you prefer, manually add it to `Package.swift`:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/LucasJorgeHubert/BrasilAPI-Swift", from: "0.6.0")
+    .package(url: "https://github.com/LucasJorgeHubert/BrasilAPI-Swift", from: "0.7.0")
 ]
 ```
 
@@ -1319,6 +1361,46 @@ Model BrasilAPI.ISBN.BookModel
     unit: String
 ```
 </details>
+
+---
+
+### 🏢 NCM
+
+#### Get all NCMs [`ncm/v1`](https://brasilapi.com.br/docs#tag/NCM/paths/~1ncm~1v1/get)
+
+```swift
+var ncms: [BrasilAPI.NCM.NCMModel] = try await BrasilAPI().ncm.getAllNCM()
+```
+
+<details>
+<summary>
+Model BrasilAPI.NCM.NCMModel
+</summary>
+
+```swift
+codigo: String
+descricao: String
+dataInicio: String
+dataFim: String
+tipoAto: String
+numeroAto: String
+anoAto: String
+```
+</details>
+
+#### Get NCM [`ncm/v1/{code}`](https://brasilapi.com.br/docs#tag/NCM/paths/~1ncm~1v1~1%7Bcode%7D/get)
+
+```swift
+let ncm: BrasilAPI.NCM.NCMModel = try await brasilAPI.ncm.getNCMByCode(code: String)
+```
+
+#### Search NCM [`ncm/v1?search={term}`](https://brasilapi.com.br/docs#tag/NCM/paths/~1ncm~1v1?search=%7Bcode%7D/get)
+
+```swift
+let ncm: [BrasilAPI.NCM.NCMModel] = try await brasilAPI.ncm.searchNCM(term: String)
+/// Term can be a code or a description
+```
+
 
 
 ## 📄 License

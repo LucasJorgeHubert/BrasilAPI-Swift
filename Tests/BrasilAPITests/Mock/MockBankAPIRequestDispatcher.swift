@@ -37,6 +37,8 @@ class MockBankAPIRequestDispatcher: APIRequestDispatcherProtocol {
             return APIResolver.IBGE.resolve(for: apiRouter)
         case is DataSource.ISBN.APIRouter:
             return APIResolver.ISBN.resolve(for: apiRouter)
+        case is DataSource.NCM.APIRouter:
+            return APIResolver.NCM.resolve(for: apiRouter)
         default:
             return "default_mock"
         }
