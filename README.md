@@ -167,11 +167,11 @@ Busca por CEP com múltiplos providers de fallback
 A busca utiliza como fonte principal o OpenCep, caso não encontre o CEP é buscado em diversos outros providers de CEP.
 
 ```swift
-var zipCode: ZipCodeService.BrasilAPIZipCodeV1Model = try await BrasilAPI().zipCode.searchZipCodeV1(zipCode: String) // Apenas números
+var zipCode: BrasilAPI.ZipCode.ZipCodeV1Model = try await BrasilAPI().zipCode.searchZipCodeV1(zipCode: String) // Apenas números
 ```
 <details>
 <summary>
-Model ZipCodeService.BrasilAPIZipCodeV1Model
+Model BrasilAPI.ZipCode.ZipCodeV1Model
 </summary>
 
 ```swift
@@ -189,15 +189,15 @@ Model ZipCodeService.BrasilAPIZipCodeV1Model
 #### Buscar CEP [`cep/v2/{code}`](https://brasilapi.com.br/docs#tag/CEP-V2/paths/~1cep~1v2~1%7Bcep%7D/get)
 Versão 2 do serviço de busca por CEP com múltiplos providers de fallback.
 ```swift
-var zipCode: ZipCodeService.BrasilAPIZipCodeV2Model = try await BrasilAPI().zipCode.searchZipCodeV2(zipCode: String) // Apenas números
+var zipCode: BrasilAPI.ZipCode.ZipCodeV2Model = try await BrasilAPI().zipCode.searchZipCodeV2(zipCode: String) // Apenas números
 ```
 <details>
 <summary>
-Model ZipCodeService.BrasilAPIZipCodeV2Model
+Model BrasilAPI.ZipCode.ZipCodeV2Model
 </summary>
 
 ```swift
-/// ZipCodeService.BrasilAPIZipCodeV2Model
+/// BrasilAPI.ZipCode.ZipCodeV2Model
 	cep: String
 	state: String
 	city: String
@@ -853,14 +853,14 @@ var quote: BrasilAPI.Exchange.QuotationModel = try await BrasilAPI().exchange.ge
 #### Get ZIP Code [`cep/v1/{code}`](https://brasilapi.com.br/docs#tag/CEP/paths/~1cep~1v1~1%7Bcep%7D/get)
 Fetches ZIP code information using multiple fallback providers.
 ```swift
-var zipCode: ZipCodeService.BrasilAPIZipCodeV1Model = try await BrasilAPI().zipCode.searchZipCodeV1(zipCode: String)
+var zipCode: BrasilAPI.ZipCode.ZipCodeV1Model = try await BrasilAPI().zipCode.searchZipCodeV1(zipCode: String)
 ```
 ---
 ### 📍 ZIP Code v2
 #### Get ZIP Code [`cep/v2/{code}`](https://brasilapi.com.br/docs#tag/CEP-V2/paths/~1cep~1v2~1%7Bcep%7D/get)
 Version 2 of the ZIP code lookup service with multiple fallback providers.
 ```swift
-var zipCode: BrasilAPIZipCodeV2Model = try await BrasilAPI().zipCode.searchZipCodeV2(zipCode: String)
+var zipCode: ZipCodeV2Model = try await BrasilAPI().zipCode.searchZipCodeV2(zipCode: String)
 ```
 ---
 ### 🏢 CNPJ

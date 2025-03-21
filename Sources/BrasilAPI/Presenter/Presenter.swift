@@ -12,7 +12,12 @@ public enum Presenter {
     public enum Exchange { public enum UseCase { } }
     public enum FIPE { public enum UseCase { } }
     public enum Holidays { public enum UseCase { } }
-    public enum ZipCode { public enum UseCase { } }
+    public enum ZipCode {
+        public enum UseCase {
+            public enum V1 { }
+            public enum V2 { }
+        }
+    }
     public enum IBGE { public enum UseCase { } }
     public enum ISBN { public enum UseCase { } }
 }

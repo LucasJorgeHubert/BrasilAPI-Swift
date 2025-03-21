@@ -10,7 +10,7 @@ final class ZipCodeBrasilAPITests: XCTestCase {
 
     func test_searchZipCodeV1() async throws {
         let brasilAPI = BrasilAPI(zipCodeRepository: repository)
-        let zipCode: ZipCodeService.BrasilAPIZipCodeV1Model = try await brasilAPI.zipCode.searchZipCodeV1(zipCode: "88220000")
+        let zipCode: BrasilAPI.ZipCode.ZipCodeV1Model = try await brasilAPI.zipCode.searchZipCodeV1(zipCode: "88220000")
         
         XCTAssertNotNil(zipCode)
         XCTAssertEqual(zipCode.city, "Itapema")
@@ -21,7 +21,7 @@ final class ZipCodeBrasilAPITests: XCTestCase {
     
     func test_searchZipCodeV2() async throws {
         let brasilAPI = BrasilAPI(zipCodeRepository: repository)
-        let zipCode: ZipCodeService.BrasilAPIZipCodeV2Model = try await brasilAPI.zipCode.searchZipCodeV2(zipCode: "89010025")
+        let zipCode: BrasilAPI.ZipCode.ZipCodeV2Model = try await brasilAPI.zipCode.searchZipCodeV2(zipCode: "89010025")
         
         XCTAssertNotNil(zipCode)
         XCTAssertEqual(zipCode.city, "Blumenau")

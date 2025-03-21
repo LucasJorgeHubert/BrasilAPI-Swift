@@ -14,8 +14,8 @@ public enum Domain {
     public enum Holidays { public enum Models { } }
     public enum ZipCode {
         public enum Models {
-            public enum v1 { }
-            public enum v2 { }
+            public enum V1 { }
+            public enum V2 { }
         }
     }
     public enum IBGE { public enum Models { } }

@@ -1,6 +1,6 @@
 import Foundation
 
-extension Domain.ZipCode.Models.v1 {
+extension Domain.ZipCode.Models.V1 {
     public struct ZipCode: Codable, Hashable, Equatable {
         public let cep: String
         public let state: String
