@@ -10,7 +10,7 @@ extension DataSource.Holidays {
             self.apiDispatcher = apiDispatcher
         }
         
-        public func getHolidays(year: Int) async throws -> [BrasilAPIHolidaysModel] {
+        public func getHolidays(year: Int) async throws -> [Domain.Holidays.Models.Holiday] {
             return try await apiDispatcher.request(apiRouter: DataSource.Holidays.APIRouter.getHolidays(year: year))
         }
     }

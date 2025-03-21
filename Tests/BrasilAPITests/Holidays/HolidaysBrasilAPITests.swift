@@ -10,7 +10,9 @@ final class HolidaysBrasilAPITests: XCTestCase {
 
     func test_getExchangeCoins() async throws {
         let brasilAPI = BrasilAPI(holidaysRepository: repository)
-        let holidays = try await brasilAPI.holidays.getNationalHolidays(year: 2025)
+        let holidays: [BrasilAPI.Holidays.BrasilAPIHolidaysModel] = try await brasilAPI.holidays.getNationalHolidays(
+            year: 2025
+        )
         
         XCTAssertEqual(holidays.first?.date, "2025-01-01")
         XCTAssertEqual(holidays.first?.name, "Confraternização mundial")

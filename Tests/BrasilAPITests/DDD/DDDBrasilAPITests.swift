@@ -10,7 +10,7 @@ final class DDDBrasilAPITests: XCTestCase {
 
     func test_getExchangeCoins() async throws {
         let brasilAPI = BrasilAPI(dddRepository: repository)
-        let res = try await brasilAPI.ddd.getCitiesByDDD(ddd: "11")
+        let res: BrasilAPI.DDD.CitiesModel = try await brasilAPI.ddd.getCitiesByDDD(ddd: "11")
         
         XCTAssertNotNil(res)
         XCTAssertFalse(res.cities.isEmpty)

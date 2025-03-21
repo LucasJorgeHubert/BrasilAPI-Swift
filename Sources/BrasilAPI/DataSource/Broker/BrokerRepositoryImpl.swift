@@ -10,11 +10,11 @@ extension DataSource.Broker {
             self.apiDispatcher = apiDispatcher
         }
         
-        public func getBrokers() async throws -> [BrasilAPIBrokerModel] {
+        public func getBrokers() async throws -> [Domain.Broker.Models.Broker] {
             return try await apiDispatcher.request(apiRouter: DataSource.Broker.APIRouter.getBrokers)
         }
         
-        public func getBrokerByCnpj(cnpj: String) async throws -> BrasilAPIBrokerModel {
+        public func getBrokerByCnpj(cnpj: String) async throws -> Domain.Broker.Models.Broker {
             return try await apiDispatcher.request(apiRouter: DataSource.Broker.APIRouter.getBrokersByCnpj(cnpj: cnpj))
         }
     }

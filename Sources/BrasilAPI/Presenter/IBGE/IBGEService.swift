@@ -2,10 +2,13 @@ import Foundation
 
 extension Presenter.IBGE {
     
-    public final class IBGEService {
+    public final class Service {
         private let getCitiesByUFUseCase: Presenter.IBGE.UseCase.GetCitiesByUF
         private let getStatesUseCase: Presenter.IBGE.UseCase.GetStates
         private let getStateByCodeUseCase: Presenter.IBGE.UseCase.GetStateByCode
+        
+        public typealias CityModel = Domain.IBGE.Models.CityModel
+        public typealias StateModel = Domain.IBGE.Models.StateModel
         
         public init(repository: IBGERepositoryProtocol = DataSource.IBGE.RepositoryImpl()) {
             self.getCitiesByUFUseCase = Presenter.IBGE.UseCase.GetCitiesByUF(repository: repository)
@@ -13,15 +16,15 @@ extension Presenter.IBGE {
             self.getStateByCodeUseCase = Presenter.IBGE.UseCase.GetStateByCode(repository: repository)
         }
         
-        public func getCitiesByUF(uf: BrasilState) async throws -> [Domain.IBGE.Models.CityModel] {
+        public func getCitiesByUF(uf: BrasilState) async throws -> [CityModel] {
             return try await getCitiesByUFUseCase.execute(uf: uf.rawValue)
         }
         
-        public func getStates() async throws -> [Domain.IBGE.Models.StateModel] {
+        public func getStates() async throws -> [StateModel] {
             return try await getStatesUseCase.execute()
         }
         
-        public func getStateByCode(code: BrasilState) async throws -> Domain.IBGE.Models.StateModel {
+        public func getStateByCode(code: BrasilState) async throws -> StateModel {
             return try await getStateByCodeUseCase.execute(code: code.rawValue)
         }
     }

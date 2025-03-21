@@ -12,7 +12,7 @@ extension DataSource.CNPJ {
             self.apiDispatcher = apiDispatcher
         }
         
-        public func searchCNPJ(cnpj: String) async throws -> BrasilAPICNPJModel {
+        public func searchCNPJ(cnpj: String) async throws -> Domain.CNPJ.Models.CNPJ {
             return try await apiDispatcher.request(apiRouter: DataSource.CNPJ.APIRouter.getCNPJ(cnpj: cnpj))
         }
     }

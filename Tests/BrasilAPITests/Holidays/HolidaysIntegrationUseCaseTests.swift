@@ -2,12 +2,12 @@ import XCTest
 @testable import BrasilAPI
 
 class HolidaysIntegrationUseCaseTests: XCTestCase {
-    var getNationalHolidaysUseCase: GetNationalHolidaysUseCase!
+    var getNationalHolidaysUseCase: Presenter.Holidays.UseCase.GetNationalHolidays!
     
     override func setUp() {
         let repository = DataSource.Holidays.RepositoryImpl()
         DataSource.APIConfig.environment = .production
-        getNationalHolidaysUseCase = GetNationalHolidaysUseCase(repository: repository)
+        getNationalHolidaysUseCase = Presenter.Holidays.UseCase.GetNationalHolidays(repository: repository)
     }
     
     func test_getExchangeCoins() async throws {

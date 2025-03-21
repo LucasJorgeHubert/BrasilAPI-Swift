@@ -11,11 +11,11 @@ extension DataSource.Exchange {
             self.apiDispatcher = apiDispatcher
         }
         
-        public func listCoins() async throws -> [BrasilAPIExchangeCoinModel] {
+        public func listCoins() async throws -> [Domain.Exchange.Models.Coin] {
             return try await apiDispatcher.request(apiRouter: DataSource.Exchange.APIRouter.getCoins)
         }
         
-        public func getQuotation(coin: String, date: String) async throws -> BrasilAPIExchangeQuotationModel {
+        public func getQuotation(coin: String, date: String) async throws -> Domain.Exchange.Models.Quotation {
             return try await apiDispatcher.request(apiRouter: DataSource.Exchange.APIRouter.getQuotation(coin: coin, date: date))
         }
     }

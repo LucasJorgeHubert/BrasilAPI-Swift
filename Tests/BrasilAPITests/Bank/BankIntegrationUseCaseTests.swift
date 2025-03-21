@@ -2,14 +2,14 @@ import XCTest
 @testable import BrasilAPI
 
 final class BankIntegrationUseCaseTests: XCTestCase {
-    var listBanksUseCase: GetBankListUseCase!
-    var getBankByIdUseCase: GetBankByIdUseCase!
+    var listBanksUseCase: Presenter.Bank.UseCase.GetBankList!
+    var getBankByIdUseCase: Presenter.Bank.UseCase.GetBankById!
 
     override func setUp() {
         let repository = DataSource.Bank.RepositoryImpl()
         DataSource.APIConfig.environment = .production
-        listBanksUseCase = GetBankListUseCase(repository: repository)
-        getBankByIdUseCase = GetBankByIdUseCase(repository: repository)
+        listBanksUseCase = Presenter.Bank.UseCase.GetBankList(repository: repository)
+        getBankByIdUseCase = Presenter.Bank.UseCase.GetBankById(repository: repository)
     }
 
     func test_integration_fetchBanks() async throws {

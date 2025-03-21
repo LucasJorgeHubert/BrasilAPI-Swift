@@ -1,6 +1,8 @@
 import Foundation
 
-public struct BrasilAPIDDDCitiesModel: Codable {
-    let cities: [String]
-    let state: String
+extension Domain.DDD.Models {
+    public struct Cities: Codable {
+        let cities: [String]
+        let state: String
+    }
 }

@@ -2,14 +2,14 @@ import XCTest
 @testable import BrasilAPI
 
 final class BrokerIntegrationUseCaseTests: XCTestCase {
-    var listBrokersUseCase: GetBrokersUseCase!
-    var getBrokerByCNPJUseCase: GetBrokerByCNPJUseCase!
+    var listBrokersUseCase: Presenter.Broker.UseCase.GetBrokers!
+    var getBrokerByCNPJUseCase: Presenter.Broker.UseCase.GetBrokerByCNPJ!
 
     override func setUp() {
         let repository = DataSource.Broker.RepositoryImpl()
         DataSource.APIConfig.environment = .production
-        listBrokersUseCase = GetBrokersUseCase(repository: repository)
-        getBrokerByCNPJUseCase = GetBrokerByCNPJUseCase(repository: repository)
+        listBrokersUseCase = Presenter.Broker.UseCase.GetBrokers(repository: repository)
+        getBrokerByCNPJUseCase = Presenter.Broker.UseCase.GetBrokerByCNPJ(repository: repository)
     }
 
     func test_integration_fetchBrokers() async throws {

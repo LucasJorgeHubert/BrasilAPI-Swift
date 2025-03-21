@@ -1,13 +1,15 @@
 import Foundation
 
-class GetListCPTECLocalsUseCase {
-    private let repository: CPTECRepositoryProtocol
-    
-    init(repository: CPTECRepositoryProtocol = DataSource.CPTEC.RepositoryImpl()) {
-        self.repository = repository
-    }
-    
-    func execute() async throws -> [BrasilAPICPTECLocalModel] {
-        return try await repository.listLocals()
+extension Presenter.CPTEC.UseCase {
+    class GetListCPTECLocals {
+        private let repository: CPTECRepositoryProtocol
+        
+        init(repository: CPTECRepositoryProtocol = DataSource.CPTEC.RepositoryImpl()) {
+            self.repository = repository
+        }
+        
+        func execute() async throws -> [Domain.CPTEC.Models.Local] {
+            return try await repository.listLocals()
+        }
     }
 }

@@ -10,7 +10,7 @@ final class FIPEBrasilAPITests: XCTestCase {
 
     func test_getFIPEBrandsByVehicleType() async throws {
         let brasilAPI = BrasilAPI(fipeRepository: repository)
-        let cars = try await brasilAPI.fipe.getBrandByVehicleType(carType: .car)
+        let cars: [BrasilAPI.FIPE.VehiclesTypeModel] = try await brasilAPI.fipe.getBrandByVehicleType(carType: .car)
         
         XCTAssertNotNil(cars)
         XCTAssertFalse(cars.isEmpty)
@@ -21,7 +21,7 @@ final class FIPEBrasilAPITests: XCTestCase {
     
     func test_getFIPEVehiclePrice() async throws {
         let brasilAPI = BrasilAPI(fipeRepository: repository)
-        let carsPrices = try await brasilAPI.fipe.getVehiclePrice(codeFIPE: "1")
+        let carsPrices: [BrasilAPI.FIPE.VehiclePriceModel] = try await brasilAPI.fipe.getVehiclePrice(codeFIPE: "1")
         
         XCTAssertNotNil(carsPrices)
         XCTAssertFalse(carsPrices.isEmpty)
@@ -40,7 +40,7 @@ final class FIPEBrasilAPITests: XCTestCase {
     
     func test_getFIPEReferencePriceTable() async throws {
         let brasilAPI = BrasilAPI(fipeRepository: repository)
-        let tables = try await brasilAPI.fipe.getReferenceTables()
+        let tables: [BrasilAPI.FIPE.FIPETableModel] = try await brasilAPI.fipe.getReferenceTables()
         
         XCTAssertNotNil(tables)
         XCTAssertFalse(tables.isEmpty)
@@ -51,7 +51,7 @@ final class FIPEBrasilAPITests: XCTestCase {
     
     func test_getFIPEVehiclesByBrandAndType() async throws {
         let brasilAPI = BrasilAPI(fipeRepository: repository)
-        let cars = try await brasilAPI.fipe.listVehicles(type: .car, brandCode: "1")
+        let cars: [BrasilAPI.FIPE.VehicleModel] = try await brasilAPI.fipe.listVehicles(type: .car, brandCode: "1")
         
         XCTAssertNotNil(cars)
         XCTAssertFalse(cars.isEmpty)

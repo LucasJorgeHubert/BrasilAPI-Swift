@@ -85,17 +85,17 @@ O SPM foi feito para facilitar a integração com a [BrasilAPI](https://brasilap
 Retorna informações de todos os bancos do Brasil:
 
 ```swift
-var banks: [BrasilAPIBankModel] = try await BrasilAPI().banking.listBanks()
+var banks: [BrasilAPI.Bank.BankModel] = try await BrasilAPI().banking.listBanks()
 ```
 
 #### Buscar banco pelo código [`banks/v1/{code}`](https://brasilapi.com.br/docs#tag/BANKS/paths/~1banks~1v1~1%7Bcode%7D/get)
 Busca as informações de um banco a partir do código do banco:
 ```swift
-var bank: BrasilAPIBankModel = try await BrasilAPI().banking.getBankByCode(code: String)
+var bank: BrasilAPI.Bank.BankModel = try await BrasilAPI().banking.getBankByCode(code: String)
 ```
 <details>
 <summary>
-Model BrasilAPIBankModel
+Model BrasilAPI.Bank.BankModel
 </summary>
 
 ```swift
@@ -114,11 +114,11 @@ Model BrasilAPIBankModel
 Retorna informações de todas as moedas disponíveis para conversão:
 
 ```swift
-var coins: [BrasilAPIExchangeCoinModel] = try await BrasilAPI().exchange.listCoins()
+var coins: [BrasilAPI.Exchange.CoinModel] = try await BrasilAPI().exchange.listCoins()
 ```
 <details>
 <summary>
-Model BrasilAPIExchangeCoinModel
+Model BrasilAPI.Exchange.CoinModel
 </summary>
 
 ```swift
@@ -133,24 +133,24 @@ Model BrasilAPIExchangeCoinModel
 Busca pelo câmbio do Real com outra moeda, em uma data específica:
 
 ```swift
-var quote: BrasilAPIExchangeQuotationModel = try await BrasilAPI().exchange.getQuotation(coin: String, date: String)
+var quote: BrasilAPI.Exchange.QuotationModel = try await BrasilAPI().exchange.getQuotation(coin: String, date: String)
 /// coin: "USD"
 /// date: YYYY-MM-DD
 ```
 <details>
 <summary>
-Model BrasilAPIExchangeQuotationModel
+Model BrasilAPI.Exchange.QuotationModel
 </summary>
 
 ```swift
 
-/// BrasilAPIExchangeQuotationModel
+/// BrasilAPI.Exchange.QuotationModel
 	cotacoes: [BrasilAPIExchangeQuotationCoinModel]
 	moeda: String
 	data: String
 
 
-/// BrasilAPIExchangeQuotationCoinModel
+/// BrasilAPI.Exchange.QuotationCoinModel
 	paridadeCompra: Double
 	paridadeVenda: Double
 	cotacaoCompra: Double
@@ -167,11 +167,11 @@ Busca por CEP com múltiplos providers de fallback
 A busca utiliza como fonte principal o OpenCep, caso não encontre o CEP é buscado em diversos outros providers de CEP.
 
 ```swift
-var zipCode: BrasilAPIZipCodeV1Model = try await BrasilAPI().zipCode.searchZipCodeV1(zipCode: String) // Apenas números
+var zipCode: BrasilAPI.ZipCode.ZipCodeV1Model = try await BrasilAPI().zipCode.searchZipCodeV1(zipCode: String) // Apenas números
 ```
 <details>
 <summary>
-Model BrasilAPIZipCodeV1Model
+Model BrasilAPI.ZipCode.ZipCodeV1Model
 </summary>
 
 ```swift
@@ -189,28 +189,28 @@ Model BrasilAPIZipCodeV1Model
 #### Buscar CEP [`cep/v2/{code}`](https://brasilapi.com.br/docs#tag/CEP-V2/paths/~1cep~1v2~1%7Bcep%7D/get)
 Versão 2 do serviço de busca por CEP com múltiplos providers de fallback.
 ```swift
-var zipCode: BrasilAPIZipCodeV2Model = try await BrasilAPI().zipCode.searchZipCodeV2(zipCode: String) // Apenas números
+var zipCode: BrasilAPI.ZipCode.ZipCodeV2Model = try await BrasilAPI().zipCode.searchZipCodeV2(zipCode: String) // Apenas números
 ```
 <details>
 <summary>
-Model BrasilAPIZipCodeV2Model
+Model BrasilAPI.ZipCode.ZipCodeV2Model
 </summary>
 
 ```swift
-/// BrasilAPIZipCodeV2Model
+/// BrasilAPI.ZipCode.ZipCodeV2Model
 	cep: String
 	state: String
 	city: String
 	neighborhood: String?
 	street: String?
 	service: String
-	location: Location
+	location: BrasilAPIZipCodeV2LocationModel
 
-/// Location
+/// ZipCodeService.BrasilAPIZipCodeV2LocationModel
 	type: String
-	coordinates: Coordinates?
+	coordinates: BrasilAPIZipCodeV2CoordinatesModel?
 
-/// Coordinates
+/// ZipCodeService.BrasilAPIZipCodeV2CoordinatesModel
 	longitude: String?
 	latitude: String?
 
@@ -224,11 +224,11 @@ Model BrasilAPIZipCodeV2Model
 #### Buscar CNPJ [`cnpj/v1/{cnpj}`](https://brasilapi.com.br/docs#tag/CNPJ/paths/~1cnpj~1v1~1%7Bcnpj%7D/get)
 Busca por CNPJ na API Minha Receita.
 ```swift
-var cnpj: BrasilAPICNPJModel = try await BrasilAPI().cnpj.getCNPJ(cnpj: String) // Apenas números
+var cnpj: BrasilAPI.CNPJ.CNPJModel = try await BrasilAPI().cnpj.getCNPJ(cnpj: String) // Apenas números
 ```
 <details>
 <summary>
-Model BrasilAPICNPJModel
+Model BrasilAPI.CNPJ.CNPJModel
 </summary>
 
 ```swift
@@ -318,18 +318,18 @@ Model BrasilAPICNPJModel
 #### Buscar corretoras [`/cvm/corretoras/v1`](https://brasilapi.com.br/docs#tag/Corretoras/paths/~1cvm~1corretoras~1v1/get)
 
 ```swift
-var brokers: [BrasilAPIBrokerModel] = try await BrasilAPI().broker.getBrokers()
+var brokers: [Broker.BrokerModel] = try await BrasilAPI().broker.getBrokers()
 ```
 
 #### Buscar corretora por CNPJ [`/cvm/corretoras/v1/{cnpj}`](https://brasilapi.com.br/docs#tag/Corretoras/paths/~1cvm~1corretoras~1v1~1%7Bcnpj%7D/get)
 
 ```swift
-var broker: BrasilAPIBrokerModel = try await BrasilAPI().broker.getBrokerByCnpj(cnpj: String)
+var broker: Broker.BrokerModel = try await BrasilAPI().broker.getBrokerByCnpj(cnpj: String)
 ```
 
 <details>
 <summary>
-Model BrasilAPIBrokerModel
+Model Broker.BrokerModel
 </summary>
 
 ```swift
@@ -337,7 +337,7 @@ Model BrasilAPIBrokerModel
   type: String
   nomeSocial: String
   nomeComercial: String
-  status: Status
+  status: String
   email: String
   telefone: String
   cep: String
@@ -353,11 +353,6 @@ Model BrasilAPIBrokerModel
   dataInicioSituacao: String
   dataRegistro: String
 
-  /// Status
-  cancelada
-  emFuncionamentoNormal
-  incorporação
-  liquidaçãoExtrajudicial
 ``` 
 </details>
 
@@ -369,12 +364,12 @@ Model BrasilAPIBrokerModel
 Retorna listagem com todas as cidades junto a seus respectivos códigos presentes nos serviços da CPTEC. O Código destas cidades será utilizado para os serviços de meteorologia e a ondas (previsão oceânica) fornecido pelo centro. Leve em consideração que o WebService do CPTEC as vezes é instável, então se não encontrar uma determinada cidade na listagem completa, tente buscando por parte de seu nome no endpoint de busca.
 
 ```swift
-var cities: [BrasilAPICPTECLocalModel] = try await BrasilAPI().cptec.getListCPTECLocals()
+var cities: [BrasilAPI.CPTEC.LocalModel] = try await BrasilAPI().cptec.getListCPTECLocals()
 ```
 
 <details>
 <summary>
-Model BrasilAPICPTECLocalModel
+Model BrasilAPI.CPTEC.LocalModel
 </summary>
 
 ```swift
@@ -389,12 +384,12 @@ Model BrasilAPICPTECLocalModel
 Retorna listagem com todas as cidades correspondentes ao termo pesquisado junto a seus respectivos códigos presentes nos serviços da CPTEC. O Código destas cidades será utilizado para os serviços de meteorologia e a ondas (previsão oceânica) fornecido pelo centro.
 
 ```swift
-var cities: [BrasilAPICPTECLocalModel] = try await BrasilAPI().cptec.getCPTECLocal(localName: String)
+var cities: [BrasilAPI.CPTEC.LocalModel] = try await BrasilAPI().cptec.getCPTECLocal(localName: String)
 ```
 
 <details>
 <summary>
-Model BrasilAPICPTECLocalModel
+Model BrasilAPI.CPTEC.LocalModel
 </summary>
 
 ```swift
@@ -409,12 +404,12 @@ Model BrasilAPICPTECLocalModel
 Retorna condições meteorológicas atuais nas capitais do país, com base nas estações de solo de seu aeroporto.
 
 ```swift
-var condition: [BrasilAPICPTECConditionModel] = try await BrasilAPI().cptec.getListCPTECCapitals()
+var condition: [BrasilAPI.CPTEC.ConditionModel] = try await BrasilAPI().cptec.getListCPTECCapitals()
 ```
 
 <details>
 <summary>
-Model BrasilAPICPTECConditionModel
+Model BrasilAPI.CPTEC.ConditionModel
 </summary>
 
 ```swift
@@ -436,12 +431,12 @@ Model BrasilAPICPTECConditionModel
 Retorna condições meteorológicas atuais no aeroporto solicitado. Este endpoint utiliza o código ICAO (4 dígitos) do aeroporto.
 
 ```swift
-var condition: BrasilAPICPTECConditionModel = try await BrasilAPI().cptec.getCPTECCapital(codeICAO: String)
+var condition: BrasilAPI.CPTEC.ConditionModel = try await BrasilAPI().cptec.getCPTECCapital(codeICAO: String)
 ```
 
 <details>
 <summary>
-Model BrasilAPICPTECConditionModel
+Model BrasilAPI.CPTEC.ConditionModel
 </summary>
 
 ```swift
@@ -463,23 +458,23 @@ Model BrasilAPICPTECConditionModel
 Retorna a previsão meteorológica para a cidade informada para um período de 1 até 6 dias. Devido a inconsistências encontradas nos retornos da CPTEC nossa API só consegue retornar com precisão o período máximo de 6 dias.
 
 ```swift
-var forecast: BrasilAPICPTECForecastModel = try await BrasilAPI().cptec.getCPTECLocalForecast(cityCode: Int, days: ForecastAvailableDays)
+var forecast: BrasilAPI.CPTEC.ForecastModel = try await BrasilAPI().cptec.getCPTECLocalForecast(cityCode: Int, days: ForecastAvailableDays)
 
 // ForecastAvailableDays = Enum de 1 a 6 diuas
 ```
 
 <details>
 <summary>
-Model BrasilAPICPTECForecastModel
+Model BrasilAPI.CPTEC.ForecastModel
 </summary>
 
 ```swift
   city: String
   state: String
   updated: String
-  weather: [BrasilAPICPTECWeatherModel]
+  weather: [CPTECService.BrasilAPICPTECWeatherModel]
 
-  // BrasilAPICPTECWeatherModel
+  // CPTECService.BrasilAPICPTECWeatherModel
   date: String
   condition: String
   conditionDescription: String
@@ -494,14 +489,14 @@ Model BrasilAPICPTECForecastModel
 Retorna a previsão oceânica para a cidade informada para um período de, até, 6 dias.
 
 ```swift
-var forecast: BrasilAPICPTECOceanicForecastModel = try await BrasilAPI().cptec.getCPTECOceanicForecast(cityCode: Int, days: ForecastAvailableDays)
+var forecast: BrasilAPI.CPTEC.OceanicForecastModel = try await BrasilAPI().cptec.getCPTECOceanicForecast(cityCode: Int, days: ForecastAvailableDays)
 
 // ForecastAvailableDays = Enum de 1 a 6 dias
 ```
 
 <details>
 <summary>
-Model BrasilAPICPTECOceanicForecastModel
+Model BrasilAPI.CPTEC.OceanicForecastModel
 </summary>
 
 ```swift
@@ -512,9 +507,9 @@ Model BrasilAPICPTECOceanicForecastModel
 
   // BrasilAPICPTECWavesModel
   date: String
-  data: [BrasilAPICPTECWavesDataModel]
+  data: [CPTECService.BrasilAPICPTECWavesDataModel]
 
-  // BrasilAPICPTECWavesDataModel
+  // CPTECService.BrasilAPICPTECWavesDataModel
   windSpeed: Double
   windDirection: String
   windDirectionDescription: String?
@@ -533,12 +528,12 @@ Model BrasilAPICPTECOceanicForecastModel
 Retorna estado e lista de cidades por DDD
 
 ```swift
-var cities: BrasilAPIDDDCitiesModel = try await BrasilAPI().ddd.getCitiesByDDD(ddd: String)
+var cities: BrasilAPI.DDD.CitiesModel = try await BrasilAPI().ddd.getCitiesByDDD(ddd: String)
 ```
 
 <details>
 <summary>
-Model BrasilAPIDDDCitiesModel
+Model BrasilAPI.DDD.CitiesModel
 </summary>
 
 ```swift
@@ -555,12 +550,12 @@ Model BrasilAPIDDDCitiesModel
 Calcula os feriados móveis baseados na Páscoa e adiciona os feriados fixos
 
 ```swift
-var holidays: [BrasilAPIHolidaysModel] = try await BrasilAPI().holidays.getNationalHolidays(year: 2025)
+var holidays: [BrasilAPI.Holidays.BrasilAPIHolidaysModel] = try await BrasilAPI().holidays.getNationalHolidays(year: 2025)
 ```
 
 <details>
 <summary>
-Model BrasilAPIHolidaysModel
+Model BrasilAPI.Holidays.BrasilAPIHolidaysModel
 </summary>
 
 ```swift
@@ -578,14 +573,14 @@ Model BrasilAPIHolidaysModel
 Lista as marcas de veículos referente ao tipo de veículo
 
 ```swift
-var brands: [BrasilAPIVehiclesTypeModel] = try await BrasilAPI().fipe.getBrandByVehicleType(carType: VehicleTypeEnum)
+var brands: [BrasilAPI.FIPE.VehiclesTypeModel] = try await BrasilAPI().fipe.getBrandByVehicleType(carType: FIPEService.VehicleTypeEnum)
 ```
 
-VehicleTypeEnum: `car`, `truck` e `motorcycle`
+FIPEService.VehicleTypeEnum: `car`, `truck` e `motorcycle`
 
 <details>
 <summary>
-Model BrasilAPIVehiclesTypeModel
+Model BrasilAPI.FIPE.VehiclesTypeModel
 </summary>
 
 ```swift
@@ -599,12 +594,12 @@ Model BrasilAPIVehiclesTypeModel
 Consulta o preço do veículo segundo a tabela fipe.
 
 ```swift
-var prices: [BrasilAPIVehiclesPriceModel] = try await BrasilAPI().fipe.getVehiclePrice(codeFIPE: String)
+var prices: [BrasilAPI.FIPE.VehiclePriceModel] = try await BrasilAPI().fipe.getVehiclePrice(codeFIPE: String)
 ```
 
 <details>
 <summary>
-Model BrasilAPIVehiclesPriceModel
+Model BrasilAPI.FIPE.VehiclePriceModel
 </summary>
 
 ```swift
@@ -616,12 +611,12 @@ Model BrasilAPIVehiclesPriceModel
 #### Listar tabelas de referência [`fipe/tabelas/v1`](https://brasilapi.com.br/docs#tag/FIPE/paths/~1fipe~1tabelas~1v1/get)
 
 ```swift
-var tables: [BrasilAPIFIPETableModel] = try await BrasilAPI().fipe.getReferenceTables()
+var tables: [BrasilAPI.FIPE.FIPETableModel] = try await BrasilAPI().fipe.getReferenceTables()
 ```
 
 <details>
 <summary>
-Model BrasilAPIFIPETableModel
+Model BrasilAPI.FIPE.FIPETableModel
 </summary>
 
 ```swift
@@ -634,14 +629,14 @@ Model BrasilAPIFIPETableModel
 
 
 ```swift
-var tables: [BrasilAPIVehiclesModel] = try await BrasilAPI().fipe.listVehicles(type: VehicleTypeEnum, brandCode: String)
+var tables: [BrasilAPI.FIPE.VehicleModel] = try await BrasilAPI().fipe.listVehicles(type: FIPEService.VehicleTypeEnum, brandCode: String)
 ```
 
-VehicleTypeEnum: `car`, `truck` e `motorcycle`
+FIPEService.VehicleTypeEnum: `car`, `truck` e `motorcycle`
 
 <details>
 <summary>
-Model BrasilAPIVehiclesModel
+Model BrasilAPI.FIPE.VehicleModel
 </summary>
 
 ```swift
@@ -656,13 +651,13 @@ Model BrasilAPIVehiclesModel
 Retorna os municípios da unidade federativa
 
 ```swift
-var cities: [BrasilAPIIBGECityModel] = try await BrasilAPI().ibge.getIBGECitiesByUF(uf: BrasilState)
+var cities: [BrasilAPI.IBGE.CityModel] = try await BrasilAPI().ibge.getIBGECitiesByUF(uf: BrasilState)
 // BrasilState é um enum com todos os estados brasileiros
 ```
 
 <details>
 <summary>
-Model BrasilAPIIBGECityModel
+Model BrasilAPI.IBGE.CityModel
 </summary>
 
 ```swift
@@ -675,12 +670,12 @@ Model BrasilAPIIBGECityModel
 Retorna informações de todos estados do Brasil
 
 ```swift
-var states: [BrasilAPIIBGEStateModel] = try await BrasilAPI().ibge.getIBGEStates()
+var states: [BrasilAPI.IBGE.StateModel] = try await BrasilAPI().ibge.getIBGEStates()
 ```
 
 <details>
 <summary>
-Model BrasilAPIIBGEStateModel
+Model BrasilAPI.IBGE.StateModel
 </summary>
 
 ```swift
@@ -700,13 +695,13 @@ Model BrasilAPIIBGEStateModel
 Busca as informações de um estado a partir da sigla ou código
 
 ```swift
-var state: BrasilAPIIBGEStateModel = try await BrasilAPI().ibge.getIBGEStateByCode(code: BrasilState)
+var state: BrasilAPI.IBGE.StateModel = try await BrasilAPI().ibge.getIBGEStateByCode(code: BrasilState)
 // BrasilState é um enum com todos os estados brasileiros
 ```
 
 <details>
 <summary>
-Model BrasilAPIIBGEStateModel
+Model BrasilAPI.IBGE.StateModel
 </summary>
 
 ```swift
@@ -832,58 +827,58 @@ The SPM was created to facilitate integration with [BrasilAPI](https://brasilapi
 #### List Banks [`banks/v1`](https://brasilapi.com.br/docs#tag/BANKS/paths/~1banks~1v1/get)
 Returns information about all banks in Brazil:
 ```swift
-var banks: [BrasilAPIBankModel] = try await BrasilAPI().banking.listBanks()
+var banks: [BrasilAPI.Bank.BankModel] = try await BrasilAPI().banking.listBanks()
 ```
 ---
 #### Get Bank by Code [`banks/v1/{code}`](https://brasilapi.com.br/docs#tag/BANKS/paths/~1banks~1v1~1%7Bcode%7D/get)
 Fetches information about a bank using its code:
 ```swift
-var bank: BrasilAPIBankModel = try await BrasilAPI().banking.getBankByCode(code: String)
+var bank: BrasilAPI.Bank.BankModel = try await BrasilAPI().banking.getBankByCode(code: String)
 ```
 ---
 ### 💱 Exchange
 #### Get Currencies [`cambio/v1/moedas`](https://brasilapi.com.br/docs#tag/CAMBIO/paths/~1cambio~1v1~1moedas/get)
 Returns information about all available currencies for conversion:
 ```swift
-var coins: [BrasilAPIExchangeCoinModel] = try await BrasilAPI().exchange.listCoins()
+var coins: [BrasilAPI.Exchange.CoinModel] = try await BrasilAPI().exchange.listCoins()
 ```
 ---
 #### Get Exchange Rate [`cambio/v1/cotacao/{moeda}/{data}`](https://brasilapi.com.br/docs#tag/CAMBIO/paths/~1cambio~1v1~1cotacao~1%7Bmoeda%7D~1%7Bdata%7D/get)
 Fetches exchange rates for BRL with another currency on a specific date:
 ```swift
-var quote: BrasilAPIExchangeQuotationModel = try await BrasilAPI().exchange.getQuotation(coin: String, date: String)
+var quote: BrasilAPI.Exchange.QuotationModel = try await BrasilAPI().exchange.getQuotation(coin: String, date: String)
 ```
 ---
 ### 📍 ZIP Code
 #### Get ZIP Code [`cep/v1/{code}`](https://brasilapi.com.br/docs#tag/CEP/paths/~1cep~1v1~1%7Bcep%7D/get)
 Fetches ZIP code information using multiple fallback providers.
 ```swift
-var zipCode: BrasilAPIZipCodeV1Model = try await BrasilAPI().zipCode.searchZipCodeV1(zipCode: String)
+var zipCode: BrasilAPI.ZipCode.ZipCodeV1Model = try await BrasilAPI().zipCode.searchZipCodeV1(zipCode: String)
 ```
 ---
 ### 📍 ZIP Code v2
 #### Get ZIP Code [`cep/v2/{code}`](https://brasilapi.com.br/docs#tag/CEP-V2/paths/~1cep~1v2~1%7Bcep%7D/get)
 Version 2 of the ZIP code lookup service with multiple fallback providers.
 ```swift
-var zipCode: BrasilAPIZipCodeV2Model = try await BrasilAPI().zipCode.searchZipCodeV2(zipCode: String)
+var zipCode: ZipCodeV2Model = try await BrasilAPI().zipCode.searchZipCodeV2(zipCode: String)
 ```
 ---
 ### 🏢 CNPJ
 #### Get CNPJ [`cnpj/v1/{cnpj}`](https://brasilapi.com.br/docs#tag/CNPJ/paths/~1cnpj~1v1~1%7Bcnpj%7D/get)
 Fetches company information using CNPJ from the Minha Receita API.
 ```swift
-var cnpj: BrasilAPICNPJModel = try await BrasilAPI().cnpj.getCNPJ(cnpj: String)
+var cnpj: BrasilAPI.CNPJ.CNPJModel = try await BrasilAPI().cnpj.getCNPJ(cnpj: String)
 ```
 ---
 ### 🏦 Brokers
 #### Get Brokers [`/cvm/corretoras/v1`](https://brasilapi.com.br/docs#tag/Corretoras/paths/~1cvm~1corretoras~1v1/get)
 ```swift
-var brokers: [BrasilAPIBrokerModel] = try await BrasilAPI().broker.getBrokers()
+var brokers: [Broker.BrokerModel] = try await BrasilAPI().broker.getBrokers()
 ```
 
 #### Get Broker by CNPJ [`/cvm/corretoras/v1/{cnpj}`](https://brasilapi.com.br/docs#tag/Corretoras/paths/~1cvm~1corretoras~1v1~1%7Bcnpj%7D/get)
 ```swift
-var broker: BrasilAPIBrokerModel = try await BrasilAPI().broker.getBrokerByCnpj(cnpj: String)
+var broker: Broker.BrokerModel = try await BrasilAPI().broker.getBrokerByCnpj(cnpj: String)
 ```
 ---
 ### 🌡️ CPTEC
@@ -893,12 +888,12 @@ var broker: BrasilAPIBrokerModel = try await BrasilAPI().broker.getBrokerByCnpj(
 Returns a list of all cities along with their respective codes available in CPTEC services. These city codes will be used for meteorology and ocean wave (ocean forecast) services provided by the center. Keep in mind that CPTEC's WebService is sometimes unstable, so if you don't find a specific city in the complete list, try searching by part of its name in the search endpoint.
 
 ```swift
-var cities: [BrasilAPICPTECLocalModel] = try await BrasilAPI().cptec.getListCPTECLocals()
+var cities: [BrasilAPI.CPTEC.LocalModel] = try await BrasilAPI().cptec.getListCPTECLocals()
 ```
 
 <details>
 <summary>
-Model BrasilAPICPTECLocalModel
+Model BrasilAPI.CPTEC.LocalModel
 </summary>
 
 ```swift
@@ -913,12 +908,12 @@ Model BrasilAPICPTECLocalModel
 Returns a list of all cities matching the searched term along with their respective codes available in CPTEC services. These city codes will be used for meteorology and ocean wave (ocean forecast) services provided by the center.
 
 ```swift
-var cities: [BrasilAPICPTECLocalModel] = try await BrasilAPI().cptec.getCPTECLocal(localName: String)
+var cities: [BrasilAPI.CPTEC.LocalModel] = try await BrasilAPI().cptec.getCPTECLocal(localName: String)
 ```
 
 <details>
 <summary>
-Model BrasilAPICPTECLocalModel
+Model BrasilAPI.CPTEC.LocalModel
 </summary>
 
 ```swift
@@ -933,12 +928,12 @@ Model BrasilAPICPTECLocalModel
 Returns current weather conditions in the country's capitals, based on airport ground stations.
 
 ```swift
-var condition: [BrasilAPICPTECConditionModel] = try await BrasilAPI().cptec.getListCPTECCapitals()
+var condition: [BrasilAPI.CPTEC.ConditionModel] = try await BrasilAPI().cptec.getListCPTECCapitals()
 ```
 
 <details>
 <summary>
-Model BrasilAPICPTECConditionModel
+Model BrasilAPI.CPTEC.ConditionModel
 </summary>
 
 ```swift
@@ -960,12 +955,12 @@ Model BrasilAPICPTECConditionModel
 Returns current weather conditions at the requested airport. This endpoint uses the ICAO code (4-digit) of the airport.
 
 ```swift
-var condition: BrasilAPICPTECConditionModel = try await BrasilAPI().cptec.getCPTECCapital(codeICAO: String)
+var condition: BrasilAPI.CPTEC.ConditionModel = try await BrasilAPI().cptec.getCPTECCapital(codeICAO: String)
 ```
 
 <details>
 <summary>
-Model BrasilAPICPTECConditionModel
+Model BrasilAPI.CPTEC.ConditionModel
 </summary>
 
 ```swift
@@ -987,23 +982,23 @@ Model BrasilAPICPTECConditionModel
 Returns the weather forecast for the specified city for a period of 1 to 6 days. Due to inconsistencies found in CPTEC's responses, our API can only reliably return a maximum period of 6 days.
 
 ```swift
-var forecast: BrasilAPICPTECForecastModel = try await BrasilAPI().cptec.getCPTECLocalForecast(cityCode: Int, days: ForecastAvailableDays)
+var forecast: BrasilAPI.CPTEC.ForecastModel = try await BrasilAPI().cptec.getCPTECLocalForecast(cityCode: Int, days: ForecastAvailableDays)
 
 // ForecastAvailableDays = Enum from 1 to 6 days
 ```
 
 <details>
 <summary>
-Model BrasilAPICPTECForecastModel
+Model BrasilAPI.CPTEC.ForecastModel
 </summary>
 
 ```swift
   city: String
   state: String
   updated: String
-  weather: [BrasilAPICPTECWeatherModel]
+  weather: [CPTECService.BrasilAPICPTECWeatherModel]
 
-  // BrasilAPICPTECWeatherModel
+  // CPTECService.BrasilAPICPTECWeatherModel
   date: String
   condition: String
   conditionDescription: String
@@ -1018,14 +1013,14 @@ Model BrasilAPICPTECForecastModel
 Returns the ocean forecast for the specified city for a period of up to 6 days.
 
 ```swift
-var forecast: BrasilAPICPTECOceanicForecastModel = try await BrasilAPI().cptec.getCPTECOceanicForecast(cityCode: Int, days: ForecastAvailableDays)
+var forecast: BrasilAPI.CPTEC.OceanicForecastModel = try await BrasilAPI().cptec.getCPTECOceanicForecast(cityCode: Int, days: ForecastAvailableDays)
 
 // ForecastAvailableDays = Enum from 1 to 6 days
 ```
 
 <details>
 <summary>
-Model BrasilAPICPTECOceanicForecastModel
+Model BrasilAPI.CPTEC.OceanicForecastModel
 </summary>
 
 ```swift
@@ -1036,9 +1031,9 @@ Model BrasilAPICPTECOceanicForecastModel
 
   // BrasilAPICPTECWavesModel
   date: String
-  data: [BrasilAPICPTECWavesDataModel]
+  data: [CPTECService.BrasilAPICPTECWavesDataModel]
 
-  // BrasilAPICPTECWavesDataModel
+  // CPTECService.BrasilAPICPTECWavesDataModel
   windSpeed: Double
   windDirection: String
   windDirectionDescription: String?
@@ -1057,12 +1052,12 @@ Model BrasilAPICPTECOceanicForecastModel
 Returns state and list of cities by DDD (area code).
 
 ```swift
-var cities: BrasilAPIDDDCitiesModel = try await BrasilAPI().ddd.getCitiesByDDD(ddd: String)
+var cities: BrasilAPI.DDD.CitiesModel = try await BrasilAPI().ddd.getCitiesByDDD(ddd: String)
 ```
 
 <details>
 <summary>
-Model BrasilAPIDDDCitiesModel
+Model BrasilAPI.DDD.CitiesModel
 </summary>
 
 ```swift
@@ -1079,12 +1074,12 @@ Model BrasilAPIDDDCitiesModel
 Calculates the movable holidays based on Easter and adds the fixed holidays.
 
 ```swift
-var holidays: [BrasilAPIHolidaysModel] = try await BrasilAPI().holidays.getNationalHolidays(year: 2025)
+var holidays: [BrasilAPI.Holidays.BrasilAPIHolidaysModel] = try await BrasilAPI().holidays.getNationalHolidays(year: 2025)
 ```
 
 <details>
 <summary>
-Model BrasilAPIHolidaysModel
+Model BrasilAPI.Holidays.BrasilAPIHolidaysModel
 </summary>
 
 ```swift
@@ -1102,14 +1097,14 @@ Model BrasilAPIHolidaysModel
 Lists the vehicle brands for the specified vehicle type.
 
 ```swift
-var brands: [BrasilAPIVehiclesTypeModel] = try await BrasilAPI().fipe.getBrandByVehicleType(carType: VehicleTypeEnum)
+var brands: [BrasilAPI.FIPE.VehiclesTypeModel] = try await BrasilAPI().fipe.getBrandByVehicleType(carType: FIPEService.VehicleTypeEnum)
 ```
 
-VehicleTypeEnum: `car`, `truck`, and `motorcycle`
+FIPEService.VehicleTypeEnum: `car`, `truck`, and `motorcycle`
 
 <details>
 <summary>
-Model BrasilAPIVehiclesTypeModel
+Model BrasilAPI.FIPE.VehiclesTypeModel
 </summary>
 
 ```swift
@@ -1123,12 +1118,12 @@ Model BrasilAPIVehiclesTypeModel
 Retrieves the vehicle price according to the FIPE table.
 
 ```swift
-var prices: [BrasilAPIVehiclesPriceModel] = try await BrasilAPI().fipe.getVehiclePrice(codeFIPE: String)
+var prices: [BrasilAPI.FIPE.VehiclePriceModel] = try await BrasilAPI().fipe.getVehiclePrice(codeFIPE: String)
 ```
 
 <details>
 <summary>
-Model BrasilAPIVehiclesPriceModel
+Model BrasilAPI.FIPE.VehiclePriceModel
 </summary>
 
 ```swift
@@ -1140,12 +1135,12 @@ Model BrasilAPIVehiclesPriceModel
 #### List Reference Tables [`fipe/tabelas/v1`](https://brasilapi.com.br/docs#tag/FIPE/paths/~1fipe~1tabelas~1v1/get)
 
 ```swift
-var tables: [BrasilAPIFIPETableModel] = try await BrasilAPI().fipe.getReferenceTables()
+var tables: [BrasilAPI.FIPE.FIPETableModel] = try await BrasilAPI().fipe.getReferenceTables()
 ```
 
 <details>
 <summary>
-Model BrasilAPIFIPETableModel
+Model BrasilAPI.FIPE.FIPETableModel
 </summary>
 
 ```swift
@@ -1157,14 +1152,14 @@ Model BrasilAPIFIPETableModel
 #### List Vehicles by Brand and Type [`fipe/veiculos/v1/{vehicleType}/{brandCode}`](https://brasilapi.com.br/docs#tag/FIPE/paths/~1fipe~1veiculos~1v1~1%7BtipoVeiculo%7D~1%7BcodigoMarca%7D/get)
 
 ```swift
-var tables: [BrasilAPIVehiclesModel] = try await BrasilAPI().fipe.listVehicles(type: VehicleTypeEnum, brandCode: String)
+var tables: [BrasilAPI.FIPE.VehicleModel] = try await BrasilAPI().fipe.listVehicles(type: FIPEService.VehicleTypeEnum, brandCode: String)
 ```
 
-VehicleTypeEnum: `car`, `truck`, and `motorcycle`
+FIPEService.VehicleTypeEnum: `car`, `truck`, and `motorcycle`
 
 <details>
 <summary>
-Model BrasilAPIVehiclesModel
+Model BrasilAPI.FIPE.VehicleModel
 </summary>
 
 ```swift
@@ -1179,13 +1174,13 @@ Model BrasilAPIVehiclesModel
 Returns the cities of the federative unit
 
 ```swift
-var cities: [BrasilAPIIBGECityModel] = try await BrasilAPI().ibge.getIBGECitiesByUF(uf: BrasilState)
+var cities: [BrasilAPI.IBGE.CityModel] = try await BrasilAPI().ibge.getIBGECitiesByUF(uf: BrasilState)
 // BrasilState is an enum with all Brazilian states
 ```
 
 <details>
 <summary>
-Model BrasilAPIIBGECityModel
+Model BrasilAPI.IBGE.CityModel
 </summary>
 
 ```swift
@@ -1198,12 +1193,12 @@ Model BrasilAPIIBGECityModel
 Returns information about all Brazilian states
 
 ```swift
-var states: [BrasilAPIIBGEStateModel] = try await BrasilAPI().ibge.getIBGEStates()
+var states: [BrasilAPI.IBGE.StateModel] = try await BrasilAPI().ibge.getIBGEStates()
 ```
 
 <details>
 <summary>
-Model BrasilAPIIBGEStateModel
+Model BrasilAPI.IBGE.StateModel
 </summary>
 
 ```swift
@@ -1223,13 +1218,13 @@ Model BrasilAPIIBGEStateModel
 Fetches information about a state by acronym or code
 
 ```swift
-var state: BrasilAPIIBGEStateModel = try await BrasilAPI().ibge.getIBGEStateByCode(code: BrasilState)
+var state: BrasilAPI.IBGE.StateModel = try await BrasilAPI().ibge.getIBGEStateByCode(code: BrasilState)
 // BrasilState is an enum with all Brazilian states
 ```
 
 <details>
 <summary>
-Model BrasilAPIIBGEStateModel
+Model BrasilAPI.IBGE.StateModel
 </summary>
 
 ```swift

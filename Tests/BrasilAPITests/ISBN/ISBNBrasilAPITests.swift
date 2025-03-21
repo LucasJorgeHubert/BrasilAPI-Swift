@@ -10,7 +10,7 @@ final class ISBNBrasilAPITests: XCTestCase {
 
     func test_getISBNBook() async throws {
         let brasilAPI = BrasilAPI(isbnRepository: repository)
-        let book = try await brasilAPI.isbn.getBook(isbn: "9788545702870")
+        let book: BrasilAPI.ISBN.BookModel = try await brasilAPI.isbn.getBook(isbn: "9788545702870")
                                                     
         XCTAssertEqual(book.authors, [
             "KATSUHIRO OTOMO",
