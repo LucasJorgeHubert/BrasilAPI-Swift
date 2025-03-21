@@ -9,7 +9,8 @@ public enum DataSource {
     public enum Exchange { }
     public enum FIPE { }
     public enum Holidays { }
-    public enum ZipCode { }
     public enum IBGE { }
     public enum ISBN { }
+    public enum NCM { }
+    public enum ZipCode { }
 }

@@ -22,6 +22,10 @@ extension DataSource {
             components.host = DataSource.APIConfig.baseURL
             components.path = apiRouter.path
             
+            if let queryItems = apiRouter.queryItems {
+                components.queryItems = queryItems
+            }
+            
             if DataSource.APIConfig.environment == .local {
                 components.port = 3000
             }

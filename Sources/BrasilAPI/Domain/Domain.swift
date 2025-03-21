@@ -18,6 +18,7 @@ public enum Domain {
             public enum V2 { }
         }
     }
+    public enum NCM { public enum Models { } }
     public enum IBGE { public enum Models { } }
     public enum ISBN { public enum Models { } }
 }
