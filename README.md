@@ -1,8 +1,11 @@
-# BrasilAPI-Swift
+# BrasilAPI Swift
 
 [![Swift Package Manager](https://img.shields.io/badge/SPM-Compatible-brightgreen.svg)](https://swift.org/package-manager/)
+[![Tests](https://img.shields.io/badge/Tests-Passing-brightgreen.svg)]()
 
 Uma SDK Swift para acessar os serviços da [BrasilAPI](https://brasilapi.com.br) de forma simples e integrada.
+
+Respeite as regras de uso da API, conforme a [documentação](https://brasilapi.com.br/docs).
 
 ## 📖 Sumário
 
@@ -44,11 +47,12 @@ Uma SDK Swift para acessar os serviços da [BrasilAPI](https://brasilapi.com.br)
     - [Listar cidades](#listar-cidades-ibgemunicipiosv1siglauf)
     - [Listar estados](#listar-estados-ibgeufv1)
     - [Buscar estado](#listar-estado-ibgeufv1code)
-  - [🔢 ISBN](#-isbn)
-  - [🏢 NCM](#-ncm)
-  - [💰 PIX](#-pix)
-  - [🌐 Registro BR](#-registro-br)
-  - [💸 Taxas](#-taxas)
+  - [📖 ISBN](#-isbn)
+    - [Buscar livro](#buscar-livro-isbnv1isbn)
+  - [🏢 NCM [WIP]](#-ncm)
+  - [💰 PIX [WIP]](#-pix)
+  - [🌐 Registro BR [WIP]](#-registro-br)
+  - [💸 Taxas[WIP]](#-taxas)
 - [📄 Licença](#-licença)
 - [🤝 Contribuindo](#-contribuindo)
 - [🌎 English Version](#-english-version)
@@ -718,15 +722,51 @@ Model BrasilAPI.IBGE.StateModel
 </details>
 
 ---
-### 🔢 ISBN
+### 📖 ISBN
+#### Buscar livro [`isbn/v1/{isbn}`](https://brasilapi.com.br/docs#tag/ISBN/paths/~1isbn~1v1~1%7Bisbn%7D/get)
+Informações sobre o livro a partir do ISBN
+
+```swift
+let book: BrasilAPI.ISBN.BookModel = try await brasilAPI.isbn.getBook(isbn: String)
+```
+
+<details>
+<summary>
+Model BrasilAPI.ISBN.BookModel
+</summary>
+
+```swift
+    isbn: String
+    title: String
+    subtitle: String?
+    authors: [String]
+    publisher: String
+    synopsis: String
+    dimensions: DimensionsModel
+    year: Int
+    format: String
+    page_count: Int
+    subjects: [String]
+    location: String
+    retail_price: String?
+    cover_url: String?
+    provider: String
+    
+    // DimensionsModel
+    width: Double
+    height: Double
+    unit: String
+```
+</details>
+
 ---
-### 🏢 NCM
+### 🏢 NCM [WIP]
 ---
-### 💰 PIX
+### 💰 PIX [WIP]
 ---
-### 🌎 Registro BR
+### 🌎 Registro BR [WIP]
 ---
-### 💸 Taxas
+### 💸 Taxas [WIP]
 ---
 
 ## 📄 Licença
@@ -788,11 +828,12 @@ A Swift SDK to access [BrasilAPI](https://brasilapi.com.br) services in a simple
     - [List cities](#list-cities-ibge-municipios-v1-siglauf)
     - [List states](#list-states-ibgeufv1)
     - [Get state by code](#get-state-by-code-ibgeufv1code)
-  - [🔢 ISBN](#-isbn)
-  - [🏢 NCM](#-ncm)
-  - [💰 PIX](#-pix)
-  - [🌐 Registro BR](#-registro-br)
-  - [💸 Taxes](#-taxes)
+  - [📖 ISBN](#-isbn)
+    - [Search book](#search-book-isbnv1isbn)
+  - [🏢 NCM [WIP]](#-ncm)
+  - [💰 PIX [WIP]](#-pix)
+  - [🌐 Registro BR [WIP]](#-registro-br)
+  - [💸 Taxes [WIP]](#-taxes)
 - [📄 License](#-license)
 - [🤝 Contributing](#-contributing)
 - [🌎 Versão em Português](#-versao-em-portugues)
@@ -1241,6 +1282,44 @@ Model BrasilAPI.IBGE.StateModel
 </details>
 
 ---
+
+### 📖 ISBN
+#### Search book [`isbn/v1/{isbn}`](https://brasilapi.com.br/docs#tag/ISBN/paths/~1isbn~1v1~1%7Bisbn%7D/get)
+Get book information from ISBN number code
+
+```swift
+let book: BrasilAPI.ISBN.BookModel = try await brasilAPI.isbn.getBook(isbn: String)
+```
+
+<details>
+<summary>
+Model BrasilAPI.ISBN.BookModel
+</summary>
+
+```swift
+    isbn: String
+    title: String
+    subtitle: String?
+    authors: [String]
+    publisher: String
+    synopsis: String
+    dimensions: DimensionsModel
+    year: Int
+    format: String
+    page_count: Int
+    subjects: [String]
+    location: String
+    retail_price: String?
+    cover_url: String?
+    provider: String
+    
+    // DimensionsModel
+    width: Double
+    height: Double
+    unit: String
+```
+</details>
+
 
 ## 📄 License
 
