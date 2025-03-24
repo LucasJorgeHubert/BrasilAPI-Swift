@@ -6,6 +6,10 @@ public enum Domain {
     public enum CNPJ { public enum Models { } }
     public enum CPTEC { public enum Models { } }
     public enum DDD { public enum Models { } }
+    public enum DomainBR {
+        public enum Models { }
+        public enum Enums { }
+    }
     public enum Exchange { public enum Models { } }
     public enum FIPE {
         public enum Enums { }

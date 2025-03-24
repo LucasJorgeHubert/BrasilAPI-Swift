@@ -14,4 +14,5 @@ public enum DataSource {
     public enum NCM { }
     public enum PIX { }
     public enum ZipCode { }
+    public enum DomainBR { }
 }
