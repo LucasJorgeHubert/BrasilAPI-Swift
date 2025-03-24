@@ -1,0 +1,66 @@
+[
+    {
+        "ispb": "00000000",
+        "nome": "BANCO DO BRASIL S.A.",
+        "nome_reduzido": "BCO DO BRASIL S.A.",
+        "modalidade_participacao": "PDCT",
+        "tipo_participacao": "DRCT",
+        "inicio_operacao": "2020-11-03T09:30:00.000Z"
+    },
+    {
+        "ispb": "00000208",
+        "nome": "BRB - BANCO DE BRASILIA S.A.",
+        "nome_reduzido": "BRB - BCO DE BRASILIA S.A.",
+        "modalidade_participacao": "PDCT",
+        "tipo_participacao": "DRCT",
+        "inicio_operacao": "2020-11-03T09:30:00.000Z"
+    },
+    {
+        "ispb": "00068987",
+        "nome": "COOPERATIVA DE CRÉDITO ARACREDI LTDA. - SICOOB ARACREDI",
+        "nome_reduzido": "CC ARACREDI LTDA.",
+        "modalidade_participacao": "PDCT",
+        "tipo_participacao": "IDRT",
+        "inicio_operacao": "2020-11-03T09:30:00.000Z"
+    },
+    {
+        "ispb": "00075847",
+        "nome": "COOPERATIVA DE CRÉDITO UNICRED CENTRO-SUL LTDA - UNICRED CENTRO-SUL",
+        "nome_reduzido": "CC UNICRED CENTRO-SUL LTDA - UNICRED CENTRO-SUL",
+        "modalidade_participacao": "PDCT",
+        "tipo_participacao": "IDRT",
+        "inicio_operacao": "2020-11-03T09:30:00.000Z"
+    },
+    {
+        "ispb": "00106180",
+        "nome": "CENTRAL DAS COOPERATIVAS DE CRÉDITO DOS ESTADOS DE MATO GROSSO, MATO GROSSO DO SUL E DO MUNICÍPIO DE CACOAL/RO - SICOOB CENTRAL RONDON",
+        "nome_reduzido": "CCC DOS EST DE MT, MS E MUN DE CACOAL/RO",
+        "modalidade_participacao": "PDCT",
+        "tipo_participacao": "IDRT",
+        "inicio_operacao": "2020-11-03T09:30:00.000Z"
+    },
+    {
+        "ispb": "00204963",
+        "nome": "COOPERATIVA DE CREDITO RURAL SEARA - CREDISEARA",
+        "nome_reduzido": "CCR SEARA",
+        "modalidade_participacao": "PDCT",
+        "tipo_participacao": "DRCT",
+        "inicio_operacao": "2022-02-11T13:00:00.000Z"
+    },
+    {
+        "ispb": "00259231",
+        "nome": "SICOOB UNIMAIS METROPOLITANA - COOPERATIVA DE CRÉDITO DE LIVRE ADMISSÃO",
+        "nome_reduzido": "CCLA SICOOB UNIMAIS METROPOLITANA",
+        "modalidade_participacao": "PDCT",
+        "tipo_participacao": "IDRT",
+        "inicio_operacao": "2020-11-03T09:30:00.000Z"
+    },
+    {
+        "ispb": "00309024",
+        "nome": "CENTRAL DAS COOPERATIVAS DE ECONOMIA E CREDITO DO ESTADO DE MINAS GERAIS LTDA. - SICOOB CENTRAL CECREMGE",
+        "nome_reduzido": "CCC ESTADO MG - CECREMGE",
+        "modalidade_participacao": "PDCT",
+        "tipo_participacao": "IDRT",
+        "inicio_operacao": "2020-11-03T09:30:00.000Z"
+    }
+]

@@ -14,4 +14,5 @@ enum APIResolver {
     enum NCM {}
     enum IBGE {}
     enum ISBN {}
+    enum PIX {}
 }
