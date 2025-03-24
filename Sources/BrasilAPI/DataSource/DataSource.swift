@@ -6,6 +6,7 @@ public enum DataSource {
     public enum CNPJ { }
     public enum CPTEC { }
     public enum DDD { }
+    public enum DomainBR { }
     public enum Exchange { }
     public enum FIPE { }
     public enum Holidays { }
@@ -13,6 +14,6 @@ public enum DataSource {
     public enum ISBN { }
     public enum NCM { }
     public enum PIX { }
+    public enum Tax { }
     public enum ZipCode { }
-    public enum DomainBR { }
 }

@@ -16,4 +16,5 @@ enum APIResolver {
     enum IBGE {}
     enum ISBN {}
     enum PIX {}
+    enum Tax {}
 }

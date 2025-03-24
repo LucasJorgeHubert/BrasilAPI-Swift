@@ -1,0 +1,15 @@
+
+[
+    {
+        "nome": "Selic",
+        "valor": 14.25
+    },
+    {
+        "nome": "CDI",
+        "valor": 14.15
+    },
+    {
+        "nome": "IPCA",
+        "valor": 5.06
+    }
+]
