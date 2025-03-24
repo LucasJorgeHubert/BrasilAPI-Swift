@@ -23,4 +23,5 @@ public enum Presenter {
     public enum IBGE { public enum UseCase { } }
     public enum ISBN { public enum UseCase { } }
     public enum PIX { public enum UseCase { } }
+    public enum Tax { public enum UseCase { } }
 }

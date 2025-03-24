@@ -57,7 +57,9 @@ Uma SDK Swift para acessar os serviços da [BrasilAPI](https://brasilapi.com.br)
     - [Buscar participantes](#buscar-participantes-pixv1participants)
   - [🌐 Registro BR](#-registro-br)
     - [Buscar status do dominio](#buscar-staus-do-dominio-registrobrv1dominio)
-  - [💸 Taxas[WIP]](#-taxas)
+  - [💸 Taxas](#-taxas)
+    - [Listar taxas](#listar-taxas-taxasv1)
+    - [Buscar taxa](#buscar-taxa-taxasv1sigla)
 - [📄 Licença](#-licença)
 - [🤝 Contribuindo](#-contribuindo)
 - [🌎 English Version](#-english-version)
@@ -884,7 +886,36 @@ unknow = 10
 </details>
 
 ---
-### 💸 Taxas [WIP]
+### 💸 Taxas
+
+#### Listar todas as taxas [`taxas/v1`](https://brasilapi.com.br/docs#tag/TAXAS/paths/~1taxas~1v1/get)
+
+Retorna as taxas de juros e alguns índices oficiais do Brasil
+
+```swift
+var taxas: [BrasilAPI.Taxas.TaxModel] = try await BrasilAPI()tax.getTaxes()
+```
+
+<details>
+<summary>
+Model BrasilAPI.Taxas.TaxModel
+</summary>
+
+```swift
+name: String
+value: Double
+```
+</details>
+
+
+#### Buscar taxa [`taxas/v1/{sigla}`](https://brasilapi.com.br/docs#tag/TAXAS/paths/~1taxas~1v1~1%7Bsigla%7D/get)
+
+Busca as informações de uma taxa a partir do seu nome/sigla
+
+```swift
+var tax: BrasilAPI.Taxas.TaxModel = try await BrasilAPI().tax.getTax(taxId: "CDI")
+```
+
 ---
 
 ## 📄 Licença
@@ -956,7 +987,9 @@ A Swift SDK to access [BrasilAPI](https://brasilapi.com.br) services in a simple
     - [Search participants](#search-participants-pixv1participants)
   - [🌐 Domain BR](#-domain-br)
     - [Get domain status](#get-domain-status-registrobrv1domain)
-  - [💸 Taxes [WIP]](#-taxes)
+  - [💸 Taxes](#-taxes)
+    - [Get taxes](#get-all-taxas-taxasv1)
+    - [Get tax](#get-tax-taxasv1sigla)
 - [📄 License](#-license)
 - [🤝 Contributing](#-contributing)
 - [🌎 Versão em Português](#-versao-em-portugues)
@@ -1518,7 +1551,38 @@ Avalia um dominio no registro.br
 ```swift
 let status: BrasilAPI.DomainBR.DomainBRStatusModel = try await BrasilAPI().domainBR.getDomainBRStatus(domain: String)
 ```
+---
+### 💸 Taxes
 
+#### Get taxes [`taxas/v1`](https://brasilapi.com.br/docs#tag/TAXAS/paths/~1taxas~1v1/get)
+
+Retorna as taxas de juros e alguns índices oficiais do Brasil
+
+```swift
+var taxas: [BrasilAPI.Taxas.TaxModel] = try await BrasilAPI()tax.getTaxes()
+```
+
+<details>
+<summary>
+Model BrasilAPI.Taxas.TaxModel
+</summary>
+
+```swift
+name: String
+value: Double
+```
+</details>
+
+
+#### Get tax [`taxas/v1/{sigla}`](https://brasilapi.com.br/docs#tag/TAXAS/paths/~1taxas~1v1~1%7Bsigla%7D/get)
+
+Busca as informações de uma taxa a partir do seu nome/sigla
+
+```swift
+var tax: BrasilAPI.Taxas.TaxModel = try await BrasilAPI().tax.getTax(taxId: "CDI")
+```
+
+---
 
 ## 📄 License
 

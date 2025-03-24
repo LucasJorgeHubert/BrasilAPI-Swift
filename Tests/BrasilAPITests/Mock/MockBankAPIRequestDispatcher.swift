@@ -43,6 +43,8 @@ class MockBankAPIRequestDispatcher: APIRequestDispatcherProtocol {
             return APIResolver.PIX.resolve(for: apiRouter)
         case is DataSource.DomainBR.APIRouter:
             return APIResolver.DomainBR.resolve(for: apiRouter)
+        case is DataSource.Tax.APIRouter:
+            return APIResolver.Tax.resolve(for: apiRouter)
         default:
             return "default_mock"
         }

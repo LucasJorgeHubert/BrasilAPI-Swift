@@ -20,6 +20,7 @@ public enum Domain {
     public enum ISBN { public enum Models { } }
     public enum NCM { public enum Models { } }
     public enum PIX { public enum Models { } }
+    public enum Tax { public enum Models { } }
     public enum ZipCode {
         public enum Models {
             public enum V1 { }
