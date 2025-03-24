@@ -12,5 +12,6 @@ public enum DataSource {
     public enum IBGE { }
     public enum ISBN { }
     public enum NCM { }
+    public enum PIX { }
     public enum ZipCode { }
 }

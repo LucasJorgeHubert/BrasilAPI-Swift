@@ -21,4 +21,5 @@ public enum Presenter {
     public enum NCM { public enum UseCase { } }
     public enum IBGE { public enum UseCase { } }
     public enum ISBN { public enum UseCase { } }
+    public enum PIX { public enum UseCase { } }
 }

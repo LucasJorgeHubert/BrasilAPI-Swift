@@ -13,6 +13,7 @@ public class BrasilAPI {
     public typealias IBGE = Presenter.IBGE.Service
     public typealias ISBN = Presenter.ISBN.Service
     public typealias NCM = Presenter.NCM.Service
+    public typealias PIX = Presenter.PIX.Service
     public typealias ZipCode = Presenter.ZipCode.Service
     
     public var banking: Presenter.Bank.Service
@@ -26,6 +27,7 @@ public class BrasilAPI {
     public var ibge: Presenter.IBGE.Service
     public var isbn: Presenter.ISBN.Service
     public var ncm: Presenter.NCM.Service
+    public var pix: Presenter.PIX.Service
     public var zipCode: Presenter.ZipCode.Service
     
     public init(
@@ -40,6 +42,7 @@ public class BrasilAPI {
         ibgeRepository: IBGERepositoryProtocol = DataSource.IBGE.RepositoryImpl(),
         isbnRepository: ISBNRepositoryProtocol = DataSource.ISBN.RepositoryImpl(),
         ncmRepository: NCMRepositoryProtocol = DataSource.NCM.RepositoryImpl(),
+        pixRepository: PIXRepositoryProtocol = DataSource.PIX.RepositoryImpl(),
         zipCodeRepository: ZipCodeRepositoryProtocol = DataSource.ZipCode.RepositoryImpl()
     ) {
         self.banking = Presenter.Bank.Service(repository: bankingRepository)
@@ -53,6 +56,7 @@ public class BrasilAPI {
         self.ibge = Presenter.IBGE.Service(repository: ibgeRepository)
         self.isbn = Presenter.ISBN.Service(repository: isbnRepository)
         self.ncm = Presenter.NCM.Service(repository: ncmRepository)
+        self.pix = Presenter.PIX.Service(repository: pixRepository)
         self.zipCode = Presenter.ZipCode.Service(repository: zipCodeRepository)
     }
 }

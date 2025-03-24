@@ -53,7 +53,8 @@ Uma SDK Swift para acessar os serviços da [BrasilAPI](https://brasilapi.com.br)
     - [Buscar todos os NCMs](#buscar-ncm-ncmv1)
     - [Buscar NCM](#buscar-um-ncm-ncmv1code)
     - [Pesquisar NCM](#pesquisar-ncm-ncmv1searchterm)
-  - [💰 PIX [WIP]](#-pix)
+  - [💰 PIX](#-pix)
+    - [Buscar participantes](#buscar-participantes-pixv1participants)
   - [🌐 Registro BR [WIP]](#-registro-br)
   - [💸 Taxas[WIP]](#-taxas)
 - [📄 Licença](#-licença)
@@ -801,7 +802,31 @@ let ncm: [BrasilAPI.NCM.NCMModel] = try await brasilAPI.ncm.searchNCM(term: Stri
 ```
 
 ---
-### 💰 PIX [WIP]
+### 💰 PIX
+
+#### Buscar participantes [`pix/v1/participants`](https://brasilapi.com.br/docs#tag/PIX/paths/~1pix~1v1~1participants/get)
+
+Retorna informações de todos os participantes do PIX no dia atual ou anterior
+
+```swift
+var participants: [BrasilAPI.PIX.PIXParticipoantsModel] = try await BrasilAPI().pix.getPIXPartcipants()
+```
+
+<details>
+<summary>
+Model BrasilAPI.PIX.PIXParticipoantsModel
+</summary>
+
+```swift
+ispb: String
+name: String
+nameReduzido: String
+modalidadeParticipacao: String
+tipoParticipacao: String
+inicioOperacao: String
+```
+</details>
+
 ---
 ### 🌎 Registro BR [WIP]
 ---
@@ -873,7 +898,8 @@ A Swift SDK to access [BrasilAPI](https://brasilapi.com.br) services in a simple
     - [Get all NCMs](#get-all-ncms-ncmv1)
     - [Get NCM](#get-ncm-ncmv1code)
     - [Search NCM](#search-ncm-ncmv1searchterm)
-  - [💰 PIX [WIP]](#-pix)
+  - [💰 PIX](#-pix)
+    - [Search participants](#search-participants-pixv1participants)
   - [🌐 Registro BR [WIP]](#-registro-br)
   - [💸 Taxes [WIP]](#-taxes)
 - [📄 License](#-license)
@@ -1144,8 +1170,8 @@ Model BrasilAPI.DDD.CitiesModel
 </summary>
 
 ```swift
-  let cities: [String]
-  let state: String
+  cities: [String]
+  state: String
 ```
 </details>
 
@@ -1401,6 +1427,33 @@ let ncm: [BrasilAPI.NCM.NCMModel] = try await brasilAPI.ncm.searchNCM(term: Stri
 /// Term can be a code or a description
 ```
 
+---
+### 💰 PIX
+
+#### Search participants [`pix/v1/participants`](https://brasilapi.com.br/docs#tag/PIX/paths/~1pix~1v1~1participants/get)
+
+Return information about all participants of the PIX on the current or previous day
+
+```swift
+var participants: [BrasilAPI.PIX.PIXParticipoantsModel] = try await BrasilAPI().pix.getPIXPartcipants()
+```
+
+<details>
+<summary>
+Model BrasilAPI.PIX.PIXParticipoantsModel
+</summary>
+
+```swift
+ispb: String
+name: String
+nameReduzido: String
+modalidadeParticipacao: String
+tipoParticipacao: String
+inicioOperacao: String
+```
+</details>
+
+--- 
 
 
 ## 📄 License
@@ -1413,5 +1466,3 @@ Contributions are welcome! Feel free to open issues and pull requests.
 
 ---
 Created with ❤️ by [Lucas Hubert](https://github.com/LucasJorgeHubert).
-## Summary
-

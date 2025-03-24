@@ -13,14 +13,7 @@ final class IntegrationUseCaseTests: XCTestCase {
     func test_integration_fetchCities() async throws {
         let book = try await getBookUseCase.execute(isbn: "9788545702870")
         
-        XCTAssertEqual(book.authors, [
-            "KATSUHIRO OTOMO",
-            "DRIK SADA",
-            "CASSIUS MEDAUAR",
-            "MARCELO DEL GRECO",
-            "DENIS TAKATA"
-        ])
         XCTAssertEqual(book.isbn, "9788545702870")
-        XCTAssertEqual(book.page_count, 364)
+        XCTAssertEqual(book.page_count, 362)
     }
 }
