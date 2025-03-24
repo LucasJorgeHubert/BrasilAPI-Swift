@@ -55,7 +55,8 @@ Uma SDK Swift para acessar os serviços da [BrasilAPI](https://brasilapi.com.br)
     - [Pesquisar NCM](#pesquisar-ncm-ncmv1searchterm)
   - [💰 PIX](#-pix)
     - [Buscar participantes](#buscar-participantes-pixv1participants)
-  - [🌐 Registro BR [WIP]](#-registro-br)
+  - [🌐 Registro BR](#-registro-br)
+    - [Buscar status do dominio](#buscar-staus-do-dominio-registrobrv1dominio)
   - [💸 Taxas[WIP]](#-taxas)
 - [📄 Licença](#-licença)
 - [🤝 Contribuindo](#-contribuindo)
@@ -731,7 +732,7 @@ Model BrasilAPI.IBGE.StateModel
 Informações sobre o livro a partir do ISBN
 
 ```swift
-let book: BrasilAPI.ISBN.BookModel = try await brasilAPI.isbn.getBook(isbn: String)
+let book: BrasilAPI.ISBN.BookModel = try await BrasilAPI().isbn.getBook(isbn: String)
 ```
 
 <details>
@@ -791,13 +792,13 @@ anoAto: String
 #### Buscar NCM [`ncm/v1/{code}`](https://brasilapi.com.br/docs#tag/NCM/paths/~1ncm~1v1~1%7Bcode%7D/get)
 
 ```swift
-let ncm: BrasilAPI.NCM.NCMModel = try await brasilAPI.ncm.getNCMByCode(code: String)
+let ncm: BrasilAPI.NCM.NCMModel = try await BrasilAPI().ncm.getNCMByCode(code: String)
 ```
 
 #### Pesquisar NCM [`ncm/v1?search={term}`](https://brasilapi.com.br/docs#tag/NCM/paths/~1ncm~1v1?search=%7Bcode%7D/get)
 
 ```swift
-let ncm: [BrasilAPI.NCM.NCMModel] = try await brasilAPI.ncm.searchNCM(term: String)
+let ncm: [BrasilAPI.NCM.NCMModel] = try await BrasilAPI().ncm.searchNCM(term: String)
 /// Termo pode ser o número ou descrição, conforme documentação da BrasilAPI
 ```
 
@@ -828,7 +829,60 @@ inicioOperacao: String
 </details>
 
 ---
-### 🌎 Registro BR [WIP]
+### 🌎 Registro BR
+
+#### Buscar status do dominio [`registrobr/v1/{domain}`](https://brasilapi.com.br/docs#tag/REGISTRO-BR/paths/~1registrobr~1v1~1%7Bdomain%7D/get)
+
+Avalia um dominio no registro.br
+
+```swift
+let status: BrasilAPI.DomainBR.DomainBRStatusModel = try await BrasilAPI().domainBR.getDomainBRStatus(domain: String)
+```
+<details>
+<summary>
+Model BrasilAPI.DomainBR.DomainBRStatusModel
+</summary>
+
+```swift
+statusCode: Domain.DomainBR.Enums.DomainBRStatusCodeEnum
+status: Domain.DomainBR.Enums.DomainBRStatusEnum
+fqdn: String
+fqdnace: String?
+exempt: Bool?
+hosts: [String]?
+publicationStatus: String?
+expiresAt: String?
+suggestions: [String]?
+reasons: String?
+
+// BrasilAPI.DomainBR.DomainBRStatusEnum
+available = "AVAILABLE"
+availableWithTicket = "AVAILABLE_WITH_TICKET"
+registered = "REGISTERED"
+unavailable = "UNAVAILABLE"
+invalidQuery = "INVALID_QUERY"
+releaseWaiting = "RELEASE_WAITING"
+releaseInProgress = "RELEASE_IN_PROGRESS"
+releaseInProgressWithTickets = "RELEASE_IN_PROGRESS_WITH_TICKETS"
+error = "ERROR"
+domainProcessRelease = "DOMAIN_PROCESS_RELEASE"
+unknow = "UNKNOW"
+
+// BrasilAPI.DomainBR.DomainBRStatusCodeEnum
+available = 0
+availableWithTicket = 1
+registered = 2
+unavailable = 3
+invalidQuery = 4
+releaseWaiting = 5
+releaseInProgress = 6
+releaseInProgressWithTickets = 7
+error = 8
+domainProcessRelease = 9
+unknow = 10
+```
+</details>
+
 ---
 ### 💸 Taxas [WIP]
 ---
@@ -900,7 +954,8 @@ A Swift SDK to access [BrasilAPI](https://brasilapi.com.br) services in a simple
     - [Search NCM](#search-ncm-ncmv1searchterm)
   - [💰 PIX](#-pix)
     - [Search participants](#search-participants-pixv1participants)
-  - [🌐 Registro BR [WIP]](#-registro-br)
+  - [🌐 Domain BR](#-domain-br)
+    - [Get domain status](#get-domain-status-registrobrv1domain)
   - [💸 Taxes [WIP]](#-taxes)
 - [📄 License](#-license)
 - [🤝 Contributing](#-contributing)
@@ -1454,6 +1509,15 @@ inicioOperacao: String
 </details>
 
 --- 
+### 🌎 Domain BR
+
+#### Get domain status [`registrobr/v1/{domain}`](https://brasilapi.com.br/docs#tag/REGISTRO-BR/paths/~1registrobr~1v1~1%7Bdomain%7D/get)
+
+Avalia um dominio no registro.br
+
+```swift
+let status: BrasilAPI.DomainBR.DomainBRStatusModel = try await BrasilAPI().domainBR.getDomainBRStatus(domain: String)
+```
 
 
 ## 📄 License

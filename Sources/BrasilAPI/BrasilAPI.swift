@@ -7,6 +7,7 @@ public class BrasilAPI {
     public typealias CNPJ = Presenter.CNPJ.Service
     public typealias CPTEC = Presenter.CPTEC.Service
     public typealias DDD = Presenter.DDD.Service
+    public typealias DomainBR = Presenter.DomainBR.Service
     public typealias Exchange = Presenter.Exchange.Service
     public typealias FIPE = Presenter.FIPE.Service
     public typealias Holidays = Presenter.Holidays.Service
@@ -21,6 +22,7 @@ public class BrasilAPI {
     public var cnpj: Presenter.CNPJ.Service
     public var cptec: Presenter.CPTEC.Service
     public var ddd: Presenter.DDD.Service
+    public var domainBR: Presenter.DomainBR.Service
     public var exchange: Presenter.Exchange.Service
     public var fipe: Presenter.FIPE.Service
     public var holidays: Presenter.Holidays.Service
@@ -36,6 +38,7 @@ public class BrasilAPI {
         cnpjRepository: CNPJRepositoryProtocol = DataSource.CNPJ.RepositoryImpl(),
         cptecRepository: CPTECRepositoryProtocol = DataSource.CPTEC.RepositoryImpl(),
         dddRepository: DDDRepositoryProtocol = DataSource.DDD.RepositoryImpl(),
+        domainBRRepository: DomainBRRepositoryProtocol = DataSource.DomainBR.RepositoryImpl(),
         exchangeRepository: ExchangeRepositoryProtocol = DataSource.Exchange.RepositoryImpl(),
         fipeRepository: FIPERepositoryProtocol = DataSource.FIPE.RepositoryImpl(),
         holidaysRepository: HolidaysRepositoryProtocol = DataSource.Holidays.RepositoryImpl(),
@@ -50,6 +53,7 @@ public class BrasilAPI {
         self.cnpj = Presenter.CNPJ.Service(repository: cnpjRepository)
         self.cptec = Presenter.CPTEC.Service(repository: cptecRepository)
         self.ddd = Presenter.DDD.Service(repository: dddRepository)
+        self.domainBR = Presenter.DomainBR.Service(repository: domainBRRepository)
         self.exchange = Presenter.Exchange.Service(repository: exchangeRepository)
         self.fipe = Presenter.FIPE.Service(repository: fipeRepository)        
         self.holidays = Presenter.Holidays.Service(repository: holidaysRepository)

@@ -7,6 +7,7 @@ enum APIResolver {
     enum CNPJ {}
     enum CPTEC {}
     enum DDD {}
+    enum DomainBR {}
     enum Exchange {}
     enum FIPE {}
     enum Holidays {}

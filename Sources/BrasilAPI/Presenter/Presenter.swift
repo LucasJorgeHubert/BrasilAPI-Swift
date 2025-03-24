@@ -9,6 +9,7 @@ public enum Presenter {
         public enum Helper { }
     }
     public enum DDD { public enum UseCase { } }
+    public enum DomainBR { public enum UseCase { } }
     public enum Exchange { public enum UseCase { } }
     public enum FIPE { public enum UseCase { } }
     public enum Holidays { public enum UseCase { } }
