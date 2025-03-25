@@ -77,7 +77,7 @@ Ou, se preferir, adicione manualmente ao `Package.swift`:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/LucasJorgeHubert/BrasilAPI-Swift", from: "0.7.0")
+    .package(url: "https://github.com/LucasJorgeHubert/BrasilAPI-Swift", from: "1.0.0")
 ]
 ```
 
@@ -1006,7 +1006,7 @@ Or, if you prefer, manually add it to `Package.swift`:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/LucasJorgeHubert/BrasilAPI-Swift", from: "0.7.0")
+    .package(url: "https://github.com/LucasJorgeHubert/BrasilAPI-Swift", from: "1.0.0")
 ]
 ```
 
