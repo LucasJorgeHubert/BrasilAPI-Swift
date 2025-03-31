@@ -1,4 +1,4 @@
-# BrasilAPI Swift
+<img src="https://github.com/user-attachments/assets/4332cfb7-06ae-4816-b4f6-83092c541740" style="height:150px"/>
 
 [![Swift Package Manager](https://img.shields.io/badge/SPM-Compatible-brightgreen.svg)](https://swift.org/package-manager/)
 [![Tests](https://img.shields.io/badge/Tests-Passing-brightgreen.svg)]()
